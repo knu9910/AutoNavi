@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import TestMap from './TestMap';
 
 function App() {
-  console.log(123);
-  return <div>HelloWorld</div>;
+  return (
+    <div>
+      <TestMap />
+    </div>
+  );
 }
 
 export default App;
