@@ -4,9 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-}
 
 /* mainpage START */
 .mainpage {
@@ -93,19 +90,21 @@ p.font {
 
 /* Sign in page start */
 
-
-body {
-  font-family: "Montserrat", sans-serif;
+body > .sign-page {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
 }
 
-.signinpage{
-  padding-left: 15%;
-  display: flex;
+.signinpage {
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: #ffffff;
+  overflow: hidden;
 }
 
 .signinLogoimg {
@@ -113,30 +112,34 @@ body {
   height: 100px;
 }
 
-img.signinLogoimg{
-  margin-top: 385px;
+img.signinLogoimg {
+  margin-top: 9rem;
 }
 
-.signinfont{
+.signinfont {
   display: flex;
   justify-content: flex-end;
   font-family: 'Nanum Gothic', sans-serif;
   color: #9e9d9d;
   font-size: large;
   font-weight: 800;
-}
+  overflow: hidden;
 
+}
 
 .wrapper {
   width: 100%;
-  height: 100vh;
+  height: 40rem;
   display: flex;
   align-items: center;
   background: #ffffff;
   overflow: hidden;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
+
 .container {
-  margin-left: 100px;
+
   border-radius: 10px;
   box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
   position: absolute;
@@ -144,7 +147,8 @@ img.signinLogoimg{
   min-height: 480px;
   overflow: hidden;
 }
-form {
+
+.signinDetail {
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -153,10 +157,12 @@ form {
   justify-content: center;
   align-items: center;
 }
-.container > .sign-in-container > form > h1{
+
+.container > .sign-in-container > .signinDetail > h1 {
   margin-bottom: 10px;
 }
-form input {
+
+.signinDetail > input {
   background: #f0f0f0;
   padding: 16px;
   margin: 8px 0;
@@ -166,7 +172,8 @@ form input {
   border-radius: 20px;
   box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
 }
-button {
+
+.signinDetail > button {
   border-radius: 20px;
   border: none;
   outline: none;
@@ -179,23 +186,22 @@ button {
   cursor: pointer;
   transition: transform 80ms ease-in;
 }
-.form_btn {
+
+.signinDetail > .form_btn {
   box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
 }
-.form_btn:active {
+
+.signinDetail > .form_btn:active {
   box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
 }
 
 .sign-in-container {
-  left: 0;
-  width: 50%;
   height: 100%;
   transition: all 0.5s;
-  border-radius: 10px;
+  border-radius: 1rem;
   position: absolute;
-  width: 350px;
+  width: 21rem;
 }
-
 
 .container.right-panel-active .sign-in-container {
   transform: translateX(100%);
@@ -209,11 +215,92 @@ button {
 }
 
 p {
-  font-size: 16px;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: 0.5px;
-  margin: 20px 0 30px;
+  margin: 1.25rem 0 1.875rem;
+}
+
+
+@media (max-width: 480px) {
+  .signinpage {
+    display: none; 
+  }
+
+  .wrapper{
+    height: 40rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .wrapper {
+    height: 40rem;
+    display: flex;
+    background: #ffffff;
+    overflow: hidden;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .container {
+
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
+    position: absolute;
+    width: 260px;
+    min-height: 350px;
+    overflow: hidden;
+  }
+  .signinDetail{
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 350px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sign-in-container {
+    height: 350px;
+    transition: all 0.5s;
+    border-radius: 1rem;
+    position: absolute;
+    width: 260px;
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin: 1.25rem 0 1.875rem;
+  }
+  .signinDetail > button {
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 0.2rem;
+    font-weight: bold;
+    padding: 10px 45px;
+    margin: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 80ms ease-in;
+  }
+  .signinDetail > input {
+    background: #f0f0f0;
+    padding: 16px;
+    margin: 8px 0;
+    width: 12rem;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+  }
 }
 
 /* Sign in page end */
+
 
