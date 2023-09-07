@@ -9,8 +9,8 @@ const io = socketIo(server);
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
-
 const watchDatabaseChanges = require('./carHelperApis/watchDatabaseChanges');
+const realTimeStartApi = require('./realTimeStartApi');
 
 app.use(
   cors({
@@ -24,6 +24,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use('/api', indexRouter);
+
+app.post('/realTimeStart', realTimeStartApi);
 
 io.on('connection', (socket) => {
   console.log('사용자가 연결 되었습니다.');
