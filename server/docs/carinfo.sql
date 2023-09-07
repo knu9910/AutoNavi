@@ -41,13 +41,18 @@ DROP TABLE IF EXISTS `autonavi`.`car_realtime` ;
 CREATE TABLE IF NOT EXISTS `autonavi`.`car_realtime` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT '자동차 실시간 데이터 아이디',
   `car_id` INT NOT NULL COMMENT '차량 아이디',
-  `location_x` INT NOT NULL COMMENT '차량의 현재 위도',
-  `location_y` INT NOT NULL COMMENT '차량의 현재 경도',
+  `location_x` VARCHAR(45) NOT NULL COMMENT '차량의 현재 위도',
+  `location_y` VARCHAR(45) NOT NULL COMMENT '차량의 현재 경도',
   `battery` INT NOT NULL COMMENT '차량의 현재 배터리',
   `operation_st` VARCHAR(45) NOT NULL COMMENT '차량의 현재 운행상태',
-  `destination` INT NOT NULL COMMENT '차량의 목적지',
-  `departure` INT NOT NULL COMMENT '차량의 출발지',
-  `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일',
+  `departure` VARCHAR(45) NULL COMMENT '차량의 출발지',
+  `destination` VARCHAR(45) NULL COMMENT '차량의 목적지',
+  `updatedAt` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일',
+  `distance` INT NULL,
+  `duration` INT NULL,
+  `traffic_speed` INT NULL,
+  `traffic_state` INT NULL,
+  `traffic_name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_realtime_carId`
     FOREIGN KEY (`car_id`)
