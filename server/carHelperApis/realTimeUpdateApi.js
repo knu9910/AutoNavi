@@ -43,8 +43,11 @@ async function getDirections(origin, destination) {
     const { roads } = sections;
 
     return roads;
-  } catch (error) {
-    console.error('Error:', error);
+  } catch (err) {
+    if (err.name === 'AxiosError') {
+      throw new Error(err.response.data.msg);
+    }
+    throw new Error('Server Error');
   }
 }
 
@@ -75,7 +78,7 @@ const updateInteval = async (id = 1, origin, destination) => {
           destination = ?, distance = ?, duration = ?, traffic_speed = ?, traffic_state = ?, traffic_name = ? 
           WHERE car_id = ?`;
 
-        await pool.query(sql, [
+        let [res] = await pool.query(sql, [
           location_x,
           location_y,
           50,
@@ -89,12 +92,13 @@ const updateInteval = async (id = 1, origin, destination) => {
           name,
           id,
         ]);
+        if (!res.affectedRows) throw new Error('Bad Request');
 
-        await wait(1000 * 60); // 1분에 한번씩 업데이트 함
+        await wait(1000); // 1분에 한번씩 업데이트 함
       }
     }
   } catch (err) {
-    console.error(err);
+    throw new Error(err.message);
   }
 };
 
