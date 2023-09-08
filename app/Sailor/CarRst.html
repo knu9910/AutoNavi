@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AutoNavi</title>
+        <link rel="stylesheet" href="/AutoNavi/app/Sailor/assets/css/styleCar.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/fontawesome-free-6.4.2-web/css/all.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo-h">
+                <img class="h-logo" src="./assets/img/bluelogo.jpg" href="#">
+            </div>
+            <div class="topnav" id="myTopnav">
+                <a href="#" class="active">관제</a>
+                <div class="dropdown">
+                    <button class="dropbtn">차량관리 
+                        <i class="fa-solid fa-caret-down"></i>              
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">운행중인 차량</a>
+                        <a href="#">차량등록현황</a>
+                    </div>
+                </div> 
+                <a href="#">차량등록</a>
+            </div>
+        </header>
+        <content>
+            <p class="carrst-title"> 차량 등록 </p>
+            <div class="carrst-container">
+                <div class="carrstimg-container">
+                    <div class="custom-file-upload">
+                        <label>
+                            <img id="user_image" style="display: flex;" src="#" alt="" >
+                            <input accept=".jpg" style="display: none;" onchange="PreviewImage();" type="file" id="user_profile_img" />
+                            <i class="fa fa-cloud-upload"></i>Img Upload 
+                        </label>
+                    </div>
+                </div>
+                <div class="carrstform-container">
+                    <form action="#">
+                       <div class="form-row">
+                          <div class="input-data">
+                             <input type="text" required>
+                             <div class="underline"></div>
+                             <label for="">차량 번호</label>
+                          </div>
+                          <div class="input-data">
+                             <input type="text" required>
+                             <div class="underline"></div>
+                             <label for="">차종</label>
+                          </div>
+                       </div>
+                       <div class="form-row">
+                          <div class="input-data">
+                             <input type="text" required>
+                             <div class="underline"></div>
+                             <label for="">제조연월</label>
+                          </div>
+                          <div class="input-data">
+                             <input type="text" required>
+                             <div class="underline"></div>
+                             <label for="">충전용량</label>
+                          </div>
+                       </div>
+                       <div class="form-row">
+                       <div class="input-data textarea">
+                          <div class="form-row submit-btn">
+                             <div class="input-data">
+                                <div class="inner"></div>
+                                <input type="submit" value="차량등록">
+                             </div>
+                          </div>
+                    </form>
+                </div>              
+            </div>
+           
+        </content>
+    </body>
+ <script>
+    //이미지 프리뷰 js
+    function PreviewImage() {
+        // 파일리더 생성 
+        var preview = new FileReader();
+        preview.onload = function (e) {
+        // img id 값 
+        document.getElementById("user_image").src = e.target.result;
+    };
+    // input id 값 
+    preview.readAsDataURL(document.getElementById("user_profile_img").files[0]);
+ };
+ </script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AutoNavi</title>
+        <link rel="stylesheet" href="/AutoNavi/app/Sailor/assets/css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/fontawesome-free-6.4.2-web/css/all.css">
+    </head>
+    <body>
+        <header class="ContactPersonList">
+            <img class="small-logo" src="./assets/img/bluelogo.jpg">
+        </header>
+
+        <div class="cp-search-box" >
+            <div class="cp-box1">
+                <button class="cp-button1" href="#"><p>관리자 등록</p></button>
+            </div>
+            <div  class="cp-box2">            
+                <form class="cp-search">
+                    <input class="cp-text" type="text" name="" placeholder="Search...">
+                    <button class="cp-button" type="submit"><i class="fa fa-search"
+                    aria-hidden="true"></i></button>
+                </form>
+            </div>    
+        </div>
+        <div class="cp-container">
+            <table class="cp-table">
+                <thead>
+                    <tr>
+                        <th>사원번호</th>
+                        <th> 이름 </th>
+                        <th> 직급 </th>
+                        <th> 권한 </th>
+                        <th >...</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>726228</td>
+                        <td>신규림</td>
+                        <td>사원</td>
+                        <td> A </td>
+                        <td style="float: right"><button class="cp-edit"  href="#">수정<button class="cp-delete" href="#">삭제</a></td>
+                    <tr>
+                        <td>726228</td>
+                        <td>신규림</td>
+                        <td>사원</td>
+                        <td>A</td>
+                        <td style="float: right"><button class="cp-edit"  href="#">수정<button class="cp-delete" href="#">삭제</a></td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                <tr>
+                    <td colspan="5" class="text-center">autonavi@autonavi.kr <a href="" target="_blank">autonavi</a></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+</html>
