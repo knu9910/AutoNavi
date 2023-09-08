@@ -26,7 +26,7 @@
 }
 .mainpage > .font-fix{
   display: flex;  
-justify-content: space-around;
+  justify-content: space-around;
 }
 
 p.font {
@@ -63,8 +63,13 @@ p.font {
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
 
 @media (max-width: 480px) {
+  .mainpage {
+    width: auto; 
+    margin: 0 auto;
+    overflow: hidden;
+  }
   .Logo {
-    padding: 20rem 0 0;
+    padding: 10rem 0 0;
   }
 
   .Logoimg {
@@ -139,7 +144,7 @@ img.signinLogoimg {
   flex-wrap: wrap;
 }
 
-.container {
+.container-signin {
 
   border-radius: 10px;
   box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
@@ -159,7 +164,7 @@ img.signinLogoimg {
   align-items: center;
 }
 
-.container > .sign-in-container > .signinDetail > h1 {
+.container-signin > .sign-in-container > .signinDetail > h1 {
   margin-bottom: 10px;
 }
 
@@ -244,7 +249,7 @@ img.signinLogoimg {
     align-items: center;
   }
 
-  .container {
+  .container-signin {
 
     border-radius: 10px;
     box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
@@ -483,6 +488,7 @@ img.signinLogoimg {
     transition: transform 80ms ease-in;
   }
   .signup-Detail > input {
+    font-size: 10px;
     background: #f0f0f0;
     padding: 6px;
     margin: 8px 0;
@@ -495,4 +501,220 @@ img.signinLogoimg {
 }
 
 /*Sign Up page end*/
+
+/*ContactPerson page Start*/
+.ContactPersonList {
+  margin: 50px auto;
+  width: auto;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+}
+.ContactPersonList > .small-logo {
+  width: 25rem;
+  height: 4.4rem;
+}
+
+.cp-search-box{
+  margin: auto;
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cp-button1{
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  box-shadow: -5px -5px 10px #24658d5b, 5px 5px 8px #babebc;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0300a5;
+}
+.cp-button1 > p{
+  margin: auto;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 500;
+}
+
+.cp-button1:active {
+box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+
+.cp-search-box > .cp-box2{
+  margin: 14px;
+}
+
+.cp-search-box .cp-search {
+  width: 140px;
+  height: 25px;
+  background: #6e6e6e;
+  border-radius: 25px;
+  position: relative;
+}
+
+.cp-search-box .cp-text {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 25px;
+  font-size: 0.5rem;
+  padding: 8px 40px 8px 20px;
+  border: none;
+  box-shadow: 0 3px 5px 1px #9e9d9d;
+}
+
+.cp-text:focus{
+  outline: none;
+}
+
+.cp-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 26px;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.cp-container { 
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.cp-table {
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 183, 255, 0.35);
+  width: 55%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.cp-table th{
+  font-size: 1rem;
+  border: 0.1rem solid #e7e7e7;
+  border-radius: 5px;
+  text-align: center;
+
+}
+
+.cp-table th, .cp-table td {
+  padding: 5px;
+
+}
+.cp-table td{
+  font-size: 0.8rem;
+}
+
+.cp-table > tbody > tr:hover {
+  background-color: #D7F0FF;
+}
+
+tbody .cp-edit {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 80ms ease-in;
+  box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
+  text-decoration: none;
+  color: #6e6e6e;
+}
+tbody .cp-edit:active {
+  box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+tbody .cp-delete {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 80ms ease-in;
+  box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
+  text-decoration: none;
+  color: #6e6e6e;
+}
+tbody .cp-delete:active {
+  box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+
+@media (max-width: 480px) {
+  .ContactPersonList {
+    width: auto;
+    padding-top: 30px;
+  }
+  .ContactPersonList > .small-logo {
+    width: auto;
+    height: auto;    
+  }
+  .cp-search-box{
+    width: auto;
+    margin: 20px;
+  }
+  
+  .cp-button1 > p{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 500;
+  }
+  
+  .cp-button1:active {
+  box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+  }
+  
+  .cp-search-box > .cp-box2{
+    margin: 14px;
+  }
+  
+  .cp-search-box .cp-search {
+    width: 140px;
+    height: 25px;
+    background: #6e6e6e;
+    border-radius: 25px;
+    position: relative;
+  }
+  
+  .cp-search-box .cp-text {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 25px;
+    font-size: 0.5rem;
+    padding: 8px 40px 8px 20px;
+    border: none;
+    box-shadow: 0 3px 5px 1px #9e9d9d;
+  }
+  
+  .cp-text:focus{
+    outline: none;
+  }
+
+  .cp-table {
+    width: auto;
+    margin: auto;
+  }
+
+}
+/*ContactPerson page end*/
+
 
