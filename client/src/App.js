@@ -9,6 +9,7 @@ import AdminReg from './pages/auth/AdminReg';
 import AdminEdit from './pages/auth/AdminEdit';
 import CarList from './pages/carList';
 import CarReg from './pages/carReg';
+import CarDetail from './pages/carDetail';
 
 // 차량등록 페이지, 차량 등록 현황 페이지
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/auth/adminedit" element={<AdminEdit />} />
           <Route path="/car/carList" element={<CarList />} />
           <Route path="/car/carReg" element={<CarReg />} />
+          <Route path="/car/detail/:id" element={<CarDetail />} />
         </Routes>
       </Router>
     </Provider>
