@@ -4,7 +4,6 @@ const carRealTimeSlice = createSlice({
   initialState: { realTimeList: [] },
   reducers: {
     getRealTimeList(state, action) {
-      console.log(123123);
       state.realTimeList = action.payload.realTimeList;
     },
   },
