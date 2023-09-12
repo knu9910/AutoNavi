@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 const carSlice = createSlice({
   name: 'carApp',
-  initialState: {},
+  initialState: { carList: [], currentCar: [] },
   reducers: {},
 });
 

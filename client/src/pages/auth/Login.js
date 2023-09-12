@@ -1,5 +1,5 @@
 import mainLogo from '../../img/autoNavi_Logo.jpg';
-import '../../css/home.css';
+
 const Login = () => {
   return (
     <div className="mainpage">

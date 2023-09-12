@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import StartPage from './pages/StartPage';
 import Main from './pages/main';
-import AdminList from './pages/auth/adminList';
+import AdminList from './pages/auth/AdminList';
 import AdminReg from './pages/auth/AdminReg';
 import AdminEdit from './pages/auth/AdminEdit';
 import CarList from './pages/carList';
