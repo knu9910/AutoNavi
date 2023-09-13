@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 
 import mainLogo from '../../img/autoNavi_Logo.jpg';
-// import '../../css/home.css';
+import '../../styles/LogIn.css';
 
 const Login = () => {
   const [userId, setUserId] = useState('');
@@ -27,43 +27,42 @@ const Login = () => {
   };
 
   return (
-    <div className="mainpage">
-      <div className="Logo">
-        <img className="Logoimg" src={mainLogo} />
-      </div>
-      <div className="font-fix">
-        <p className="font">무인 운송차량 관제 시스템</p>
-      </div>
-
-      <div className="wrapper">
-        <div className="container">
-          <div className="sign-in-container">
-            <form className="signinDetail">
-              <p>Sign In</p>
-              <input
-                type="id"
-                placeholder="Admin ID"
-                onChange={(e) => {
-                  setUserId(e.target.value);
-                }}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              <div className="buttontarget">
-                <button className="main_btn" onClick={login}>
-                  Sign in
+    <>
+      <div className="sign-page">
+        <div className="signinpage">
+          <div className="signinLogo">
+            <img className="signinLogoimg" src={mainLogo} alt=""></img>
+            <p className="signinfont">무인 운송차량 관제 시스템</p>
+          </div>
+        </div>
+        <div className="wrapper">
+          <div className="container-signin">
+            <div className="sign-in-container">
+              <form className="signinDetail">
+                <p>Sign In</p>
+                <input
+                  type="id"
+                  placeholder="Contact Person"
+                  onChange={(e) => {
+                    setUserId(e.target.value);
+                  }}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+                <button className="form_btn" onClick={login}>
+                  Sign In
                 </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
