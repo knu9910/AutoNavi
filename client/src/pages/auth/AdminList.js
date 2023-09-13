@@ -1,14 +1,9 @@
 import '../../styles/adminList.css';
-import blueLogo from '../../img/bluelogo.jpg';
 import React from 'react';
 import { Link } from 'react-router-dom';
 const AdminList = () => {
   return (
     <>
-      <header className="ContactPersonList">
-        <img className="small-logo" src={blueLogo} alt="" />
-      </header>
-
       <div className="cp-search-box">
         <div className="cp-box1">
           <button className="cp-button1" href="#">

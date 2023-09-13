@@ -42,7 +42,7 @@ const Login = () => {
                 <p>Sign In</p>
                 <input
                   type="id"
-                  placeholder="Admin ID"
+                  placeholder="Employee ID"
                   onChange={(e) => {
                     setUserId(e.target.value);
                   }}
