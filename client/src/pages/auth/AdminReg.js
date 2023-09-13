@@ -1,3 +1,5 @@
+import '../../styles/adminReg.css';
+import blueLogo from '../../img/bluelogo.jpg';
 import React, { useState } from 'react';
 import Axios from 'axios';
 
@@ -30,77 +32,90 @@ const AdminReg = () => {
   };
 
   return (
-    <div className="register">
-      <input
-        type="text"
-        placeholder="이름"
-        onChange={(e) => {
-          setUserName(e.target.value);
-        }}
-      />
+    <>
+      <header className="ContactPerson">
+        <img className="bluelogo" src={blueLogo} alt="bluelogo" />
+      </header>
 
-      <input
-        type="text"
-        placeholder="사원코드"
-        onChange={(e) => {
-          setUserIdReg(e.target.value);
-        }}
-      />
+      <div className="wrapper-signup">
+        <div className="container-signup">
+          <div className="signup-container">
+            <form className="signup-Detail">
+              <p>Sign Up</p>
+              <div className="admin-input">
+                <input
+                  type="text"
+                  placeholder="name"
+                  onChange={(e) => {
+                    setUserName(e.target.value);
+                  }}
+                />
 
-      <input
-        type="password"
-        placeholder="비밀번호"
-        onChange={(e) => {
-          setPasswordReg(e.target.value);
-        }}
-      />
-
-      <input
-        type="password"
-        placeholder="비밀번호 확인"
-        onChange={(e) => {
-          setConfirmPassword(e.target.value);
-        }}
-      />
-
-      <input
-        type="email"
-        placeholder="이메일"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-
-      <input
-        type="text"
-        placeholder="직급"
-        onChange={(e) => {
-          setPosition(e.target.value);
-        }}
-      />
-      <p>차량 제어 권한</p>
-      <input
-        type="radio"
-        name="controlRights"
-        value="있음"
-        id="yes"
-        onChange={(e) => {
-          setControlRights(e.target.value);
-        }}
-      />
-      <label htmlFor="yes">있음</label>
-      <input
-        type="radio"
-        name="controlRights"
-        value="없음"
-        id="no"
-        onChange={(e) => {
-          setControlRights(e.target.value);
-        }}
-      />
-      <label htmlFor="no">없음</label>
-      <button onClick={register}>관리자 등록</button>
-    </div>
+                <input
+                  type="id"
+                  placeholder="Contact Person no."
+                  onChange={(e) => {
+                    setUserIdReg(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="admin-input">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) => {
+                    setPasswordReg(e.target.value);
+                  }}
+                />
+                <input
+                  type="password"
+                  placeholder="Password Check"
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="admin-input">
+                <input
+                  type="email"
+                  placeholder="email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="position"
+                  onChange={(e) => {
+                    setPosition(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="admin-checkb">
+                <p>차량 제어 권한</p>
+                <div className="admin-cbox">
+                  <input
+                    style={{ display: 'none' }}
+                    type="checkbox"
+                    name="controlRights"
+                    id="controlRightsYes"
+                    value="있음"
+                    onChange={(e) => {
+                      setControlRights(e.target.checked ? '있음' : '없음');
+                    }}
+                  />
+                  <label htmlFor="controlRightsYes"></label>
+                  <div></div>
+                </div>
+              </div>
+              <button className="form_btn" onClick={register}>
+                관리자 등록
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
