@@ -14,7 +14,7 @@ const StartPage = () => {
           <p className="font">무인 운송차량 관제 시스템</p>
         </div>
         <div className="buttontaget">
-          <Link to="/signin">
+          <Link to="/auth/login">
             <button className="main_btn">Sign in</button>
           </Link>
         </div>
