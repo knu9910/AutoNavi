@@ -4,9 +4,11 @@ import { getRealTimeList } from '../../store/carRealTimeSlice';
 import { useEffect } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import KaKaoMap from './KakaoMap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import '../../styles/main.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const socket = io('http://localhost:8080', {
   withCredentials: true,
@@ -35,6 +37,21 @@ const Main = () => {
           <div className="nav-b-bar">
             <div className="nav-c-info">
               <ul>
+                <div
+                  className="progress"
+                  role="progressbar"
+                  aria-label="Animated striped example"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div
+                    className="progress-bar progress-bar-striped progress-bar-animated"
+                    style={{ width: '85%' }}
+                  >
+                    85%
+                  </div>
+                </div>
                 <li className="li-detail" style={{ liststyle: 'none' }}>
                   <span>
                     <FontAwesomeIcon icon={faTruck} size="5x" />
