@@ -1,16 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/auth/Login';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import StartPage from './pages/StartPage';
 import Main from './pages/main';
-import AdminList from './pages/auth/AdminList';
-import AdminReg from './pages/auth/AdminReg';
-import AdminEdit from './pages/auth/AdminEdit';
 import CarList from './pages/carList';
 import CarReg from './pages/carReg';
 import CarDetail from './pages/carDetail';
 import LayOut from './components/layout';
+import NotFound from './pages/NotFound';
+import { AdminList, AdminReg, AdminEdit, Login } from './pages/auth';
 
 // 차량등록 페이지, 차량 등록 현황 페이지
 const App = () => {
@@ -29,6 +27,7 @@ const App = () => {
           </Route>
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/adminReg" element={<AdminReg />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </Provider>
