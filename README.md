@@ -1,22 +1,25 @@
 # AutoNavi
 
 ## 프로젝트 소개
-AutoNavi는 무인 자동차 충전소 위치정보를 제공하고, 무인운송차량 상태를 확인하고, 관리하는  프로젝트 입니다.
+AutoNavi는 무인 자동차 충전소 위치정보를 제공하고, 무인운송차량의 실시간 위치, 상태를 확인하고, 관리하는 프로젝트입니다.
+차량의 배터리를 확인 후 배터리가 없으면 가장 빨리 충전할 수 있는 충천소를 추천해주고, 무인운송차량을 이동 시킵니다.  
 
 ## 팀원 소개
-김남운, 박범현, 부반손, 신규림, 조채은
+김남운(팀장), 박범현, 부반손, 신규림, 조채은
 
 ## 개발 일정
 2023-09-01 ~ 2023-10-13
 
 ## 개발 환경
 
+
 <img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/7b5e3714-2722-400c-a1e2-10a149afd592' alt="redux" width=300, height=200 />
-<img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/bf8cf872-9e44-4bd3-acab-92ac5fad2970' alt="react" width=300, height=200 />
+<img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/bf8cf872-9e44-4bd3-acab-92ac5fad2970' alt="react" width=250, height=200 />
 <img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/00fe32f2-2a61-49ba-bde0-23f55d53087b' alt="mysql" width=300, height=200 />
 <img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/82b21cd2-08c3-4063-ad35-5c24502648bf' alt="nodejs" width=300, height=200 />
 <img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/8c8368ab-be35-4234-bfd8-9ea511927e37' alt="express" width=300, height=200 />
-<img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/9bdf02b5-3c02-4836-846c-9495838e3700' alt="soketio" width=300, height=200 />
+<img src = 'https://github.com/knu9910/AutoNavi/assets/59068144/9bdf02b5-3c02-4836-846c-9495838e3700' alt="soketio" width=200, height=200 />
+
 
 ## 컨벤션
 ### 코드 컨벤션
