@@ -6,7 +6,10 @@ const AdminList = () => {
     <>
       <div className="cp-search-box">
         <div className="cp-box1">
-          <button className="cp-button1" href="#">
+          <button
+            className="cp-button1"
+            onClick={() => (window.location.href = '/auth/AdminReg')}
+          >
             <p>관리자 등록</p>
           </button>
         </div>
