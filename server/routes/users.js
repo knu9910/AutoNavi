@@ -54,7 +54,12 @@ router.delete('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id);
     const count = await userModel.delete(id);
-    res.json({ count });
+
+    if (count === 1) {
+      res.json({ message: '삭제되었습니다.' });
+    } else {
+      res.status(404).json({ error: '삭제에 실패했습니다.' });
+    }
   } catch (err) {
     next(err);
   }
