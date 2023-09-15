@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import blueLogo from '../../img/bluelogo.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   if (window.location.pathname === '/') return null;
@@ -15,7 +17,7 @@ const Header = () => {
         <div className="dropdown">
           <button className="dropbtn">
             차량관리
-            <i className="fa-solid fa-caret-down"></i>
+            <FontAwesomeIcon icon={faAngleDown} style={{ color: '#a1a1a1' }} />
           </button>
           <div className="dropdown-content">
             <Link to="#">운행중인 차량</Link>

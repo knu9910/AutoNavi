@@ -6,9 +6,10 @@ import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import KaKaoMap from './KakaoMap';
 
 import '../../styles/main.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ExclamationCircleFill } from 'react-bootstrap-icons';
 
 const socket = io('http://localhost:8080', {
   withCredentials: true,
@@ -36,7 +37,8 @@ const Main = () => {
         <div className="nav-car-list">
           <div className="nav-b-bar">
             <div className="nav-c-info">
-              <ul>
+              <div className="battery-bar">
+                <ExclamationCircleFill color="green" width="24" height="24" />
                 <div
                   className="progress"
                   role="progressbar"
@@ -52,18 +54,34 @@ const Main = () => {
                     85%
                   </div>
                 </div>
+              </div>
+              <ul className="battery-bar-info">
                 <li className="li-detail" style={{ liststyle: 'none' }}>
                   <span>
                     <FontAwesomeIcon icon={faTruck} size="5x" />
                     <p>12가1234</p>
                   </span>
-                  <span>
-                    <p>주행 가능 거리</p>
-                    <p>남은 주행 거리</p>
-                  </span>
-                  <span>
-                    <p>출발 시간</p>
-                    <p>예상 도착 시간</p>
+                  <span className="car-info">
+                    <span>
+                      <span>
+                        <p> 57km </p>
+                        <p> 주행 가능 거리</p>
+                      </span>
+                      <span>
+                        <p>5시 30분</p>
+                        <p>출발 시간</p>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <p> 57km </p>
+                        <p> 남은 주행 거리 </p>
+                      </span>
+                      <span>
+                        <p>5시 30분</p>
+                        <p>예상 도착 시간</p>
+                      </span>
+                    </span>
                   </span>
                 </li>
               </ul>

@@ -28,6 +28,7 @@ content > .mainnav > .nav-car-list {
     display: flex;
 }
 .car-btn {
+    margin: 3px;
     border-radius: 20px;
     border: none;
     outline: none;
@@ -42,18 +43,43 @@ content > .mainnav > .nav-car-list {
     color: #fff;
     background-color: #0300a5;
 }
+.car-btn:active {
+    box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+
+}
+.battery-bar-info {
+    text-align: center;
+}
+
+.battery-bar-info .car-info {
+    display:flex
+
+}
+
+.battery-bar-info p {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 600;
+
+}
 
 /*progress-bar*/
- ul .progress, .progress-stacked {
+
+.battery-bar {
+    margin-left: 100px;
+    display: flex;
+    align-items: center
+}
+.nav-c-info .progress, .progress-stacked {
     margin: 10px;
     width: 250px;
     border-radius: 1rem;
     box-shadow:5px 5px 10px #babebc;;
     --bs-progress-bar-color: #ffffffd8;
-    --bs-progress-bar-bg: #6ed1ff;
+    --bs-progress-bar-bg: green;
 
 }
 
-.progress-bar {
+.battery-bar .progress-bar {
     margin: unset;
 }
+
