@@ -1,10 +1,9 @@
-
 .map{
     z-index: 0;
 }
 .mainnav{
     z-index: 2;
-    background-color: rgba(225, 235, 245, 0.699);
+    background-color: rgba(225, 235, 245, 0.397);
     position: absolute;
     width: 400px;
     height: 800px;
@@ -26,6 +25,7 @@ content > .mainnav > .nav-car-list {
 }
 .mainnav > .nav-car-list .li-detail {
     display: flex;
+    align-items: center;
 }
 .car-btn {
     margin: 3px;
@@ -52,11 +52,19 @@ content > .mainnav > .nav-car-list {
 }
 
 .battery-bar-info .car-info {
+    margin: 0 10px;
+    text-align: start;
     display:flex
 
 }
 
+.battery-bar-info .car-info :nth-child(1){
+    margin-right: 25px;
+
+}
+
 .battery-bar-info p {
+    margin: 0;
     font-family: 'Nanum Gothic', sans-serif;
     font-weight: 600;
 
@@ -65,6 +73,7 @@ content > .mainnav > .nav-car-list {
 /*progress-bar*/
 
 .battery-bar {
+    --bs-progress-bar-color: #ffffffd8;
     margin-left: 100px;
     display: flex;
     align-items: center
@@ -75,11 +84,24 @@ content > .mainnav > .nav-car-list {
     border-radius: 1rem;
     box-shadow:5px 5px 10px #babebc;;
     --bs-progress-bar-color: #ffffffd8;
-    --bs-progress-bar-bg: green;
-
 }
 
 .battery-bar .progress-bar {
     margin: unset;
 }
+
+  /* Define styles for the battery levels */
+  .batteryColorClass .battery-green {
+    --bs-progress-bar-bg: green;
+}
+  
+.battery-bar  .battery-yellow {
+    --bs-progress-bar-bg: rgb(206, 206, 28);
+}
+  
+.battery-bar .battery-red {
+    --bs-progress-bar-bg: rgb(184, 52, 52);
+}
+  
+/*progress-bar*/
 

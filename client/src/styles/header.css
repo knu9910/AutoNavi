@@ -41,8 +41,8 @@ header > .topnav {
 }
   
 .dropdown {
+    z-index: 3;
     position: relative;
-    z-index: 5;
     display: inline-block;
 }
   
@@ -51,7 +51,7 @@ header > .topnav {
     display: none;
     position: fixed;
     background-color: #ffffff;
-    z-index: 2;
+    z-index: 3;
 }
   
 .dropdown-content a {

@@ -11,7 +11,7 @@ const Header = () => {
         <img className="h-logo" src={blueLogo} alt="" />
       </div>
       <div className="topnav" id="myTopnav">
-        <Link to="#" className="active">
+        <Link to="/main" className="active">
           관제
         </Link>
         <div className="dropdown">
@@ -21,10 +21,10 @@ const Header = () => {
           </button>
           <div className="dropdown-content">
             <Link to="#">운행중인 차량</Link>
-            <Link to="/carlist">차량등록현황</Link>
+            <Link to="/car/carlist">차량등록현황</Link>
           </div>
         </div>
-        <Link to="/carrst">차량등록</Link>
+        <Link to="/car/carreg">차량등록</Link>
       </div>
     </header>
   );

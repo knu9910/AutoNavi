@@ -27,6 +27,21 @@ const Main = () => {
     });
   }, []);
 
+  let batteryPercentage = 50;
+
+  let batteryColorClass = '';
+
+  if (batteryPercentage >= 71) {
+    batteryColorClass =
+      'progress-bar progress-bar-striped progress-bar-animated battery-green';
+  } else if (batteryPercentage <= 70 && batteryPercentage >= 41) {
+    batteryColorClass =
+      'progress-bar progress-bar-striped progress-bar-animated battery-yellow';
+  } else {
+    batteryColorClass =
+      'progress-bar progress-bar-striped progress-bar-animated battery-red';
+  }
+
   return (
     <content>
       <div className="nav-header">
@@ -38,20 +53,24 @@ const Main = () => {
           <div className="nav-b-bar">
             <div className="nav-c-info">
               <div className="battery-bar">
-                <ExclamationCircleFill color="green" width="24" height="24" />
+                <ExclamationCircleFill
+                  // className={batteryColorClass}
+                  width="24"
+                  height="24"
+                />
                 <div
                   className="progress"
                   role="progressbar"
                   aria-label="Animated striped example"
-                  aria-valuenow="85"
+                  aria-valuenow={batteryPercentage}
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
                   <div
-                    className="progress-bar progress-bar-striped progress-bar-animated"
-                    style={{ width: '85%' }}
+                    className={`progress-bar progress-bar-striped progress-bar-animated ${batteryColorClass}`}
+                    style={{ width: `${batteryPercentage}%` }}
                   >
-                    85%
+                    {batteryPercentage}%
                   </div>
                 </div>
               </div>
