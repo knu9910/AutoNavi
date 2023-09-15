@@ -41,7 +41,7 @@ const AdminReg = () => {
         <div className="container-signup">
           <div className="signup-container">
             <form className="signup-Detail">
-              <p>Sign Up</p>
+              <p>관리자 등록</p>
               <div className="admin-input">
                 <input
                   type="text"
@@ -83,29 +83,33 @@ const AdminReg = () => {
                     setEmail(e.target.value);
                   }}
                 />
-                <input
-                  type="text"
-                  placeholder="position"
+                <select
+                  name="position"
+                  className="admin-input"
                   onChange={(e) => {
                     setPosition(e.target.value);
                   }}
-                />
-              </div>
-              <div className="admin-checkb">
-                <p>차량 제어 권한</p>
-                <div className="admin-cbox">
-                  <input
-                    style={{ display: 'none' }}
-                    type="checkbox"
-                    name="controlRights"
-                    id="controlRightsYes"
-                    value="있음"
-                    onChange={(e) => {
-                      setControlRights(e.target.checked ? '있음' : '없음');
-                    }}
-                  />
-                  <label htmlFor="controlRightsYes"></label>
-                  <div></div>
+                >
+                  <option value="사원">사원</option>
+                  <option value="팀장">팀장</option>
+                  <option value="..?">..?</option>
+                </select>
+                <div className="admin-checkb">
+                  <p>차량 제어 권한</p>
+                  <div className="admin-cbox">
+                    <input
+                      style={{ display: 'none' }}
+                      type="checkbox"
+                      name="controlRights"
+                      id="controlRightsYes"
+                      value="있음"
+                      onChange={(e) => {
+                        setControlRights(e.target.checked ? '있음' : '없음');
+                      }}
+                    />
+                    <label htmlFor="controlRightsYes"></label>
+                    <div></div>
+                  </div>
                 </div>
               </div>
               <button className="form_btn" onClick={register}>

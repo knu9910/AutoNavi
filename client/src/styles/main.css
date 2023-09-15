@@ -91,16 +91,20 @@ content > .mainnav > .nav-car-list {
 }
 
   /* Define styles for the battery levels */
-  .batteryColorClass .battery-green {
+.battery-bar .battery-green {
     --bs-progress-bar-bg: green;
+    color: green;
 }
   
 .battery-bar  .battery-yellow {
-    --bs-progress-bar-bg: rgb(206, 206, 28);
+    --bs-progress-bar-bg: #cece1c;
+    color: #cece1c;
+
 }
   
 .battery-bar .battery-red {
     --bs-progress-bar-bg: rgb(184, 52, 52);
+    color: red;
 }
   
 /*progress-bar*/
