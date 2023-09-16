@@ -8,8 +8,8 @@ const realTimeStartApi = async (req, res) => {
       return res.status(400).end('Bad Request');
     }
 
-    let a = await updateInteval(id, departure, destination);
-    console.log(a);
+    await updateInteval(id, departure, destination);
+
     res.status(201).send('ok');
   } catch (err) {
     res.status(400).send(err.message);

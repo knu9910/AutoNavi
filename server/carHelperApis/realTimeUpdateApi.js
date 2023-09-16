@@ -71,14 +71,14 @@ const updateInteval = async (id = 1, origin, destination) => {
       }
 
       for (const location of coordinates) {
-        let [location_x, location_y] = location;
+        let [location_y, location_x] = location;
         const sql = `UPDATE car_realtime 
           SET 
           location_x = ?, location_y = ?, battery = ?, operation_st = ?, departure = ?, 
           destination = ?, distance = ?, duration = ?, traffic_speed = ?, traffic_state = ?, traffic_name = ? 
           WHERE car_id = ?`;
 
-        let [res] = await pool.query(sql, [
+        let [response] = await pool.query(sql, [
           location_x,
           location_y,
           50,
@@ -92,9 +92,9 @@ const updateInteval = async (id = 1, origin, destination) => {
           name,
           id,
         ]);
-        if (!res.affectedRows) throw new Error('Bad Request');
-
-        await wait(1000); // 1분에 한번씩 업데이트 함
+        console.log(1, location);
+        if (!response.affectedRows) throw new Error('Bad Request');
+        await wait(1000 * 0.5); // 1분에 한번씩 업데이트 함
       }
     }
   } catch (err) {
