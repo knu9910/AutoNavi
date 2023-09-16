@@ -28,7 +28,7 @@ const Main = () => {
   }, []);
 
   // 배러리 잔량 표시
-  let batteryPercentage = 10;
+  let batteryPercentage = 50;
 
   let batteryColorClass = '';
 
@@ -54,7 +54,7 @@ const Main = () => {
   }
 
   return (
-    <content>
+    <main>
       <div className="nav-header">
         <button className="car-btn">운행중</button>
         <button className="car-btn">충전소</button>
@@ -123,45 +123,11 @@ const Main = () => {
             </div>
           </div>
         </div>
-        {/* 충전소 화면 */}
-        <div className="nav-car-list">
-          <div className="nav-b-bar">
-            <div className="nav-c-info">
-              <div className="battery-bar"></div>
-              <ul className="battery-bar-info">
-                <li className="li-detail" style={{ liststyle: 'none' }}>
-                  <span>
-                    <FontAwesomeIcon
-                      icon={faChargingStation}
-                      style={{ color: '#000000' }}
-                      size="3x"
-                      onClick={() => (window.location.href = '/car/detail/:id')}
-                    />
-                  </span>
-                  <span className="car-info">
-                    <span>
-                      <span>
-                        <p> </p>
-                        <p> 충전 가능 여부?</p>
-                      </span>
-                    </span>
-                    <span>
-                      <span>
-                        <p></p>
-                        <p>충전기 타입...?</p>
-                      </span>
-                    </span>
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
       <div className="map">
         <KaKaoMap realTimeList={realTimeList} />
       </div>
-    </content>
+    </main>
   );
 };
 

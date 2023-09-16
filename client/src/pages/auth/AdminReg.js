@@ -40,8 +40,8 @@ const AdminReg = () => {
       <div className="wrapper-signup">
         <div className="container-signup">
           <div className="signup-container">
+            <p>관리자 등록</p>
             <form className="signup-Detail">
-              <p>관리자 등록</p>
               <div className="admin-input">
                 <input
                   type="text"
@@ -75,45 +75,52 @@ const AdminReg = () => {
                   }}
                 />
               </div>
-              <div className="admin-input">
-                <input
-                  type="email"
-                  placeholder="email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
+              <div className="select-btn">
+                <div className="admin-input">
+                  <input
+                    type="email"
+                    placeholder="email"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </div>
+
                 <select
                   name="position"
-                  className="admin-input"
+                  className="admin-input-select"
                   onChange={(e) => {
                     setPosition(e.target.value);
                   }}
                 >
-                  <option value="사원">사원</option>
-                  <option value="팀장">팀장</option>
-                  <option value="..?">..?</option>
+                  <option value="" selected>
+                    Position
+                  </option>
+                  <option value="Manager">Manager</option>
+                  <option value="TL">TL</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Intern">Intern</option>
                 </select>
-                <div className="admin-checkb">
-                  <p>차량 제어 권한</p>
-                  <div className="admin-cbox">
-                    <input
-                      style={{ display: 'none' }}
-                      type="checkbox"
-                      name="controlRights"
-                      id="controlRightsYes"
-                      value="있음"
-                      onChange={(e) => {
-                        setControlRights(e.target.checked ? '있음' : '없음');
-                      }}
-                    />
-                    <label htmlFor="controlRightsYes"></label>
-                    <div></div>
-                  </div>
+              </div>
+              <div className="admin-checkb">
+                <p>차량 제어 권한</p>
+                <div className="admin-cbox">
+                  <input
+                    style={{ display: 'none' }}
+                    type="checkbox"
+                    name="controlRights"
+                    id="controlRightsYes"
+                    value="있음"
+                    onChange={(e) => {
+                      setControlRights(e.target.checked ? '있음' : '없음');
+                    }}
+                  />
+                  <label htmlFor="controlRightsYes"></label>
+                  <div></div>
                 </div>
               </div>
               <button className="form_btn" onClick={register}>
-                관리자 등록
+                등록
               </button>
             </form>
           </div>

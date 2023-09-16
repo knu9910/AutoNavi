@@ -5,6 +5,16 @@
     outline: none;
 
 }
+.logout-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+.logout-btn > .btn-logout {
+    border: 0px;
+    background-color: #ffffff;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(163, 163, 163);
+}
 .logo-h{
     margin: auto;
     padding-top: 50px;
@@ -12,8 +22,7 @@
     display: flex;
 }
 .h-logo{
-    margin: auto;
-    
+    margin: auto;    
     width: 300px;
     height: 53px;
 

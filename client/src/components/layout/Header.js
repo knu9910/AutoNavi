@@ -1,12 +1,22 @@
 import { Link } from 'react-router-dom';
 import blueLogo from '../../img/bluelogo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleDown,
+  faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
+import '../../styles/header.css';
 
 const Header = () => {
   if (window.location.pathname === '/') return null;
   return (
     <header>
+      <div className="logout-btn">
+        <button className="btn-logout">
+          Logout<> </>
+          <FontAwesomeIcon icon={faArrowRightFromBracket} />
+        </button>
+      </div>
       <div className="logo-h">
         <img className="h-logo" src={blueLogo} alt="" />
       </div>
@@ -26,6 +36,7 @@ const Header = () => {
         </div>
         <Link to="/car/carreg">차량등록</Link>
       </div>
+      <div className="logout-btn"></div>
     </header>
   );
 };

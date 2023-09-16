@@ -13,7 +13,7 @@
     overflow: hidden;
 }
 
-content > .mainnav > .nav-car-list {
+main > .mainnav > .nav-car-list {
     background-color: rgba(255, 255, 255, 0.637);
     text-decoration: none;
     border-radius: 10px;
@@ -45,8 +45,8 @@ content > .mainnav > .nav-car-list {
 }
 .car-btn:active {
     box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
-
 }
+
 .battery-bar-info {
     text-align: center;
 }
