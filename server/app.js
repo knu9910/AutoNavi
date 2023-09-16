@@ -11,7 +11,6 @@ const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
 const watchDatabaseChanges = require('./carHelperApis/watchDatabaseChanges');
 const realTimeStartApi = require('./realTimeStartApi');
-const users = require('./routes/users');
 
 app.use(
   cors({
@@ -25,7 +24,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use('/api', indexRouter);
-app.use('/users', users);
 
 app.post('/realTimeStart', realTimeStartApi);
 

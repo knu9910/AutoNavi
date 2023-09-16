@@ -23,5 +23,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  rules: {},
+  rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+  },
 };
