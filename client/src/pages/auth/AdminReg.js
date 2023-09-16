@@ -1,7 +1,7 @@
 import '../../styles/adminReg.css';
 import blueLogo from '../../img/bluelogo.jpg';
 import React, { useState } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 const AdminReg = () => {
   const [userName, setUserName] = useState('');
@@ -10,25 +10,30 @@ const AdminReg = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
   const [position, setPosition] = useState('');
-  const [controlRights, setControlRights] = useState('');
+  const [controlRights, setControlRights] = useState(false);
 
-  const register = () => {
-    // 비밀번호와 비밀번호 확인이 일치하는지 check
+  const register = async (e) => {
+    e.preventDefault();
+
+    const control = controlRights ? '있음' : '없음';
+
     if (passwordReg !== confirmPassword) {
       alert('비밀번호를 똑같이 입력해주세요.');
       return;
     }
 
-    Axios.post('http://localhost:8080/users/register', {
-      userName: userName,
-      userId: userIdReg,
-      password: passwordReg,
-      email: email,
-      position: position,
-      controlRights: controlRights,
-    }).then((response) => {
-      console.log(response);
-    });
+    await axios
+      .post('http://localhost:8080/users/register', {
+        userName: userName,
+        userId: userIdReg,
+        password: passwordReg,
+        email: email,
+        position: position,
+        controlRights: control,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
@@ -110,9 +115,9 @@ const AdminReg = () => {
                     type="checkbox"
                     name="controlRights"
                     id="controlRightsYes"
-                    value="있음"
+                    value={controlRights ? true : false}
                     onChange={(e) => {
-                      setControlRights(e.target.checked ? '있음' : '없음');
+                      setControlRights(e.target.checked);
                     }}
                   />
                   <label htmlFor="controlRightsYes"></label>
