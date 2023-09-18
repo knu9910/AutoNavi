@@ -1,9 +1,9 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 // eslint-disable-next-line react/prop-types
-const KaKaoMap = ({ realTimeList }) => {
+const KaKaoMap = ({ carList }) => {
   // eslint-disable-next-line react/prop-types
-  const markers = realTimeList.map((reatime) => {
+  const markers = carList.map((reatime) => {
     return (
       <MapMarker
         key={reatime.car_id} // 마커를 생성합니다
