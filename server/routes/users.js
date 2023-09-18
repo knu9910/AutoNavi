@@ -7,7 +7,7 @@ const router = express.Router();
 const userModel = require('../models/user_model');
 
 // 사용자 목록 조회
-router.get('/', async (req, res, next) => {
+router.get('/list', async (req, res, next) => {
   try {
     const list = await userModel.find();
     res.json(list);
@@ -30,9 +30,23 @@ router.get('/:id', async (req, res, next) => {
 // 사용자 등록
 router.post('/register', async (req, res, next) => {
   try {
-    const id = await userModel.register(req.body);
-    console.log('관리자 등록 완료!');
-    res.json({ id });
+    const existingUser = await userModel.findByUserIdOrEmail(
+      req.body.userId,
+      req.body.email,
+    );
+
+    if (existingUser) {
+      // 중복된 아이디 또는 이메일이 이미 존재하는 경우
+      if (existingUser.userId === req.body.userId) {
+        res.status(400).json({ message: '이미 존재하는 사원번호입니다.' });
+      } else if (existingUser.email === req.body.email) {
+        res.status(400).json({ message: '이미 존재하는 이메일입니다.' });
+      }
+    } else {
+      const id = await userModel.register(req.body);
+      console.log('관리자 등록 완료!');
+      res.json({ id });
+    }
   } catch (err) {
     next(err);
   }
@@ -56,6 +70,7 @@ router.delete('/:id', async (req, res, next) => {
     const count = await userModel.delete(id);
 
     if (count === 1) {
+      console.log('삭제 성공!');
       res.json({ message: '삭제되었습니다.' });
     } else {
       res.status(404).json({ error: '삭제에 실패했습니다.' });

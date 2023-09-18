@@ -80,6 +80,17 @@ const userModel = {
       throw new Error('Database Error: ' + err.message);
     }
   },
+
+  // 중복된 아이디 또는 이메일 확인(adminReg)
+  async findByUserIdOrEmail(userId, email) {
+    try {
+      const sql = `SELECT * FROM AdminUser WHERE userId = ? OR email = ?`;
+      const [result] = await pool.query(sql, [userId, email]);
+      return result[0]; // 중복된 아이디 또는 이메일이 없으면 null 반환
+    } catch (err) {
+      throw new Error('DB Error: ' + err.message);
+    }
+  },
 };
 
 module.exports = userModel;

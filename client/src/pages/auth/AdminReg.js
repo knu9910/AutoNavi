@@ -12,16 +12,41 @@ const AdminReg = () => {
   const [position, setPosition] = useState('');
   const [controlRights, setControlRights] = useState(false);
 
+  //이메일 정규표현식
+  const validEmail = (email) => {
+    const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/;
+    return emailRegex.test(email);
+  };
+
   const register = async (e) => {
     e.preventDefault();
 
-    const control = controlRights ? '있음' : '없음';
+    // 정보를 입력하지 않은 부분이 있는지 check
+    if (
+      userName === '' ||
+      userIdReg === '' ||
+      passwordReg === '' ||
+      confirmPassword === '' ||
+      email === '' ||
+      position === ''
+    ) {
+      alert('관리자 정보를 모두 입력해주세요.');
+      return;
+    }
 
+    // 비밀번호 길이 check
+    if (passwordReg.length < 7 || passwordReg.length > 15) {
+      alert('비밀번호는 7자 이상 15자 이하로 입력해주세요.');
+      return;
+    }
+
+    // 비밀번호와 비밀번호 확인이 일치하는지 check
     if (passwordReg !== confirmPassword) {
       alert('비밀번호를 똑같이 입력해주세요.');
       return;
     }
 
+<<<<<<< HEAD
     await axios
       .post('http://localhost:8080/users/register', {
         userName: userName,
@@ -34,6 +59,42 @@ const AdminReg = () => {
       .then((response) => {
         console.log(response);
       });
+=======
+    //이메일이 형식에 맞는지 check(정규표현식 함수 return값이 false인가?)
+    if (!validEmail(email)) {
+      alert('올바르지 않은 이메일 형식입니다');
+      return;
+    }
+
+    const control = controlRights ? '있음' : '없음';
+
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api/users/register',
+        {
+          userName: userName,
+          userId: userIdReg,
+          password: passwordReg,
+          email: email,
+          position: position,
+          controlRights: control,
+        },
+      );
+
+      // 서버로부터 응답 확인(잘 등록되었는가?)
+      if (response.data && response.data.id) {
+        alert('관리자 정보가 등록되었습니다.');
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.message; // 아이디, 이메일 중복메시지(user라우팅서버에서 설정)
+        alert(errorMessage);
+      } else {
+        console.error('등록 실패:', error);
+        alert('관리자 정보 등록에 실패했습니다.');
+      }
+    }
+>>>>>>> 8d46851 (feat: 관리자 등록 및  관리자 리스트 데이터 삭제 시 validation 기능 추가.)
   };
 
   return (
@@ -58,7 +119,7 @@ const AdminReg = () => {
 
                 <input
                   type="id"
-                  placeholder="Contact Person no."
+                  placeholder="Employee ID"
                   onChange={(e) => {
                     setUserIdReg(e.target.value);
                   }}
@@ -83,7 +144,7 @@ const AdminReg = () => {
               <div className="select-btn">
                 <div className="admin-input">
                   <input
-                    type="email"
+                    type="text"
                     placeholder="email"
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -94,6 +155,7 @@ const AdminReg = () => {
                 <select
                   name="position"
                   className="admin-input-select"
+                  value={position}
                   onChange={(e) => {
                     setPosition(e.target.value);
                   }}

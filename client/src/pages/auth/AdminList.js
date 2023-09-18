@@ -74,26 +74,36 @@ const AdminList = () => {
     setCurrentPage(1);
   };
 
-  //삭제버튼 누르면 데이터 삭제하기
-  const DeleteAdmin = async (id) => {
+  // 삭제기능: 삭제버튼 클릭 시 경고창 표시(confirm)
+  const showDeleteAlert = (id) => {
+    const confirmDelete = window.confirm('정말 삭제하시겠습니까?');
+    if (confirmDelete) {
+      // 삭제 확인 클릭한 경우에만 삭제 요청함
+      handleDelete(id);
+      alert('관리자 정보가 삭제되었습니다.');
+    }
+  };
+
+  // 데이터 삭제 함수
+  const handleDelete = async (id) => {
     try {
-      // 서버로 삭제요청
+      // 서버로 삭제 요청
       await axios.delete(`http://localhost:8080/api/users/${id}`);
 
-      // 삭제 요청 성공 하면 클라이언트에서도 삭제하기
-      setAdminList((prevAdminList) => {
-        const updatedList = prevAdminList.filter((admin) => admin.id !== id);
+      // 삭제 요청 성공 시 클라이언트에서도 삭제하기
+      setAdminList((prevAdminList) =>
+        prevAdminList.filter((admin) => admin.id !== id),
+      );
 
-        // dataNo 업뎃
-        const updatedDataNo = updatedList.map((admin, index) => ({
+      // 삭제 후 순번 업데이트
+      setAdminList((prevAdminList) =>
+        prevAdminList.map((admin, index) => ({
           ...admin,
           no: index + 1,
-        }));
-
-        return updatedDataNo;
-      });
+        })),
+      );
     } catch (error) {
-      console.error('삭제 오류:', error);
+      console.error('삭제 실패:', error);
     }
   };
 
@@ -123,6 +133,7 @@ const AdminList = () => {
           </form>
         </div>
       </div>
+
       <div className="cp-container">
         <table className="cp-table">
           <thead>
@@ -154,7 +165,7 @@ const AdminList = () => {
                   </Link>
                   <button
                     className="cp-delete"
-                    onClick={() => DeleteAdmin(admin.id)}
+                    onClick={() => showDeleteAlert(admin.id)}
                   >
                     삭제
                   </button>
