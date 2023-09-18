@@ -12,6 +12,10 @@ const carSlice = createSlice({
     addCar({ carList }, { payload }) {
       carList.push(payload.car);
     },
+    deleteCar({ carList }, { payload }) {
+      const index = carList.findIndex((car) => car.id === payload.id);
+      carList.splice(index, 1);
+    },
   },
 });
 
