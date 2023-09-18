@@ -24,7 +24,7 @@ router.post('/carReg', async (req, res) => {
   }
 });
 
-router.get('/car/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
     const car = await carModel.findCar(id);
@@ -34,7 +34,7 @@ router.get('/car/:id', async (req, res) => {
     res.status(500).json({ error: '데이터베이스 오류' }); // 기타 데이터베이스 오류에 대한 에러 응답
   }
 });
-router.delete('/car/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
     const check = await carService.delete(id);
