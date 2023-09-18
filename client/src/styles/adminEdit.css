@@ -1,0 +1,275 @@
+
+.ContactPerson{
+    margin: 5rem auto;
+    max-width: 1300px;
+    display: flex;
+    justify-content: center;
+      
+  }
+  
+  .ContactPerson > .bluelogo{
+    width: 27rem;
+    height: 6rem;
+  }
+  
+  .signup-Detail > .admin-input {
+    display: inherit;
+  }
+  
+  .wrapper-signup {
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    overflow: hidden;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+      
+  .container-signup {
+  
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
+    position: absolute;
+    width: 550px;
+    min-height: 500px;
+    overflow: hidden;
+  }
+      
+  .signup-Detail {
+    border-radius: 10px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    align-items: center;
+  }
+  
+  .signup-container > p {
+    margin: 30px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }    
+  .container-signup > .signup-container > .signup-Detail > h1 {
+    margin-bottom: 10px;
+  }
+  
+  .signup-Detail input {
+    font-weight: 500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f0f0;
+    padding: 10px;
+    margin: 1rem;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+  }
+  
+      
+  .signup-Detail > button {
+    font-family: 'Nanum Gothic', sans-serif;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 30px;
+    margin: 30px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 80ms ease-in;
+  }
+      
+  .signup-Detail > .form_btn {
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
+  }
+  
+  .signup-Detail > .form_btn:active {
+    box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+  }
+  
+  .signup-container {
+    height: 100%;
+    transition: all 0.5s;
+    border-radius: 1rem;
+    position: absolute;
+    width: 550px;
+  }
+  
+  .container-signup.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
+  .container-signup.right-panel-active .overlay-left {
+    transform: translateX(-100%);
+    opacity: 1;
+    z-index: 2;
+  }
+      
+  
+  .admin-cbox {
+      display: flex;
+  
+  }
+  .admin-checkb {
+    margin-left: 250px;
+    display: flex;
+  }
+  .admin-checkb > .admin-cbox {
+    margin: 0 13px;
+      width: 60px;
+      height: 30px;
+      position: relative;
+  }
+  .admin-checkb > .admin-cbox label {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #fff;
+    transition: all .4s ease;
+  }
+  .admin-checkb > .admin-cbox div {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    background: #ddd;
+    top: -20px;
+  }
+  .admin-checkb > p {
+    margin: 4px 0;
+    font-size: 16px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
+    color: #888888;
+  
+  }
+  
+  .select-btn {
+    display: flex;
+  }
+  
+  .admin-input-select {
+    width: 215px;
+    color: #777676;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f0f0;
+    padding: 10px;
+    margin: 1rem;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+  }
+  /* checked state */
+  
+  .admin-checkb > .admin-cbox input[type=checkbox]:checked ~ label {
+    left: 35px;
+  }
+  .admin-checkb > .admin-cbox input[type=checkbox]:checked ~ div {
+    background-color: #D7F0FF;
+  }
+  
+      
+  @media (max-width: 480px) {
+    .ContactPerson {
+      display: none; 
+    }
+  
+  
+    .wrapper-signup {
+      height: 40rem;
+      display: flex;
+      background: #ffffff;
+      overflow: hidden;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  
+    .container-signup {
+      margin: 30px 0;
+      border-radius: 10px;
+      box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
+      position: absolute;
+      width: 260px;
+      min-height: 700px;
+      overflow: hidden;
+    }
+  
+      
+    .signup-container {
+      height: 800px;
+      transition: all 0.5s;
+      border-radius: 1rem;
+      position: absolute;
+      width: 260px;
+    }
+    .signup-Detail {
+      border-radius: 10px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: center;
+    }
+  
+    .signup-Detail > .admin-input {
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-checkb{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 0 20px; 
+    }
+    .admin-checkb > .admin-cbox {
+      width: 60px;
+      height: 30px;
+    }
+  
+    .select-btn {
+      display: flex;
+      flex-direction: column;
+    }
+    .signup-container > p {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .signup-Detail > button {
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 80ms ease-in;
+    }
+    .signup-Detail > input {
+      font-size: 10px;
+      background: #f0f0f0;
+      padding: 6px;
+      margin: 8px 0;
+      width: 12rem;
+      border: 0;
+      outline: none;
+      border-radius: 20px;
+      box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+    }
+  }

@@ -32,7 +32,6 @@ const watchDatabaseChanges = (io) => {
       INNER JOIN
         car_realtime cr ON c.id = cr.car_id`,
       );
-
       // 결과를 클라이언트로 전송
       io.emit('databaseChange', results);
     } catch (err) {
