@@ -2,7 +2,8 @@ import axios from 'axios';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import { useParams } from 'react-router';
 import '../../styles/carDetail.css';
-import ToastNotification from './ToastNotification';
+// import ToastNotification from './ToastNotification';
+import Toastify from './Toastify';
 
 const CarDetail = () => {
   const open = useDaumPostcodePopup();
@@ -72,7 +73,7 @@ const CarDetail = () => {
           </button>
         </div>
       </div>
-      <ToastNotification />;
+      <Toastify />;
     </>
   );
 };
