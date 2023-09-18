@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const login = () => {
-    Axios.post('http://localhost:8080/users/login', {
+    Axios.post('http://localhost:8080/api/users/login', {
       userId: userId,
       password: password,
     })
@@ -22,7 +22,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
-        alert('id 또는 비밀번호를 잘못 입력했습니다.');
+        alert('로그인 실패');
       });
   };
 
