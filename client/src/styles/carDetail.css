@@ -190,6 +190,9 @@
     padding: 0.5375rem 0.05125rem; 
     margin: 0px; 
     width: 100%;
+    color: #000;
+    font-size: 0.7375rem;
+    font-weight: bold;
 }
 
 .destination::placeholder {

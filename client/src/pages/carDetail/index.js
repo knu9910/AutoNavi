@@ -5,10 +5,11 @@ import '../../styles/carDetail.css';
 // import ToastNotification from './ToastNotification';
 import Toastify from './Toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { getCurrentCar } from '../../store/carSlice';
 
 const CarDetail = () => {
+  const destinationRef = useRef(null);
   const currentCar = useSelector((state) => state.carStore.currentCar);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -36,9 +37,10 @@ const CarDetail = () => {
           x: startResult[0].x,
           y: startResult[0].y,
         };
-        console.log(startCoords.x, startCoords.y);
+        console.log(startResult[0].address.address_name);
+        destinationRef.current.value = startResult[0].address.address_name;
         axios.post('http://localhost:8080/realTimeStart', {
-          id: 3,
+          id: currentCar.car_id,
           departure: '127.111925428711,37.3968925296743',
           destination: `${startCoords.x},${startCoords.y}`,
         });
@@ -76,9 +78,11 @@ const CarDetail = () => {
           </div>
           <div className="destination_wrap">
             <input
+              ref={destinationRef}
               className="destination"
               type="text"
               placeholder="목적지를 검색하세요"
+              readOnly
             ></input>
           </div>
         </div>
