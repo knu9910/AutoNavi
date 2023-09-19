@@ -46,20 +46,6 @@ const AdminReg = () => {
       return;
     }
 
-<<<<<<< HEAD
-    await axios
-      .post('http://localhost:8080/users/register', {
-        userName: userName,
-        userId: userIdReg,
-        password: passwordReg,
-        email: email,
-        position: position,
-        controlRights: control,
-      })
-      .then((response) => {
-        console.log(response);
-      });
-=======
     //이메일이 형식에 맞는지 check(정규표현식 함수 return값이 false인가?)
     if (!validEmail(email)) {
       alert('올바르지 않은 이메일 형식입니다');
@@ -94,7 +80,6 @@ const AdminReg = () => {
         alert('관리자 정보 등록에 실패했습니다.');
       }
     }
->>>>>>> 8d46851 (feat: 관리자 등록 및  관리자 리스트 데이터 삭제 시 validation 기능 추가.)
   };
 
   return (

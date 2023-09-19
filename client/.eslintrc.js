@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     // 다른 규칙...
     'react/react-in-jsx-scope': 'off', // React 17 이후에서는 비활성화
+    'eslint-disable-next-line react/prop-types': 'off',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
 };
