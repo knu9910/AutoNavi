@@ -38,8 +38,8 @@ const Login = () => {
         <div className="wrapper">
           <div className="container-signin">
             <div className="sign-in-container">
+              <p className="signin-font">Sign In</p>
               <form className="signinDetail">
-                <p>Sign In</p>
                 <input
                   type="id"
                   placeholder="Employee ID"

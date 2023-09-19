@@ -31,9 +31,9 @@ justify-content: space-around;
 
 p.font {
   font-family: 'Nanum Gothic', sans-serif;
-  color: #6e6e6e;
+  color: #9e9d9d;
   font-size: 1rem; 
-  font-weight: 600;  
+  font-weight: 800;  
 }
 
 .buttontaget {
@@ -64,15 +64,15 @@ p.font {
 
 @media (max-width: 480px) {
   .Logo {
-    padding: 20rem 0 0;
+    padding: 45rem 0 0;
   }
 
   .Logoimg {
-    width: 15.5rem;
-    height: 3rem;
+    width: 51rem;
+    height: 10rem;
   }
   .font-fix{
-    font-size: 1rem;
+    font-size: 2rem;
     padding-top: 5px;    
   }
 
@@ -81,7 +81,8 @@ p.font {
   }
 
   .main_btn {
-    font-size: 10px;
-    padding: 8px 20px;
+    font-size: 2rem;
+    padding: 26px 63px;
+    border-radius: 3rem;
   }
 }
