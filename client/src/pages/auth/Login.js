@@ -22,7 +22,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
-        alert('로그인 실패');
+        alert('id 또는 비밀번호를 잘못 입력했습니다.');
       });
   };
 
