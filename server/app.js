@@ -25,7 +25,9 @@ app.use(cookieParser());
 
 app.use('/api', indexRouter);
 
-app.post('/realTimeStart', realTimeStartApi);
+app.post('/realTimeStart', (req, res) => {
+  realTimeStartApi(req, res, io);
+});
 
 io.on('connection', (socket) => {
   console.log('사용자가 연결 되었습니다.');
@@ -39,4 +41,5 @@ io.on('connection', (socket) => {
 server.listen(8080, () => {
   console.log('listening on *:8080');
 });
+
 module.exports = app;
