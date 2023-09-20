@@ -77,11 +77,11 @@ const MainCarEntry = ({ carInfo }) => {
               <span>
                 <span>
                   <p>{car_type}</p>
-                  <p>{traffic_name}</p>
+                  <p>차량 타입</p>
                 </span>
                 <span>
-                  <p>5시 30분</p>
-                  <p>출발 시간</p>
+                  <p>{traffic_name}</p>
+                  <p>현재위치</p>
                 </span>
               </span>
               <span>
