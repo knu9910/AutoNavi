@@ -1,33 +1,37 @@
+.car_wrap_detail {
+    width: 100%;
+}
+
 .car_detail_wrap {
+    width: 80%;
+    padding-top: 50px;
+    margin: auto;
     display: grid;
-    grid-template-columns: 1fr 0.7fr;
-    grid-template-rows: 1fr 2fr 1fr;
     grid-template-areas: 
-    "info ."
-    "info_wrap input"
-    ". search";
-    width: 60%;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    "car_info ."
+    "car_info_wrap input_box"
+    ". search_wrap";
 }
 
 .car_info {
-    grid-area: info;
-    width: 100%;
-    font-size: 30px;
-    text-align: center;
+    grid-area: car_info;
     margin: auto;
+    font-size: 40px;
+    text-align: center;
     font-weight: bold;
 }
 
 .car_info_wrap {
-    grid-area: info_wrap;
+    grid-area: car_info_wrap;
     margin: auto;
-    width: 70%;
-    
 
 }
+.input_box {
+    grid-area: input_box;
+    margin: auto;
+    width: auto;
+}
+
 .car_info_inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -38,7 +42,7 @@
     "label5 label7"
     "box6 box8";
     row-gap: 5px;
-    column-gap: 40px;
+    column-gap: 20px;
 }
 .car_info_inner div:nth-child(1) {
     grid-area: label1;
@@ -64,9 +68,8 @@
 .car_info_inner div:nth-child(8) {
     grid-area: box8;
 }
-
 .info_label {
-    width: 100%;
+    width: 100px;
     height: 30px;
     color: #6D758F;
     font-family: Inter;
@@ -81,7 +84,7 @@
     border: 1px solid var(--neutral-colors-300, #F1F3F7);
     box-shadow: 0px 1px 4px 0px rgba(25, 33, 61, 0.08);
     border-radius: 6px;
-    width: 100%;
+    width: 200px;
     height: 30px;
     padding: 1.125rem 1rem;
     border-radius: 0.375rem;
@@ -89,17 +92,18 @@
     background: var(--neutral-colors-100, #FFF);
 
     box-shadow: 0px 1px 4px 0px rgba(25, 33, 61, 0.08);
-}
-
-.input_box {
-    grid-area: input;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0px;
+    
 }
 
 .search_wrap {
-    grid-area: search;
-    margin-right: auto;
-    
+    grid-area: search_wrap;
+    margin-left: 20%;
 }
+
 .search {
     border-radius: 1.5rem;
     background: #0300A5;
@@ -114,13 +118,13 @@
     letter-spacing: 0.0625rem;
     text-transform: uppercase;
     cursor: pointer;
-    transition: transform 80ms ease-in;
+
     width: 100px;
 }
 
 .input_box {
     display: grid;
-    grid-template-columns: 30px 8fr;
+    grid-template-columns: 30px 200px;
     grid-template-rows: 1fr 1fr;
     row-gap: 1px;
     column-gap: 0px;
@@ -132,7 +136,7 @@
     margin-bottom: auto;
     fill: #D7F0FF;
     filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.14));
-    width: 60%;
+    width: 230px;
 }
 
 .icon {
@@ -186,10 +190,86 @@
     padding: 0.5375rem 0.05125rem; 
     margin: 0px; 
     width: 100%;
+    color: #000;
+    font-size: 0.7375rem;
+    font-weight: bold;
 }
 
 .destination::placeholder {
     color: #000;
     font-size: 0.7375rem;
     font-weight: bold;
+}
+
+@media (max-width: 780px) {
+    .car_detail_wrap {
+        width: 80%;
+        padding-top: 50px;
+        margin: auto;
+        display: grid;
+        grid-template-areas: 
+        "car_info"
+        "car_info_wrap"
+        "input_box"
+        "search_wrap";
+    }
+    
+    .input_box {
+        margin: auto;
+        margin-top: 60px;
+        width: 230px;
+    }
+
+    .search_wrap {
+        margin: auto;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .car_info {
+        grid-area: car_info;
+        margin: auto;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .car_detail_wrap {
+        width: 80%;
+        padding-top: 50px;
+        margin: auto;
+        display: grid;
+        grid-template-areas: 
+        "car_info"
+        "car_info_wrap"
+        "input_box"
+        "search_wrap";
+    }
+    
+    .input_box {
+        margin: auto;
+        margin-top: 60px;
+        width: 230px;
+    }
+
+    .search_wrap {
+        margin: auto;
+        margin-top: 60px;
+    }
+    .car_info_inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.1fr 1fr 0.1fr 1fr 0.1fr 1fr 0.1fr 1fr;
+        grid-template-areas: 
+        "label1"
+        "box2"
+        "label3"
+        "box4"
+        "label5"
+        "box6"
+        "label7"
+        "box8";
+        row-gap: 5px;
+        column-gap: 20px;
+    }
 }

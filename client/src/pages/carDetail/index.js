@@ -4,11 +4,30 @@ import { useParams } from 'react-router';
 import '../../styles/carDetail.css';
 // import ToastNotification from './ToastNotification';
 import Toastify from './Toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { getCurrentCar } from '../../store/carSlice';
 
 const CarDetail = () => {
-  const open = useDaumPostcodePopup();
+  const destinationRef = useRef(null);
+  const currentCar = useSelector((state) => state.carStore.currentCar);
+  const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id);
+
+  const getCar = async () => {
+    const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
+    const car = res.data;
+    dispatch(getCurrentCar({ currentCar: car }));
+  };
+
+  useEffect(() => {
+    getCar();
+  }, []);
+
+  console.log(currentCar);
+
+  const open = useDaumPostcodePopup();
+
   const handleClick = (data) => {
     const geocoder = new window.kakao.maps.services.Geocoder();
     // 출발지 좌표 검색
@@ -18,9 +37,10 @@ const CarDetail = () => {
           x: startResult[0].x,
           y: startResult[0].y,
         };
-        console.log(startCoords.x, startCoords.y);
+        console.log(startResult[0].address.address_name);
+        destinationRef.current.value = startResult[0].address.address_name;
         axios.post('http://localhost:8080/realTimeStart', {
-          id: 3,
+          id: currentCar.car_id,
           departure: '127.111925428711,37.3968925296743',
           destination: `${startCoords.x},${startCoords.y}`,
         });
@@ -31,19 +51,19 @@ const CarDetail = () => {
   };
 
   return (
-    <>
+    <div className="car_wrap_detail">
       <div className="car_detail_wrap">
         <div className="car_info">1234 차량정보</div>
         <div className="car_info_wrap">
           <div className="car_info_inner">
             <div className="info_label">차량번호</div>
-            <div className="info_box"></div>
+            <div className="info_box">{currentCar.car_number}</div>
             <div className="info_label">차종</div>
-            <div className="info_box"></div>
+            <div className="info_box">{currentCar.car_type}</div>
             <div className="info_label">배터리</div>
-            <div className="info_box"></div>
+            <div className="info_box">{}</div>
             <div className="info_label">운행 현황</div>
-            <div className="info_box"></div>
+            <div className="info_box">{currentCar.realtime_operation_st}</div>
           </div>
         </div>
         <div className="input_box">
@@ -58,9 +78,11 @@ const CarDetail = () => {
           </div>
           <div className="destination_wrap">
             <input
+              ref={destinationRef}
               className="destination"
               type="text"
               placeholder="목적지를 검색하세요"
+              readOnly
             ></input>
           </div>
         </div>
@@ -74,7 +96,7 @@ const CarDetail = () => {
         </div>
       </div>
       <Toastify />;
-    </>
+    </div>
   );
 };
 

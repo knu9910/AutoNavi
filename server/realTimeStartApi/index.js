@@ -1,18 +1,23 @@
-const { updateInteval } = require('../carHelperApis/realTimeUpdateApi');
-
-const realTimeStartApi = async (req, res) => {
+const { updateInteval, wait } = require('../carHelperApis/realTimeUpdateApi');
+const realTimeStartApi = async (req, res, io) => {
   try {
-    const { id, departure, destination } = req.body;
-
-    if (!id || !departure || !destination) {
+    const { id, destination } = req.body;
+    const origin = '127.0334257,37.5632355';
+    if (!id || !destination) {
       return res.status(400).end('Bad Request');
     }
 
-    await updateInteval(id, departure, destination);
-
+    io.emit('operationalStatus', { id, msg: 'start' });
+    await updateInteval(id, destination);
+    io.emit('operationalStatus', { id, msg: 'arrived' });
+    await wait(1000 * 20);
+    io.emit('operationalStatus', { id, msg: 'goBack' });
+    await updateInteval(id, origin);
+    io.emit('operationalStatus', { id, msg: 'backArrived' });
     res.status(201).send('ok');
   } catch (err) {
-    res.status(400).send(err.message);
+    console.log(err.message);
+    res.status(500).send(err.message);
   }
 };
 
