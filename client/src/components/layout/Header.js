@@ -25,14 +25,7 @@ const Header = () => {
           관제
         </Link>
         <div className="dropdown">
-          <button className="dropbtn">
-            차량관리
-            <FontAwesomeIcon icon={faAngleDown} style={{ color: '#a1a1a1' }} />
-          </button>
-          <div className="dropdown-content">
-            <Link to="#">운행중인 차량</Link>
-            <Link to="/car/carlist">차량등록현황</Link>
-          </div>
+          <button className="dropbtn">차량관리</button>
         </div>
         <Link to="/car/carreg">차량등록</Link>
       </div>
