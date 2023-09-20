@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const carList = () => {
   return (
     <>
-      <content>
+      <section>
         <p>차량 등록 현황</p>
 
         <div className="car-list">
@@ -166,7 +166,7 @@ const carList = () => {
             </div>
           </div>
         </div>
-      </content>
+      </section>
 
       <footer></footer>
     </>

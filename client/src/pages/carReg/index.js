@@ -56,12 +56,17 @@ const CarReg = () => {
                   <div className="input-data">
                     <input type="text" required />
                     <div className="underline"></div>
-                    <label htmlFor="">제조연월</label>
+                    <label htmlFor="">배터리</label>
                   </div>
                   <div className="input-data">
                     <input type="text" required />
                     <div className="underline"></div>
-                    <label htmlFor="">충전용량</label>
+                    <label htmlFor="">차량운행</label>
+                  </div>
+                  <div className="input-data">
+                    <input type="text" required />
+                    <div className="underline"></div>
+                    <label htmlFor="">차량제조</label>
                   </div>
                 </div>
                 <div className="form-row">

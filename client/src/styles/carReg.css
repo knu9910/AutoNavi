@@ -2,7 +2,13 @@
 .carrst-title{
     font-family: 'Nanum Gothic', sans-serif;
     text-align: center;
+<<<<<<< HEAD
     font-size: 2rem;
+=======
+    font-family: Libre Bodoni;
+    font-size:60px;
+    font-style: normal;
+>>>>>>> 9e043ae (design: 차량등록 페이지 css 수정완료)
     font-weight: 700;
     line-height: normal;
 }
@@ -11,28 +17,41 @@
     font-family: 'Nanum Gothic', sans-serif;
     display: flex;
     width: auto;
-    height: 450px;
+    height: 250px;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;    
 }
 .carrstimg-container {
-    margin: auto;
-    margin-right: 30px;
+    margin:auto;
+    margin-left: 700px;
+    width: 23%;
+    margin-right: 10px;
+    
 }
 .carrstimg-container > .custom-file-upload {
+<<<<<<< HEAD
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     border-radius: 10px;
+=======
+    width: 400px;
+    margin-top: 300px;
+    padding: 8px 12px;
+    box-shadow: 3px 16px 40px -8px rgba(0,0,0,0.1);
+    border-radius: 20px;
+>>>>>>> 9e043ae (design: 차량등록 페이지 css 수정완료)
     font-size: 1rem;
     text-align: center;
     overflow: hidden;
+    background: linear-gradient(45deg,rgba(237, 235, 244 ) 0%, rgba(41, 35, 210) 100%    );
+    border-radius: 20px;
+    box-shadow: 3px 16px 41px -8px rgba(0, 0, 0, 0.47);
 }
-
 
 /* form */
 .form-container{
     margin: auto;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 .carrstform-container{
     margin: auto;
