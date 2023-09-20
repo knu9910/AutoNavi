@@ -70,6 +70,17 @@ const AdminReg = () => {
       // 서버로부터 응답 확인(잘 등록되었는가?)
       if (response.data && response.data.id) {
         alert('관리자 정보가 등록되었습니다.');
+        setUserName('');
+        setUserIdReg('');
+        setPasswordReg('');
+        setConfirmPassword('');
+        setEmail('');
+        setPosition('');
+        setControlRights(false);
+        const checkbox = document.getElementById('controlRightsYes');
+        if (checkbox) {
+          checkbox.checked = false;
+        }
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -97,6 +108,7 @@ const AdminReg = () => {
                 <input
                   type="text"
                   placeholder="name"
+                  value={userName}
                   onChange={(e) => {
                     setUserName(e.target.value);
                   }}
@@ -105,6 +117,7 @@ const AdminReg = () => {
                 <input
                   type="id"
                   placeholder="Employee ID"
+                  value={userIdReg}
                   onChange={(e) => {
                     setUserIdReg(e.target.value);
                   }}
@@ -114,6 +127,7 @@ const AdminReg = () => {
                 <input
                   type="password"
                   placeholder="Password"
+                  value={passwordReg}
                   onChange={(e) => {
                     setPasswordReg(e.target.value);
                   }}
@@ -121,6 +135,7 @@ const AdminReg = () => {
                 <input
                   type="password"
                   placeholder="Password Check"
+                  value={confirmPassword}
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
                   }}
@@ -131,6 +146,7 @@ const AdminReg = () => {
                   <input
                     type="text"
                     placeholder="email"
+                    value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
@@ -145,9 +161,7 @@ const AdminReg = () => {
                     setPosition(e.target.value);
                   }}
                 >
-                  <option value="" selected>
-                    Position
-                  </option>
+                  <option value="">Position</option>
                   <option value="Manager">Manager</option>
                   <option value="TL">TL</option>
                   <option value="Employee">Employee</option>
@@ -162,6 +176,7 @@ const AdminReg = () => {
                     type="checkbox"
                     name="controlRights"
                     id="controlRightsYes"
+                    checked={controlRights}
                     value={controlRights ? true : false}
                     onChange={(e) => {
                       setControlRights(e.target.checked);
