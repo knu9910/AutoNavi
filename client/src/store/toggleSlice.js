@@ -4,10 +4,12 @@ const toggleSlice = createSlice({
   name: 'toggle',
   initialState: {
     isNavVisible: true,
+    buttonText: '운행중',
   },
   reducers: {
     toggleButton: (state) => {
       state.isNavVisible = !state.isNavVisible;
+      state.buttonText = state.isNavVisible ? '운행중' : '충전소';
     },
   },
 });

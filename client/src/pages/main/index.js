@@ -11,7 +11,9 @@ import socket from '../../soket';
 const Main = () => {
   const carList = useSelector((state) => state.carStore.carList);
   const isNavVisible = useSelector((state) => state.toggleStore.isNavVisible);
+  const buttonText = useSelector((state) => state.toggleStore.buttonText);
   const dispatch = useDispatch();
+
   const handleToggleMap = () => {
     dispatch(toggleButton());
   };
@@ -25,7 +27,7 @@ const Main = () => {
     <main>
       <div className="nav-header">
         <button className="car-btn" onClick={handleToggleMap}>
-          충전소
+          {buttonText}
         </button>
       </div>
       {isNavVisible && <List carList={carList} />}
