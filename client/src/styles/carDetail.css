@@ -131,6 +131,10 @@
 .search_wrap {
     grid-area: search_wrap;
     margin: auto;
+    display: grid;
+    grid-column-gap: 23px;
+    grid-template-areas: 
+    "search start";
 }
 
 .search {
@@ -143,13 +147,31 @@
     font-weight: bolder;
     color: #fff;
     padding: 0.5375rem 0.7125rem; 
-
     letter-spacing: 0.0625rem;
     text-transform: uppercase;
     cursor: pointer;
-
     width: 100px;
+    grid-area: search;
 }
+
+.start {
+    border-radius: 1.5rem;
+    background: #a50000;
+    box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60), -4px -4px 12px 0px rgba(253, 255, 255, 0.80);
+    border: none;
+    outline: none;
+    font-size: 0.7375rem; 
+    font-weight: bolder;
+    color: #fff;
+    padding: 0.5375rem 0.7125rem; 
+    letter-spacing: 0.0625rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100px;
+    grid-area: start;
+}
+
+
 
 .input_box {
     display: grid;
