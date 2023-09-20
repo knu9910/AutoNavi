@@ -35,12 +35,16 @@
 .car_info_inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.1fr 1fr 0.1fr 1fr;
+    grid-template-rows: repeat(4, 0.1fr 1fr);
     grid-template-areas: 
     "label1 label3"
     "box2 box4"
     "label5 label7"
-    "box6 box8";
+    "box6 box8"
+    "label9 label11"
+    "box10 box12"
+    "label13 label15"
+    "box14 box16";
     row-gap: 5px;
     column-gap: 20px;
 }
@@ -56,6 +60,18 @@
 .car_info_inner div:nth-child(7) {
     grid-area: label7;
 }
+.car_info_inner div:nth-child(9) {
+    grid-area: label9;
+}
+.car_info_inner div:nth-child(11) {
+    grid-area: label11;
+}
+.car_info_inner div:nth-child(13) {
+    grid-area: label13;
+}
+.car_info_inner div:nth-child(15) {
+    grid-area: label15;
+}
 .car_info_inner div:nth-child(2) {
     grid-area: box2;
 }
@@ -68,6 +84,19 @@
 .car_info_inner div:nth-child(8) {
     grid-area: box8;
 }
+.car_info_inner div:nth-child(10) {
+    grid-area: box10;
+}
+.car_info_inner div:nth-child(12) {
+    grid-area: box12;
+}
+.car_info_inner div:nth-child(14) {
+    grid-area: box14;
+}
+.car_info_inner div:nth-child(16) {
+    grid-area: box16;
+}
+
 .info_label {
     width: 100px;
     height: 30px;
@@ -101,7 +130,7 @@
 
 .search_wrap {
     grid-area: search_wrap;
-    margin-left: 20%;
+    margin: auto;
 }
 
 .search {
@@ -259,7 +288,7 @@
     .car_info_inner {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 0.1fr 1fr 0.1fr 1fr 0.1fr 1fr 0.1fr 1fr;
+        grid-template-rows: repeat(8, 0.1fr 1fr);
         grid-template-areas: 
         "label1"
         "box2"
@@ -268,7 +297,15 @@
         "label5"
         "box6"
         "label7"
-        "box8";
+        "box8"
+        "label9"
+        "box10"
+        "label11"
+        "box12"
+        "label13"
+        "box14"
+        "label15"
+        "box16";
         row-gap: 5px;
         column-gap: 20px;
     }

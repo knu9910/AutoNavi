@@ -14,7 +14,7 @@ const CarReg = () => {
   }
   return (
     <>
-      <content>
+      <section>
         <p className="carrst-title"> 차량 등록 </p>
         <div className="carrst-container">
           <div className="carrstimg-container">
@@ -80,7 +80,7 @@ const CarReg = () => {
             </div>
           </div>
         </div>
-      </content>
+      </section>
     </>
   );
 };

@@ -56,12 +56,23 @@ const CarDetail = () => {
         <div className="car_info">1234 차량정보</div>
         <div className="car_info_wrap">
           <div className="car_info_inner">
+            <div className="info_label">차량ID</div>
+            <div className="info_box">{currentCar.car_id}</div>
             <div className="info_label">차량번호</div>
             <div className="info_box">{currentCar.car_number}</div>
+            <div className="info_label">차명</div>
+            <div className="info_box">{currentCar.car_name}</div>
             <div className="info_label">차종</div>
             <div className="info_box">{currentCar.car_type}</div>
+            <div className="info_label">제조년월일</div>
+            <div className="info_box">{currentCar.mfg_date}</div>
+            <div className="info_label">등록일</div>
+            <div className="info_box">
+              {`${currentCar.createdAt.slice(0, 10).replace(/-/g, '.')}`}
+            </div>
+
             <div className="info_label">배터리</div>
-            <div className="info_box">{}</div>
+            <div className="info_box">{currentCar.realtime_battery}</div>
             <div className="info_label">운행 현황</div>
             <div className="info_box">{currentCar.realtime_operation_st}</div>
           </div>
