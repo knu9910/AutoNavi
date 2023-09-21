@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import bus from '../../img/bus.jpg';
 
 const CarEntry = ({ car }) => {
-  console.log(car);
   const { car_name, id } = car;
   return (
     <div className="card-1">
