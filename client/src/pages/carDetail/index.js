@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import { useParams } from 'react-router';
 import '../../styles/carDetail.css';
-// import ToastNotification from './ToastNotification';
 import Toastify from './Toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
@@ -51,11 +50,9 @@ const CarDetail = () => {
   const sendDataToServer = async () => {
     try {
       if (coordinates.current.x !== null && coordinates.current.y !== null) {
-        // 사용자에게 확인 대화 상자를 표시
-        const userConfirmed = window.confirm('운행을 시작하시겠습니까?');
+        const userConfirmed = window.confirm('정말로 운행을 시작하시겠습니까?');
 
         if (userConfirmed) {
-          // 사용자가 확인을 누르면 데이터를 서버로 보냄
           const response = await axios.post(
             'http://localhost:8080/realTimeStart',
             {
@@ -131,8 +128,8 @@ const CarDetail = () => {
             운행 시작
           </button>
         </div>
+        <Toastify />
       </div>
-      <Toastify />
     </div>
   );
 };

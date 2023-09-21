@@ -5,15 +5,24 @@
     outline: none;
 
 }
+
 .logout-btn {
     display: flex;
     justify-content: flex-end;
 }
-.logout-btn > .btn-logout {
+
+.logout-btn .link-admin, .link-logout {
+    margin: 0;
+}
+
+.btn-logout, .btn-admin {
     border: 0px;
     font-family:'Nanum Gothic', sans-serif;
     color: rgb(163, 163, 163);
+    margin-top: 10px;
+    margin-right: 25px;
 }
+
 .logo-h{
     margin: auto;
     padding-top: 50px;

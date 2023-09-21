@@ -37,6 +37,13 @@ const carModel = {
     const [result] = await pool.query(sql, [article]);
     return result.insertId;
   },
+  async findCarList() {
+    const sql = `SELECT car.*, realtime.operation_st
+    FROM car
+    JOIN car_realtime AS realtime ON car.id = realtime.car_id`;
+    const [result] = await pool.query(sql);
+    return result;
+  },
 };
 
 module.exports = carModel;
