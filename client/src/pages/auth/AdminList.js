@@ -143,7 +143,8 @@ const AdminList = () => {
               <th>이름</th>
               <th>직급</th>
               <th>권한</th>
-              <th>email</th>
+              <th>E-mail</th>
+              <th>...</th>
             </tr>
           </thead>
 
@@ -157,7 +158,7 @@ const AdminList = () => {
                 <td>{admin.controlRights}</td>
                 <td>{admin.email}</td>
 
-                <td style={{ float: 'right' }}>
+                <td>
                   <Link to="/auth/adminedit">
                     <button className="cp-edit" href="#">
                       수정
@@ -177,7 +178,7 @@ const AdminList = () => {
           <tfoot>
             <tr className="table-foot">
               <td>
-                <span className="item-filter-text">Items per Page: </span>
+                <span className="item-filter-text"></span>
                 <div className="item-filter" tabIndex="1">
                   <input
                     className="selectopt"

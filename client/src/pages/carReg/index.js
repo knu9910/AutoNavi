@@ -15,7 +15,6 @@ const CarReg = () => {
   return (
     <>
       <section>
-        <p className="carrst-title"> 차량 등록 </p>
         <div className="carrst-container">
           <div className="carrstimg-container">
             <div className="custom-file-upload">
@@ -40,6 +39,7 @@ const CarReg = () => {
           <div className="form-container">
             <div className="carrstform-container">
               <form action="#">
+                <p className="carrst-title"> 차량 등록 </p>
                 <div className="form-row">
                   <div className="input-data">
                     <input type="text" required />
@@ -56,12 +56,17 @@ const CarReg = () => {
                   <div className="input-data">
                     <input type="text" required />
                     <div className="underline"></div>
-                    <label htmlFor="">제조연월</label>
+                    <label htmlFor="">배터리</label>
                   </div>
                   <div className="input-data">
                     <input type="text" required />
                     <div className="underline"></div>
-                    <label htmlFor="">충전용량</label>
+                    <label htmlFor="">차량운행</label>
+                  </div>
+                  <div className="input-data">
+                    <input type="text" required />
+                    <div className="underline"></div>
+                    <label htmlFor="">차량제조</label>
                   </div>
                 </div>
                 <div className="form-row">

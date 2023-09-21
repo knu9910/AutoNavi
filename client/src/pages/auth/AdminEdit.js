@@ -1,11 +1,12 @@
 import blueLogo from '../../img/bluelogo.jpg';
+import '../../styles/adminEdit.css';
+
 const AdminEdit = () => {
   return (
     <>
       <header className="ContactPerson">
         <img className="bluelogo" src={blueLogo} alt="bluelogo" />
       </header>
-
       <div className="wrapper-signup">
         <div className="container-signup">
           <div className="signup-container">
@@ -37,7 +38,13 @@ const AdminEdit = () => {
               <div className="admin-checkb">
                 <p>차량 제어 권한</p>
                 <div className="admin-cbox">
-                  <input style={{ display: 'none' }} type="checkbox" />
+                  <input
+                    style={{ display: 'none' }}
+                    type="checkbox"
+                    name="controlRights"
+                    id="controlRightsYes"
+                  />
+                  <label htmlFor="controlRightsYes"></label>
                   <div></div>
                 </div>
               </div>

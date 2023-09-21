@@ -10,6 +10,7 @@ import { getCurrentCar } from '../../store/carSlice';
 
 const CarDetail = () => {
   const destinationRef = useRef(null);
+  const coordinates = useRef({ x: null, y: null });
   const currentCar = useSelector((state) => state.carStore.currentCar);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -39,15 +40,40 @@ const CarDetail = () => {
         };
         console.log(startResult[0].address.address_name);
         destinationRef.current.value = startResult[0].address.address_name;
-        axios.post('http://localhost:8080/realTimeStart', {
-          id: currentCar.car_id,
-          departure: '127.111925428711,37.3968925296743',
-          destination: `${startCoords.x},${startCoords.y}`,
-        });
+
+        coordinates.current = startCoords;
       } else {
         console.error('출발지 주소 검색 오류:', startStatus);
       }
     });
+  };
+
+  const sendDataToServer = async () => {
+    try {
+      if (coordinates.current.x !== null && coordinates.current.y !== null) {
+        // 사용자에게 확인 대화 상자를 표시
+        const userConfirmed = window.confirm('운행을 시작하시겠습니까?');
+
+        if (userConfirmed) {
+          // 사용자가 확인을 누르면 데이터를 서버로 보냄
+          const response = await axios.post(
+            'http://localhost:8080/realTimeStart',
+            {
+              id: currentCar.car_id,
+              departure: '127.111925428711, 37.3968925296743',
+              destination: `${coordinates.current.x}, ${coordinates.current.y}`,
+            },
+          );
+          console.log('서버 응답:', response.data);
+        } else {
+          console.log('데이터 전송 취소됨.');
+        }
+      } else {
+        console.error('좌표를 사용할 수 없습니다.');
+      }
+    } catch (error) {
+      console.error('서버로 데이터를 보내는 중 오류 발생:', error);
+    }
   };
 
   return (
@@ -68,7 +94,9 @@ const CarDetail = () => {
             <div className="info_box">{currentCar.mfg_date}</div>
             <div className="info_label">등록일</div>
             <div className="info_box">
-              {`${currentCar.createdAt.slice(0, 10).replace(/-/g, '.')}`}
+              {currentCar.createdAt
+                ? currentCar.createdAt.slice(0, 10).replace(/-/g, '.')
+                : ''}
             </div>
 
             <div className="info_label">배터리</div>
@@ -104,9 +132,12 @@ const CarDetail = () => {
           >
             목적지 검색
           </button>
+          <button className="start" onClick={sendDataToServer}>
+            운행 시작
+          </button>
         </div>
       </div>
-      <Toastify />;
+      <Toastify />
     </div>
   );
 };
