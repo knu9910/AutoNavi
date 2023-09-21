@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
+import { useNavigate } from 'react-router-dom';
+
 import mainLogo from '../../img/autoNavi_Logo.jpg';
 import '../../styles/LogIn.css';
+import { useDispatch } from 'react-redux';
+import { isLogin, isMaster } from '../../store/userSlice';
 
 const Login = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const login = () => {
     Axios.post('http://localhost:8080/api/users/login', {
@@ -14,8 +20,15 @@ const Login = () => {
       password: password,
     })
       .then((response) => {
+        console.log('Login Response:', response.data);
         if (response.data.message === 'Login successful') {
-          console.log(response.data.message);
+          // 사용자 정보를 Redux 스토어에 저장
+          dispatch(isLogin());
+
+          if (response.data.role === 'master') {
+            dispatch(isMaster());
+          }
+          navigate('/main');
         } else {
           alert('id 또는 비밀번호를 잘못 입력했습니다.');
         }
@@ -39,7 +52,7 @@ const Login = () => {
           <div className="container-signin">
             <div className="sign-in-container">
               <p className="signin-font">Sign In</p>
-              <form className="signinDetail">
+              <div className="signinDetail">
                 <input
                   type="id"
                   placeholder="Employee ID"
@@ -57,7 +70,7 @@ const Login = () => {
                 <button className="form_btn" onClick={login}>
                   Sign In
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>

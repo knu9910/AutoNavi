@@ -25,7 +25,7 @@ const userModel = {
   //사용자 등록
   async register(user) {
     try {
-      const sql = `INSERT INTO AdminUser (userName, userId, password, email, position, controlRights) VALUES (?, ?, ?, ?, ?, ?)`;
+      const sql = `INSERT INTO AdminUser (userName, userId, password, email, position, controlRights, role) VALUES (?, ?, ?, ?, ?, ?, ?)`;
       const [result] = await pool.query(sql, [
         user.userName,
         user.userId,
@@ -33,6 +33,7 @@ const userModel = {
         user.email,
         user.position,
         user.controlRights,
+        user.role,
       ]);
       return result.insertId;
     } catch (err) {

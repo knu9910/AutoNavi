@@ -9,8 +9,8 @@ import CarDetail from './pages/carDetail';
 import LayOut from './components/layout';
 import NotFound from './pages/NotFound';
 import { AdminList, AdminReg, AdminEdit, Login } from './pages/auth';
+import PrivateRoute from './components/PrivateRoute';
 
-// 차량등록 페이지, 차량 등록 현황 페이지
 const App = () => {
   return (
     <Provider store={store}>
@@ -18,15 +18,17 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LayOut />}>
             <Route index element={<StartPage />} />
-            <Route path="/main" element={<Main />} />
-            <Route path="/auth/adminList" element={<AdminList />} />
-            <Route path="/auth/adminedit" element={<AdminEdit />} />
-            <Route path="/car/carList" element={<CarList />} />
-            <Route path="/car/carReg" element={<CarReg />} />
-            <Route path="/car/detail/:id" element={<CarDetail />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/main" element={<Main />} />
+              <Route path="/auth/adminList" element={<AdminList />} />
+              <Route path="/auth/adminedit" element={<AdminEdit />} />
+              <Route path="/car/carList" element={<CarList />} />
+              <Route path="/car/carReg" element={<CarReg />} />
+              <Route path="/car/detail/:id" element={<CarDetail />} />
+              <Route path="/auth/adminReg" element={<AdminReg />} />
+            </Route>
           </Route>
           <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/adminReg" element={<AdminReg />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
