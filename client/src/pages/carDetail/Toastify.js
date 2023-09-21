@@ -1,13 +1,13 @@
 import { ToastContainer, toast } from 'react-toastify';
-
+import { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import io from 'socket.io-client';
 import { getCurrentCar } from '../../store/carSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import { useEffect } from 'react';
-// minified version is also included
-// import 'react-toastify/dist/ReactToastify.min.css';
+import socket from '../../soket';
+
 const Toastify = () => {
   const currentCar = useSelector((state) => state.carStore.currentCar);
   const dispatch = useDispatch();
@@ -20,30 +20,44 @@ const Toastify = () => {
   };
 
   useEffect(() => {
-    getCar();
+    socket.on('operationalStatus', (data) => {
+      if (data.msg === 'start') {
+        toast.info(`${currentCar.car_number} 차량이 운행을 시작했습니다.`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } else if (data.msg === 'arrived') {
+        toast.info(`${currentCar.car_number} 차량이 목적지에 도착했습니다.`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } else if (data.msg === 'lowBattery') {
+        toast.info(
+          `${currentCar.car_number} 차량이 배터리가 부족하여 충전소로 이동합니다.`,
+          {
+            position: toast.POSITION.TOP_RIGHT,
+          },
+        );
+      } else if (data.msg === 'restart') {
+        toast.info(
+          `${currentCar.car_number} 차량이 충전을 완료하여 다시 운행합니다.`,
+          {
+            position: toast.POSITION.TOP_RIGHT,
+          },
+        );
+      } else if (data.msg === 'goBack') {
+        toast.info(`${currentCar.car_number} 차량이 복귀합니다.`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } else if (data.msg === 'backArrived') {
+        toast.info(`${currentCar.car_number} 차량이 복귀했습니다.`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
-  // 목적지에 도착했을 때
-  toast.success(`${currentCar.car_number} 차량이 목적지에 도착했습니다.`, {
-    position: toast.POSITION.TOP_RIGHT,
-  });
-
-  // A차량의 배터리가 ~~% 미만일때
-  toast.warn(
-    `${currentCar.car_number}차량의 배터리가 ${currentCar.realtime_battery}% 미만입니다. 충전소로 이동합니다.`,
-    {
-      position: toast.POSITION.TOP_RIGHT,
-    },
-  );
-
-  // A차량의 목적지가 입력 된 후
-  toast.info(`${currentCar.car_number}차량이 운행을 시작했습니다.`, {
-    position: toast.POSITION.TOP_RIGHT,
-  });
-
-  //   toast('Custom Style Notification with css class!', {
-  //     position: toast.POSITION.TOP_RIGHT,
-  //     className: 'foo-bar',
-  //   });
 
   return (
     <div>
