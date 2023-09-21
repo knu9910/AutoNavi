@@ -68,7 +68,7 @@ header > .topnav {
 Link {
     text-decoration: none;
 }
-content > p{
+section > p{
     margin-bottom: 30px;
     color: #000;
     text-align: center;
@@ -115,9 +115,12 @@ content > p{
 }
 
 .checkbox > .check1 {
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
+.checkbox > .check2 {
+    margin-right: 20px;
+}
 /* 체크박스 스타일링 */
 [type=checkbox] {
     width: 1.5rem;
@@ -190,6 +193,9 @@ span >label {
 .car{
     margin: 20px;
     list-style-type: none;
+}
+.bus-img{
+    width: 100%;
 }
 .businfo {
     color: var(--neutral-colors-600, #6D758F);

@@ -61,9 +61,6 @@ const updateInteval = async (id, destination) => {
     console.log(car.realtime_battery);
     const roads = await getDirections(origin, destination);
 
-    let dis = 0;
-    let dur = 0;
-
     for (const real of roads) {
       const {
         name,
@@ -112,7 +109,7 @@ const updateInteval = async (id, destination) => {
       SET 
       operation_st = ?
       WHERE car_id = ?`;
-      let [res] = await pool.query(sql, ['대기중', id]);
+      let [res] = await pool.query(sql, ['대기', id]);
     }
   } catch (err) {
     throw new Error(err.message);
