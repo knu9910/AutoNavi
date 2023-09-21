@@ -120,18 +120,13 @@ const CarDetail = () => {
               ref={destinationRef}
               className="destination"
               type="text"
-              placeholder="목적지를 검색하세요"
+              placeholder="목적지 검색"
               readOnly
+              onClick={() => open({ onComplete: (data) => handleClick(data) })}
             ></input>
           </div>
         </div>
         <div className="search_wrap">
-          <button
-            className="search"
-            onClick={() => open({ onComplete: (data) => handleClick(data) })}
-          >
-            목적지 검색
-          </button>
           <button className="start" onClick={sendDataToServer}>
             운행 시작
           </button>

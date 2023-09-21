@@ -21,9 +21,7 @@ const Header = () => {
         <Link to="/main" className="active">
           관제
         </Link>
-        <div className="dropdown">
-          <button className="dropbtn">차량관리</button>
-        </div>
+        <Link to="/car/carlist">차량관리</Link>
         <Link to="/car/carreg">차량등록</Link>
       </div>
       <div className="logout-btn"></div>

@@ -3,7 +3,9 @@
 }
 
 .car_detail_wrap {
-    width: 80%;
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
+    width: 60%;
     padding-top: 50px;
     margin: auto;
     display: grid;
@@ -16,7 +18,7 @@
 .car_info {
     grid-area: car_info;
     margin: auto;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     font-weight: bold;
 }
@@ -32,6 +34,10 @@
     width: auto;
 }
 
+.car_info_inner > .info_box {
+    font-size: 13px;
+    font-weight: bold;
+}
 .car_info_inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -98,11 +104,12 @@
 }
 
 .info_label {
+    margin-left: 5px;
     width: 100px;
     height: 30px;
     color: #6D758F;
     font-family: Inter;
-    font-size: 12px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: 40px;
@@ -110,17 +117,18 @@
 }
 
 .info_box {
+
+    font-family: 'Nanum Gothic', sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
     border: 1px solid var(--neutral-colors-300, #F1F3F7);
-    box-shadow: 0px 1px 4px 0px rgba(25, 33, 61, 0.08);
-    border-radius: 6px;
+    background: var(--neutral-colors-100, #f0f0f0);
+    border-radius: 20px;
     width: 200px;
     height: 30px;
     padding: 1.125rem 1rem;
-    border-radius: 0.375rem;
-    border: 1px solid var(--neutral-colors-300, #F1F3F7);
-    background: var(--neutral-colors-100, #FFF);
-
-    box-shadow: 0px 1px 4px 0px rgba(25, 33, 61, 0.08);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
@@ -130,33 +138,12 @@
 
 .search_wrap {
     grid-area: search_wrap;
-    margin: auto;
+    margin: -35px 0 80px 0;
     display: grid;
-    grid-column-gap: 23px;
-    grid-template-areas: 
-    "search start";
 }
-
-.search {
-    border-radius: 1.5rem;
-    background: #0300A5;
-    box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60), -4px -4px 12px 0px rgba(253, 255, 255, 0.80);
-    border: none;
-    outline: none;
-    font-size: 0.7375rem; 
-    font-weight: bolder;
-    color: #fff;
-    padding: 0.5375rem 0.7125rem; 
-    letter-spacing: 0.0625rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 100px;
-    grid-area: search;
-}
-
 .start {
     border-radius: 1.5rem;
-    background: #a50000;
+    background: #0300A5;
     box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60), -4px -4px 12px 0px rgba(253, 255, 255, 0.80);
     border: none;
     outline: none;
@@ -176,14 +163,13 @@
 .input_box {
     display: grid;
     grid-template-columns: 30px 200px;
-    grid-template-rows: 1fr 1fr;
     row-gap: 1px;
     column-gap: 0px;
     grid-template-areas: 
                 "icon origin"
                 "icon destination";
     margin-right: auto;
-    margin-top: auto;
+    margin-top: 60px;
     margin-bottom: auto;
     fill: #D7F0FF;
     filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.14));
@@ -234,6 +220,7 @@
 
 
 .destination {
+    cursor: pointer;
     border-bottom-right-radius: 1.0rem;
     background: #D7F0FF;
     border: 0px;
