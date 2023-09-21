@@ -34,6 +34,16 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error: '데이터베이스 오류' }); // 기타 데이터베이스 오류에 대한 에러 응답
   }
 });
+
+router.get('/', async (req, res) => {
+  try {
+    const car = await carModel.findCarList();
+    res.status(200).json(car);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: '데이터베이스 오류' }); // 기타 데이터베이스 오류에 대한 에러 응답
+  }
+});
 router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
