@@ -126,11 +126,12 @@
     
 
 .admin-cbox {
+
     display: flex;
 
 }
 .admin-checkb {
-  margin-left: 250px;
+  margin-left: 325px;
   display: flex;
 }
 .admin-checkb > .admin-cbox {

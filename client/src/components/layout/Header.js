@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
 import blueLogo from '../../img/bluelogo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faAngleDown,
-  faArrowRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/header.css';
 
 const Header = () => {
