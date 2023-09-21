@@ -29,7 +29,7 @@ const Header = () => {
     <header>
       <div className="logout-btn">
         <Link to="/auth/adminList" className="link-admin">
-          <button className="btn-admin">Admin Page</button>
+          <button className="btn-admin">관리자</button>
         </Link>
         <div className="link-logout">
           <button className="btn-logout" onClick={handleLogout}>
