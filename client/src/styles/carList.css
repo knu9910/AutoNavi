@@ -1,11 +1,5 @@
-*{
-    margin: auto;
-    width: auto;
-    outline: none;
-
-}
 .logo-h{
-    margin: auto;
+    margin: 0 auto;
     padding-top: 50px;
     width: auto;
     display: flex;
