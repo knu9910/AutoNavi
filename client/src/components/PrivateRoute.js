@@ -1,6 +1,7 @@
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Toastify from './layout/Toastify';
+import TextToSpeech from './layout/TextToSpeech';
 
 const PrivateRoute = () => {
   const auth = useSelector((state) => state.userStore.auth);
@@ -22,7 +23,8 @@ const PrivateRoute = () => {
   return (
     <>
       <Outlet />
-      <Toastify />;
+      <Toastify />
+      <TextToSpeech />;
     </>
   );
 };
