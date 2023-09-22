@@ -28,6 +28,7 @@ router.get('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
     const car = await carModel.findCar(id);
+    if (!car) return res.status(400).send('존재하지 않는 차량입니다.');
     res.status(200).json(car);
   } catch (err) {
     console.log(err);
