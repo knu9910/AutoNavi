@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import blueLogo from '../../img/bluelogo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
@@ -9,10 +9,11 @@ import { isLogout } from '../../store/userSlice';
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   if (
     window.location.pathname === '/' ||
-    window.location.pathname === '/auth/adminedit' ||
+    window.location.pathname === `/auth/adminedit/${id}` ||
     window.location.pathname === '/auth/adminReg'
   ) {
     return null;
