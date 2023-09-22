@@ -48,8 +48,9 @@ router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
     const check = await carService.delete(id);
+    console.log(check);
     if (!check) throw new Error('Server Error');
-    res.json(200).send('삭제 완료');
+    res.status(200).send('삭제 완료');
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: '데이터베이스 오류' });
