@@ -1,14 +1,11 @@
 require('dotenv').config();
 
 const axios = require('axios');
-const pool = require('../models/pool');
 const carModel = require('../models/car_model');
+const searchChargingStations = require('./searchChargingStations');
 // 카카오 API 키
 const REST_API_KEY = process.env.REST_API;
-
-const wait = (timeToDelay) =>
-  new Promise((resolve) => setTimeout(resolve, timeToDelay));
-
+const wait = require('./wait');
 async function getDirections(origin, destination) {
   const waypoints = '';
   const priority = 'RECOMMEND';
@@ -49,13 +46,13 @@ async function getDirections(origin, destination) {
   }
 }
 
-const updateInteval = async (id, destination) => {
+const updateInteval = async (id, destination, check = true) => {
   try {
     const car = await carModel.findCar(id);
     if (!car) throw new Error('Bad Request');
     const origin = `${car.location_y},${car.location_x}`;
     let battery = car.realtime_battery;
-    console.log(car.realtime_battery);
+
     let { distance, duration, roads } = await getDirections(
       origin,
       destination,
@@ -65,10 +62,6 @@ const updateInteval = async (id, destination) => {
       const road_distance = real.distance;
       const road_duration = real.duration;
 
-      distance -= road_distance;
-      duration -= road_duration;
-
-      console.log(distance, duration);
       const coordinates = [];
 
       for (let i = 0; i < vertexes.length; i += 2) {
@@ -78,35 +71,41 @@ const updateInteval = async (id, destination) => {
       let x = '';
       let y = '';
       for (const location of coordinates) {
+        distance -= Math.floor(road_distance / vertexes.length);
+        duration -= Math.floor(road_duration / vertexes.length);
         battery -= 0.1;
         let [location_y, location_x] = location;
+        if (check) {
+          if (battery <= 30) {
+            let charge = await searchChargingStations(location_x, location_y);
+            return {
+              charge,
+              msg: 'low',
+            };
+          }
+        }
 
-        let response = await axios.patch(
-          'http://localhost:8080/api/real/realcar',
-          {
-            location_x,
-            location_y,
-            battery,
-            operation_st: '운행',
-            origin,
-            destination,
-            distance,
-            duration,
-            traffic_speed,
-            traffic_state,
-            traffic_name: name,
-            id,
-          },
-        );
-        // console.log(1, location);
-        console.log(response.data);
-        // if (!response.affectedRows) throw new Error('Bad Request');
+        await axios.patch('http://localhost:8080/api/real/realcar', {
+          location_x,
+          location_y,
+          battery,
+          operation_st: '운행',
+          origin,
+          destination,
+          distance,
+          duration,
+          traffic_speed,
+          traffic_state,
+          traffic_name: name,
+          id,
+        });
+
         await wait(1000 * 2); // 1분에 한번씩 업데이트 함
         x = location_x;
         y = location_y;
       }
 
-      const res = await axios.patch('http://localhost:8080/api/real/realcar', {
+      await axios.patch('http://localhost:8080/api/real/realcar', {
         location_x: x,
         location_y: y,
         battery,
@@ -120,8 +119,6 @@ const updateInteval = async (id, destination) => {
         traffic_name: name,
         id,
       });
-      // console.log(res, 123123);
-      // console.log(res.data);
     }
   } catch (err) {
     throw new Error(err.message);
