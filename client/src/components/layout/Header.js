@@ -45,12 +45,8 @@ const Header = () => {
         <Link to="/main" className="active">
           관제
         </Link>
-        <Link to="/car/carlist" className="dropdown">
-          <button className="dropbtn">차량관리</button>
-        </Link>
-        <Link to="/car/carreg" className="car-reg">
-          차량등록
-        </Link>
+        <Link to="/car/carlist">차량관리</Link>
+        <Link to="/car/carreg">차량등록</Link>
       </div>
     </header>
   );

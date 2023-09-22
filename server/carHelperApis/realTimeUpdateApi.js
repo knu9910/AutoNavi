@@ -40,9 +40,7 @@ async function getDirections(origin, destination) {
     // 응답 데이터를 처리
     const sections = response.data.routes[0].sections[0];
 
-    const { roads } = sections;
-
-    return roads;
+    return sections;
   } catch (err) {
     if (err.name === 'AxiosError') {
       throw new Error(err.response.data.msg);
@@ -55,25 +53,22 @@ const updateInteval = async (id, destination) => {
   try {
     const car = await carModel.findCar(id);
     if (!car) throw new Error('Bad Request');
-    console.log(car);
     const origin = `${car.location_y},${car.location_x}`;
     let battery = car.realtime_battery;
     console.log(car.realtime_battery);
-    const roads = await getDirections(origin, destination);
-
-    let dis = 0;
-    let dur = 0;
-
+    let { distance, duration, roads } = await getDirections(
+      origin,
+      destination,
+    );
     for (const real of roads) {
-      const {
-        name,
-        distance,
-        duration,
-        traffic_speed,
-        traffic_state,
-        vertexes,
-      } = real;
+      const { name, traffic_speed, traffic_state, vertexes } = real;
+      const road_distance = real.distance;
+      const road_duration = real.duration;
 
+      distance -= road_distance;
+      duration -= road_duration;
+
+      console.log(distance, duration);
       const coordinates = [];
 
       for (let i = 0; i < vertexes.length; i += 2) {
@@ -103,16 +98,19 @@ const updateInteval = async (id, destination) => {
           name,
           id,
         ]);
-        console.log(1, location);
+        // console.log(1, location);
+        distance;
         if (!response.affectedRows) throw new Error('Bad Request');
         await wait(1000 * 0.5); // 1분에 한번씩 업데이트 함
       }
 
       let sql = `UPDATE car_realtime 
       SET 
-      operation_st = ?
+      operation_st = ?,
+      departure = null, destination = null, distance = null, duration = null, 
+      traffic_speed = null, traffic_state = null, traffic_name = null 
       WHERE car_id = ?`;
-      let [res] = await pool.query(sql, ['대기중', id]);
+      await pool.query(sql, ['대기', id]);
     }
   } catch (err) {
     throw new Error(err.message);

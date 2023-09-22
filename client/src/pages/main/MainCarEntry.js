@@ -13,7 +13,6 @@ const MainCarEntry = ({ carInfo }) => {
     traffic_name,
   } = carInfo;
 
-  console.log(carInfo);
   let batteryPercentage = realtime_battery;
   let batteryColorClass = '';
 

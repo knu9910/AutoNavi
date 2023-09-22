@@ -26,6 +26,8 @@ main > .mainnav > .nav-car-list {
     align-items: center;
 }
 .car-btn {
+    color: #fff;
+    background: #0300A5;
     font-family: 'Nanum Gothic', sans-serif;
     font-weight: 900;
     border-radius: 30px;
