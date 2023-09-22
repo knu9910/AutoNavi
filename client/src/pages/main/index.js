@@ -14,6 +14,7 @@ const Main = () => {
   const buttonText = useSelector((state) => state.toggleStore.buttonText);
   const dispatch = useDispatch();
 
+  console.log(carList[0]);
   const handleToggleMap = () => {
     dispatch(toggleButton());
   };
