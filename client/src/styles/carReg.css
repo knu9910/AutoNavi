@@ -1,169 +1,65 @@
-
-.carrst-title{
-    font-family: 'Nanum Gothic', sans-serif;
-    text-align: center;
-    font-size: 3rem;
-    font-family: Libre Bodoni;
-    font-size: 60px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    position: absolute;
-    left: 49%;
-    transform: translate(-40%, 60%);
-    width: auto;
-    
-}
-
-.carrst-container{
-    font-family: 'Nanum Gothic', sans-serif;
-    display: flex;
-    width: auto;
-    height: 850px;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;   
-}
-.carrstimg-container {
-    margin: auto;
-    width: 20%;
-    margin-right: 200px;
-    
-}
-.carrstimg-container > .custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-
-    width: 400px;
-    margin-top: 300px;
-    padding: 8px 12px;
-    box-shadow: 3px 16px 40px -8px rgba(0,0,0,0.1);
-    border-radius: 20px;
-    font-size: 1rem;
-    text-align: center;
-    overflow: hidden;
-    background: linear-gradient(45deg,rgba(237, 235, 244 ) 0%, rgba(41, 35, 210) 100%    );
-    border-radius: 20px;
-    box-shadow: 3px 16px 41px -8px rgba(0, 0, 0, 0.47);
-}
-
-/* form */
-.form-container{
-    margin: center;
-    margin-left: 20px;
-}
-.carrstform-container{
+.carrst-container { 
     margin: auto;
     border-radius: 10px;
     box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
-    width: 600px;
+    width: 1100px;
+    height: 500px;
     overflow: hidden;
 }
-  
-.carrstform-container form{
-    padding: 30px 0 0 0;
+.carrst-title{
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
 }
-.carrstform-container form .form-row{
+.carreg-form{
+    margin-top: 30px;
     display: flex;
-    margin: 32px 0;
-    justify-content: center;
+    justify-content: space-between;
 }
-form .form-row .input-data{
-    width: 100%;
-    height: 40px;
-    margin: 0 20px;
-    position: relative;
+.carrstimg-container, .form-container {
+margin: auto;
 }
-  form .form-row .textarea{
-    height: 70px;
-}
-  
-.input-data input,
-.textarea textarea{
-    font-size: 13px;
-    font-family:'Nanum Gothic', sans-serif;
-    padding: 10px;
-    margin: 8px 0;
-    width: 85%;
+.custom-file-upload{
     border: none;
     outline: none;
-    border-radius: 15px;
-    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
-    border: 1px solid var(--neutral-colors-300, #F1F3F7);
-    background: var(--neutral-colors-100, #f0f0f0);
-
-}
-
-.input-data input:focus ~ label, .textarea textarea:focus ~ label,
-.input-data input:valid ~ label, .textarea textarea:valid ~ label{
-    transform: translateY(-20px);
+    font-size: 12px;
     font-weight: bold;
-    font-size: 0.8rem;
-    color: #6f789796;
+    padding: 10px 30px;
+    margin: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
-  
-.input-data label{
-    padding-left: 12px;
-    position: absolute;
-    pointer-events: none;
-    bottom: 1px;
-    font-size: 13px;
-    font-weight: 900;
-    color: #6f789796;
-    transition: all 0.3s ease;
+.carreg-btn{
+    border-radius: 1.5rem;
+    background: #0300A5;
+    box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60), -4px -4px 12px 0px rgba(253, 255, 255, 0.80);
+    border: none;
+    outline: none;
+    font-size: 0.7375rem; 
+    font-weight: bolder;
+    color: #fff;
+    padding: 0.5375rem 0.7125rem; 
+    letter-spacing: 0.0625rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100px;
 }
-  
-.submit-btn .input-data{
-
-    height: 45px!important;
-    width: 25%!important;
+.car_reg_inner{
+    display: grid;
+    grid-template-areas: 
+    "label1 label3"
+    "box2 box4"
+    "label5 label7"
+    "box6 box8"
+    "label9 label11"
+    "box10 box12"
+    "label13 label15"
+    "box14 box16";
+    row-gap: 5px;
+    column-gap: 20px;
 }
-
-.submit-btn .input-data:hover .inner{
-    left: 0;
-}
-.submit-btn .input-data input{
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: transform 80ms ease-in;
-  box-shadow: -5px -5px 10px #24658d5b, 5px 5px 8px #babebc;
-  text-decoration: none;
-  color: #fff;
-  background-color: #0300a5;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
-@media (max-width: 480px) {
-    .carrst-title{
-        font-size: 35px;
-        margin: 3rem 0 3rem 0;
-    }
-    .carrst-container{
-
-        display: flex;
-        flex-direction: column;
-    }
-    .form-container{ 
-        margin: auto;
-    }
-    .carrstimg-container{
-        margin: auto;
-    }    
-    .carrstform-container form .form-row{
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        align-items: center;
-    }
-    .submit-btn .input-data input{
-        margin-top: 1rem;
-        height: 2rem;
-    }
+.form-row.submit-btn {
+    margin-top: 30px;
+    text-align: center;
 }

@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import '../../styles/carReg.css';
-import React, { useState } from 'react';
-import blueLogo from '../../img/bluelogo.jpg';
 
 const CarReg = () => {
   function PreviewImage() {
@@ -15,73 +13,57 @@ const CarReg = () => {
   return (
     <>
       <section>
-        <p className="carrst-title"> 차량 등록 </p>
         <div className="carrst-container">
-          <div className="carrstimg-container">
-            <div className="custom-file-upload">
-              <label>
-                <img
-                  id="user_image"
-                  style={{ display: 'flex' }}
-                  src="#"
-                  alt=""
-                />
-                <input
-                  accept=".jpg"
-                  style={{ display: 'none' }}
-                  onChange={PreviewImage}
-                  type="file"
-                  id="user_profile_img"
-                />
-                <i className="fa fa-cloud-upload"></i>Img Upload
-              </label>
+          <p className="carrst-title"> 차량 등록 </p>
+
+          <div className="carreg-form">
+            <div className="carrstimg-container">
+              <div>
+                <img id="user_image" src="#" alt="" />
+              </div>
+              <div className="custom-file-upload">
+                <label>
+                  <input
+                    accept=".jpg"
+                    style={{ display: 'none' }}
+                    onChange={PreviewImage}
+                    type="file"
+                    id="user_profile_img"
+                  />
+                  <i className="fa fa-cloud-upload"></i>Img Upload
+                </label>
+              </div>
             </div>
-          </div>
-          <div className="form-container">
-            <div className="carrstform-container">
-              <form action="#">
-                <div className="form-row">
-                  <div className="input-data">
-                    <input type="text" required />
-                    <div className="underline"></div>
-                    <label htmlFor="">차량 번호</label>
-                  </div>
-                  <div className="input-data">
-                    <input type="text" required />
-                    <div className="underline"></div>
-                    <label htmlFor="">차종</label>
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="input-data">
-                    <input type="text" required />
-                    <div className="underline"></div>
-                    <label htmlFor="">배터리</label>
-                  </div>
-                  <div className="input-data">
-                    <input type="text" required />
-                    <div className="underline"></div>
-                    <label htmlFor="">차량운행</label>
-                  </div>
-                  <div className="input-data">
-                    <input type="text" required />
-                    <div className="underline"></div>
-                    <label htmlFor="">차량제조</label>
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="input-data textarea">
-                    <div className="form-row submit-btn">
-                      <div className="input-data">
-                        <div className="inner"></div>
-                        <Link to="/carlist">
-                          <input type="submit" value="차량등록" />
-                        </Link>
-                      </div>
+            <div className="form-container">
+              <div className="carrstform-container">
+                <form action="#">
+                  <div className="form-row">
+                    <div className="car_reg_inner">
+                      <div className="info_label">차량ID</div>
+                      <input className="info_box" />
+                      <div className="info_label">차량번호</div>
+                      <input className="info_box" />
+                      <div className="info_label">차명</div>
+                      <input className="info_box" />
+                      <div className="info_label">차종</div>
+                      <input className="info_box" />
+                      <div className="info_label">제조년월</div>
+                      <input className="info_box" />
+                      <div className="info_label">등록일</div>
+                      <input className="info_box" />
                     </div>
                   </div>
-                </div>
-              </form>
+                  <div className="form-row submit-btn">
+                    <Link to="/carlist">
+                      <input
+                        className="carreg-btn"
+                        type="submit"
+                        value="차량등록"
+                      />
+                    </Link>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
