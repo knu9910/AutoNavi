@@ -1,70 +1,4 @@
-.logo-h{
-    margin: 0 auto;
-    padding-top: 50px;
-    width: auto;
-    display: flex;
-}
-.h-logo{
-    margin: auto;
-    
-    width: 300px;
-    height: 53px;
 
-}
-
-header > .topnav {
-    width: auto;
-    text-align: center;
-}
-.topnav a{
-    font-family: 'Nanum Gothic', sans-serif;
-    font-weight: 600;
-    color: #0300a5;
-    text-decoration: none;
-}
-.dropbtn {
-    background-color: #ffffff;
-    font-family: 'Nanum Gothic', sans-serif;
-    color: #0300a5;
-    font-weight: 600;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
-  
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-  
-.dropdown-content {
-    border-radius: 10px;
-    display: none;
-    position: fixed;
-    background-color: #ffffff;
-    z-index: 4;
-}
-  
-.dropdown-content a {
-    font-size: 16px;
-    color: black;
-    padding: 3px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-
-.dropdown-content a:hover {
-    background-color: #ffffff;
-    box-shadow: 0px 8px 16px 0px #D7F0FF;
-    border-radius: 10px;
-}
-  
-.dropdown:hover .dropdown-content {display: block;}
-  
-.dropdown:hover .dropbtn {background-color: #ffffff;}
-
-/* content start */
 Link {
     text-decoration: none;
 }
@@ -81,14 +15,19 @@ section > p{
 
 .car-list {
     border-radius: 10px;
-    background-color: #f1f6f8;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
     max-width: 1100px;
-    height: 980px;
+    height: auto;
     margin: auto;
 }
 
+.car-list > .boxheader {
+    display: grid;
+}
+
 .car-list > .list {
+    background-color: #fff;
+    border-radius: 15px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     grid-template-rows: repeat(3, auto); 
@@ -184,11 +123,15 @@ span >label {
     margin-right: 30px;
 }
 
-.car-list > .list img {
+.carbox {
+    margin-top: 50px;
+    display: flex;  
+    justify-content: center;
+}
+.carlist > .carbox img {
     border-radius: 10px;
     height: 200px;
     width: 200px;
-    box-shadow: #c4c4c4 5px 0px 5px 0px;
 }
 .car{
     margin: 20px;
@@ -239,12 +182,21 @@ span >label {
     border: none;
 }
 
-.list .paging {
+.car-list .paging {
     grid-column: 1 / 4;
 	grid-row: 5 / 6; 
     align-self: center;
     justify-self: end;
     margin-right: 30px;
+}
+.pagination{
+    --bs-pagination-active-border-color : #fff;
+    --bs-pagination-active-color : #black;
+    --bs-pagination-active-bg : #D7F0FF;
+    --bs-pagination-active-boxshadow :-5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+    margin: 0;
+    justify-content: center;
+    --bs-pagination-color: #black;
 }
 
 

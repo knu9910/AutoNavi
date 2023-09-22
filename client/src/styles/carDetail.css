@@ -1,4 +1,5 @@
 .car_wrap_detail {
+    margin-top: 100px;
     width: 100%;
 }
 
@@ -319,3 +320,4 @@
         column-gap: 20px;
     }
 }
+

@@ -1,10 +1,4 @@
 /* Header 공통 start*/
-*{  
-    margin: auto;
-    width: auto;
-    outline: none;
-
-}
 
 .logout-btn {
     display: flex;

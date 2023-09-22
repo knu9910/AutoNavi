@@ -39,7 +39,7 @@ const List = () => {
   });
   return (
     <>
-      <div className="list">
+      <div className="boxheader">
         <div className="carsearch-box">
           <input
             className="carsearch-bar"
@@ -85,7 +85,12 @@ const List = () => {
             <label htmlFor="대기중">대기중</label>
           </span>
         </div>
-        {list}
+      </div>
+
+      <div className="carlist">
+        <div className="carbox">{list}</div>
+      </div>
+      <div className="car-paging">
         <div className="paging">
           <PaginationComp />
         </div>

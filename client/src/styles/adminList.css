@@ -1,8 +1,11 @@
 tbody, td, tfoot, th, thead, tr { 
+    margin: auto;
     display: block;
     font-family: 'Nanum Gothic', sans-serif;
     }
-    
+    .cp-table {
+        margin: auto;
+    }
     .cp-table > thead > tr{
         display: flex;
         text-align: center;
