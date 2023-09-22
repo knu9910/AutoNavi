@@ -4,18 +4,16 @@ import { ExclamationCircleFill } from 'react-bootstrap-icons';
 
 const MainCarEntry = ({ carInfo }) => {
   const {
-    cr_distance,
-    cr_duration,
+    distance,
+    duration,
     car_name,
-    car_number,
     car_type,
-    battery_type,
     realtime_battery,
-    cartype,
     traffic_name,
   } = carInfo;
   //duration
-  const totalSeconds = cr_duration;
+
+  const totalSeconds = duration;
   const timeString = secondsToHMS(totalSeconds);
   console.log(timeString); // 출력: "1시간 1분 5초"
 
@@ -28,7 +26,7 @@ const MainCarEntry = ({ carInfo }) => {
   }
 
   //distance
-  const totalMeters = cr_distance;
+  const totalMeters = distance;
   const mileage = metersToKMAndM(totalMeters);
   console.log(mileage);
   function metersToKMAndM(meters) {
