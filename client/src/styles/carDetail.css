@@ -134,10 +134,29 @@
     
 }
 
+.delete {
+    border-radius: 1.5rem;
+    background: #0300A5;
+    box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60), -4px -4px 12px 0px rgba(253, 255, 255, 0.80);
+    border: none;
+    outline: none;
+    font-size: 0.7375rem; 
+    font-weight: bolder;
+    color: #fff;
+    padding: 0.5375rem 0.7125rem; 
+    letter-spacing: 0.0625rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100px;
+    grid-area: start;
+    margin-right: 10px;
+}
+
 .search_wrap {
     grid-area: search_wrap;
     margin: -35px 0 80px 0;
-    display: grid;
+    display: flex;
+    justify-content: center;
 }
 .start {
     border-radius: 1.5rem;

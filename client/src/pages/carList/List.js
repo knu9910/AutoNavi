@@ -16,9 +16,13 @@ const List = () => {
   const dispatch = useDispatch();
 
   const handleGetCars = async () => {
-    const res = await axios.get('http://localhost:8080/api/cars');
-    const data = res.data;
-    dispatch(getCarsInfo({ carsInfo: data }));
+    try {
+      const res = await axios.get('http://localhost:8080/api/cars');
+      const data = res.data;
+      dispatch(getCarsInfo({ carsInfo: data }));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // let cars = [];

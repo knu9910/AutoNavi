@@ -22,7 +22,6 @@ const CarReg = () => {
         car_name: carName,
         mfg_date: carMfg,
       });
-      console.log(res, 123123);
       const { id } = res.data;
       if (!id) return alert('이미 존재하는 차량입니다');
       alert('차량등록이 완료되었습니다');

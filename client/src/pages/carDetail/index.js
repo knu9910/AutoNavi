@@ -1,29 +1,50 @@
 import axios from 'axios';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import '../../styles/carDetail.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
-import { getCurrentCar } from '../../store/carSlice';
+import { deleteCar, getCurrentCar } from '../../store/carSlice';
 
 const CarDetail = () => {
   const destinationRef = useRef(null);
   const coordinates = useRef({ x: null, y: null });
   const currentCar = useSelector((state) => state.carStore.currentCar);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
 
   const getCar = async () => {
-    const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
-    const car = res.data;
-    dispatch(getCurrentCar({ currentCar: car }));
+    try {
+      const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
+      const car = res.data;
+      dispatch(getCurrentCar({ currentCar: car }));
+    } catch (err) {
+      navigate('/notFound');
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     getCar();
   }, []);
 
-  console.log(currentCar);
+  const handleDeleteCar = async () => {
+    try {
+      const userConfirmed = window.confirm('정말로 차량을 삭제하시겠습니까?');
+      if (userConfirmed) {
+        const res = await axios.delete(`http://localhost:8080/api/cars/${id}`);
+        console.log(res.data);
+        dispatch(deleteCar({ id }));
+        navigate('/car/carlist');
+        alert('차량이 성공적으로 삭제 되었습니다.');
+      }
+    } catch (err) {
+      console.log(err);
+      navigate('/notFound');
+      alert('서버에 오류가 있습니다.');
+    }
+  };
 
   const open = useDaumPostcodePopup();
 
@@ -123,6 +144,9 @@ const CarDetail = () => {
           </div>
         </div>
         <div className="search_wrap">
+          <button className="delete" onClick={handleDeleteCar}>
+            차량 삭제
+          </button>
           <button className="start" onClick={sendDataToServer}>
             운행 시작
           </button>
