@@ -1,5 +1,6 @@
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Toastify from './layout/Toastify';
 
 const PrivateRoute = () => {
   const auth = useSelector((state) => state.userStore.auth);
@@ -18,7 +19,12 @@ const PrivateRoute = () => {
     return <Navigate to="/main" />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <Toastify />;
+    </>
+  );
 };
 
 export default PrivateRoute;

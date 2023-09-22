@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import { useParams } from 'react-router';
 import '../../styles/carDetail.css';
-import Toastify from './Toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { getCurrentCar } from '../../store/carSlice';
@@ -30,7 +29,7 @@ const CarDetail = () => {
 
   const handleClick = (data) => {
     const geocoder = new window.kakao.maps.services.Geocoder();
-    // 출발지 좌표 검색
+    // 목적지 좌표 검색
     geocoder.addressSearch(data.address, function (startResult, startStatus) {
       if (startStatus === window.kakao.maps.services.Status.OK) {
         const startCoords = {
@@ -42,7 +41,7 @@ const CarDetail = () => {
 
         coordinates.current = startCoords;
       } else {
-        console.error('출발지 주소 검색 오류:', startStatus);
+        console.error('목적지 주소 검색 오류:', startStatus);
       }
     });
   };
@@ -128,7 +127,6 @@ const CarDetail = () => {
             운행 시작
           </button>
         </div>
-        <Toastify />
       </div>
     </div>
   );
