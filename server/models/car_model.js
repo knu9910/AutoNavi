@@ -35,6 +35,7 @@ const carModel = {
   async create(article) {
     const sql = `insert into car set ?`;
     const [result] = await pool.query(sql, [article]);
+    console.log(result);
     return result.insertId;
   },
   async findCarList() {

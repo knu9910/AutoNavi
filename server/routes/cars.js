@@ -10,10 +10,10 @@ router.post('/carReg', async (req, res) => {
     if (!car_number || !battery_type || !car_type || !car_name || !mfg_date) {
       return res.status(400).send('Bed request');
     }
-    const check = await carModel.create(req.body);
+    const id = await carModel.create(req.body);
 
-    if (!check) throw new Error('Server Error');
-    res.status(201).json('Sucess');
+    if (!id) throw new Error('Server Error');
+    res.status(201).json({ id, msg: 'Sucess' });
   } catch (err) {
     if (err.code === 'ER_DUP_ENTRY') {
       res.status(400).json({ error: '중복된 레코드입니다.' }); // 클라이언트에 에러 응답 보냄
