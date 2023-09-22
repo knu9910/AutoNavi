@@ -4,6 +4,8 @@ import { ExclamationCircleFill } from 'react-bootstrap-icons';
 
 const MainCarEntry = ({ carInfo }) => {
   const {
+    cr_distance,
+    cr_duration,
     car_name,
     car_number,
     car_type,
@@ -12,6 +14,29 @@ const MainCarEntry = ({ carInfo }) => {
     cartype,
     traffic_name,
   } = carInfo;
+  //duration
+  const totalSeconds = cr_duration;
+  const timeString = secondsToHMS(totalSeconds);
+  console.log(timeString); // 출력: "1시간 1분 5초"
+
+  function secondsToHMS(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    return `${hours}시간 ${minutes}분 ${remainingSeconds}초`;
+  }
+
+  //distance
+  const totalMeters = cr_distance;
+  const mileage = metersToKMAndM(totalMeters);
+  console.log(mileage);
+  function metersToKMAndM(meters) {
+    const km = Math.floor(meters / 1000);
+    const m = meters % 1000;
+
+    return `${km}km ${m}m`;
+  }
 
   let batteryPercentage = realtime_battery;
   let batteryColorClass = '';
@@ -70,7 +95,7 @@ const MainCarEntry = ({ carInfo }) => {
                 size="5x"
                 onClick={() => (window.location.href = '/car/detail/:id')}
               />
-              <p>{car_number}</p>
+              <p>{car_name}</p>
             </span>
             <span className="car-info">
               <span>
@@ -85,11 +110,11 @@ const MainCarEntry = ({ carInfo }) => {
               </span>
               <span>
                 <span>
-                  <p> 57km </p>
+                  <p> {mileage} </p>
                   <p> 남은 주행 거리 </p>
                 </span>
                 <span>
-                  <p>5시 30분</p>
+                  <p> {timeString}</p>
                   <p>예상 도착 시간</p>
                 </span>
               </span>
