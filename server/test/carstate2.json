@@ -1,0 +1,72 @@
+[
+  {
+    "location_x": "37.57325196870095",
+    "location_y": "127.03343203670678",
+    "battery": 100,
+    "operation_st": "대기",
+    "origin": "출발지",
+    "destination": "목적지",
+    "distance": null,
+    "duration": null,
+    "traffic_speed": 60,
+    "traffic_state": 1,
+    "traffic_name": "가로수 길",
+    "id": 26
+  },
+  {
+    "location_x": "37.58325196870095",
+    "location_y": "127.04343203670678",
+    "battery": 90,
+    "operation_st": "대기",
+    "origin": "출발지",
+    "destination": "목적지",
+    "distance": null,
+    "duration": null,
+    "traffic_speed": 50,
+    "traffic_state": 1,
+    "traffic_name": "가로수 길2",
+    "id": 26
+  },
+  {
+    "location_x": "37.59325196870095",
+    "location_y": "127.05343203670678",
+    "battery": 80,
+    "operation_st": "대기",
+    "origin": "출발지",
+    "destination": "목적지",
+    "distance": null,
+    "duration": null,
+    "traffic_speed": 70,
+    "traffic_state": 1,
+    "traffic_name": "가로수 길3",
+    "id": 26
+  },
+  {
+    "location_x": "37.59025196870095",
+    "location_y": "127.05043203670678",
+    "battery": 80,
+    "operation_st": "대기",
+    "origin": "출발지",
+    "destination": "목적지",
+    "distance": null,
+    "duration": null,
+    "traffic_speed": 70,
+    "traffic_state": 1,
+    "traffic_name": "가로수 길4",
+    "id": 26
+  },
+  {
+    "location_x": "37.58825196870095",
+    "location_y": "127.05143203670678",
+    "battery": 70,
+    "operation_st": "대기",
+    "origin": "출발지",
+    "destination": "목적지",
+    "distance": null,
+    "duration": null,
+    "traffic_speed": 70,
+    "traffic_state": 1,
+    "traffic_name": "가로수 길5",
+    "id": 26
+  }
+]
