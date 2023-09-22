@@ -11,7 +11,7 @@
     text-decoration: none;
     border-radius: 10px;
     box-shadow: 7px 1px 10px #D7F0FF, 5px 5px 10px #babebc;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 main > .mainnav > .nav-car-list {

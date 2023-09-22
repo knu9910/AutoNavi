@@ -1,5 +1,5 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-
+import Marker from '../../img/marker.png';
 const KaKaoMap = ({ carList }) => {
   const markers = carList.map((reatime) => {
     return (
@@ -11,7 +11,7 @@ const KaKaoMap = ({ carList }) => {
           lng: reatime.location_y,
         }}
         image={{
-          src: 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
+          src: Marker, // 마커이미지의 주소입니다
           size: {
             width: 64,
             height: 69,

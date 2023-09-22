@@ -120,17 +120,14 @@
 .info_box {
 
     font-family: 'Nanum Gothic', sans-serif;
-    border: none;
     outline: none;
     border-radius: 15px;
     box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
     border: 1px solid var(--neutral-colors-300, #F1F3F7);
     background: var(--neutral-colors-100, #f0f0f0);
-    border-radius: 20px;
     width: 200px;
     height: 30px;
     padding: 1.125rem 1rem;
-    font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
     line-height: 0px;
@@ -198,6 +195,7 @@
 }
 
 .origin {
+    cursor: unset;
     border-top-right-radius: 1.0rem;
     background: #D7F0FF;
     border: 0px;
