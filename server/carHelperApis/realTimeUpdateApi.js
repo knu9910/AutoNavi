@@ -75,42 +75,53 @@ const updateInteval = async (id, destination) => {
         coordinates.push([vertexes[i], vertexes[i + 1]]);
       }
 
+      let x = '';
+      let y = '';
       for (const location of coordinates) {
         battery -= 0.1;
         let [location_y, location_x] = location;
-        const sql = `UPDATE car_realtime 
-          SET 
-          location_x = ?, location_y = ?, battery = ?, operation_st = ?, departure = ?, 
-          destination = ?, distance = ?, duration = ?, traffic_speed = ?, traffic_state = ?, traffic_name = ? 
-          WHERE car_id = ?`;
 
-        let [response] = await pool.query(sql, [
-          location_x,
-          location_y,
-          battery,
-          '운행',
-          origin,
-          destination,
-          distance,
-          duration,
-          traffic_speed,
-          traffic_state,
-          name,
-          id,
-        ]);
+        let response = await axios.patch(
+          'http://localhost:8080/api/real/realcar',
+          {
+            location_x,
+            location_y,
+            battery,
+            operation_st: '운행',
+            origin,
+            destination,
+            distance,
+            duration,
+            traffic_speed,
+            traffic_state,
+            traffic_name: name,
+            id,
+          },
+        );
         // console.log(1, location);
-        distance;
-        if (!response.affectedRows) throw new Error('Bad Request');
-        await wait(1000 * 0.5); // 1분에 한번씩 업데이트 함
+        console.log(response.data);
+        // if (!response.affectedRows) throw new Error('Bad Request');
+        await wait(1000 * 2); // 1분에 한번씩 업데이트 함
+        x = location_x;
+        y = location_y;
       }
 
-      let sql = `UPDATE car_realtime 
-      SET 
-      operation_st = ?,
-      departure = null, destination = null, distance = null, duration = null, 
-      traffic_speed = null, traffic_state = null, traffic_name = null 
-      WHERE car_id = ?`;
-      await pool.query(sql, ['대기', id]);
+      const res = await axios.patch('http://localhost:8080/api/real/realcar', {
+        location_x: x,
+        location_y: y,
+        battery,
+        operation_st: '대기',
+        origin: null,
+        destination: null,
+        distance: null,
+        duration: null,
+        traffic_speed: null,
+        traffic_state: null,
+        traffic_name: name,
+        id,
+      });
+      // console.log(res, 123123);
+      // console.log(res.data);
     }
   } catch (err) {
     throw new Error(err.message);
