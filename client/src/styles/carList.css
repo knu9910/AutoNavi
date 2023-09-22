@@ -1,4 +1,4 @@
-
+a {text-decoration: none;}
 Link {
     text-decoration: none;
 }
@@ -16,7 +16,7 @@ section > p{
 .car-list {
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    max-width: 1100px;
+    max-width: 960px;
     height: auto;
     margin: auto;
 }
@@ -124,9 +124,10 @@ span >label {
 }
 
 .carbox {
+    min-width: 1000px;
     margin-top: 50px;
-    display: flex;  
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;  
 }
 .carlist > .carbox img {
     border-radius: 10px;
