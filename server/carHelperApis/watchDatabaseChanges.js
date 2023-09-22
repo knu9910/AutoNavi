@@ -1,7 +1,7 @@
 const pool = require('../models/pool');
 
 const watchDatabaseChanges = (io) => {
-  const pollInterval = 1000 * 0.5; // 폴링 시간
+  const pollInterval = 1000 * 2; // 폴링 시간
 
   setInterval(async () => {
     try {
