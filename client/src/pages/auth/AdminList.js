@@ -159,7 +159,7 @@ const AdminList = () => {
                 <td>{admin.email}</td>
 
                 <td>
-                  <Link to="/auth/adminedit">
+                  <Link to={`/auth/adminedit/${admin.id}`}>
                     <button className="cp-edit" href="#">
                       수정
                     </button>
