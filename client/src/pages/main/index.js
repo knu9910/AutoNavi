@@ -14,15 +14,24 @@ const Main = () => {
   const buttonText = useSelector((state) => state.toggleStore.buttonText);
   const dispatch = useDispatch();
 
-  console.log(carList);
   const handleToggleMap = () => {
     dispatch(toggleButton());
   };
+
   useEffect(() => {
-    socket.on('databaseChange', (results) => {
+    const handleDatabaseChange = (results) => {
+      // Redux 액션을 디스패치합니다.
       dispatch(getCarList({ carList: results }));
-    });
-  }, []);
+    };
+
+    // 웹 소켓 이벤트 리스너를 등록합니다.
+    socket.on('databaseChange', handleDatabaseChange);
+
+    // 컴포넌트 언마운트 시 웹 소켓 이벤트 리스너를 해제합니다.
+    return () => {
+      socket.off('databaseChange', handleDatabaseChange);
+    };
+  }, [dispatch]); // dispatch를 의존성 배열에 포함해야 합니다.
 
   return (
     <main>

@@ -8,62 +8,48 @@ import axios from 'axios';
 import socket from '../../soket';
 
 const Toastify = () => {
-  const currentCar = useSelector((state) => state.carStore.currentCar);
-  const dispatch = useDispatch();
-  const { id } = useParams();
-
-  const getCar = async () => {
-    const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
-    const car = res.data;
-    dispatch(getCurrentCar({ currentCar: car }));
+  const carList = useSelector((state) => state.carStore.carList);
+  const notify = (str) => {
+    toast.info(str, { position: toast.POSITION.TOP_RIGHT });
   };
 
   useEffect(() => {
-    getCar();
     socket.on('operationalStatus', (data) => {
+      // currentCar 초기 값 체크
+      if (!carList) {
+        return;
+      }
+
+      const car = carList.find((car) => {
+        return car.car_id === data.id;
+      });
       if (data.msg === 'start') {
-        toast.info(`${currentCar.car_name} 차량이 운행을 시작했습니다.`, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        console.log('운행시작');
+        notify(`${car.car_name} 차량이 운행을 시작했습니다.`);
       } else if (data.msg === 'arrived') {
-        toast.info(`${currentCar.car_name} 차량이 목적지에 도착했습니다.`, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        notify(`${car.car_name} 차량이 목적지에 도착했습니다.`);
       } else if (data.msg === 'lowBattery') {
-        toast.info(
-          `${currentCar.car_name} 차량이 배터리가 부족하여 충전소로 이동합니다.`,
-          {
-            position: toast.POSITION.TOP_RIGHT,
-          },
-        );
+        notify(`${car.car_name} 차량이 배터리가 부족하여 충전소로 이동합니다.`);
       } else if (data.msg === 'restart') {
-        toast.info(
-          `${currentCar.car_name} 차량이 충전을 완료하여 다시 운행합니다.`,
-          {
-            position: toast.POSITION.TOP_RIGHT,
-          },
-        );
+        notify(`${car.car_name} 차량이 충전을 완료하여 다시 운행합니다.`);
       } else if (data.msg === 'goBack') {
-        toast.info(`${currentCar.car_name} 차량이 복귀합니다.`, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        notify(`${car.car_name} 차량이 복귀합니다.`);
       } else if (data.msg === 'backArrived') {
-        toast.info(`${currentCar.car_name} 차량이 복귀했습니다.`, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        notify(`${car.car_name} 차량이 복귀했습니다.`);
       }
     });
 
+    // 컴포넌트 언마운트 시 웹 소켓 이벤트 리스너를 해제합니다.
     return () => {
-      socket.disconnect();
+      socket.off('operationalStatus');
     };
-  }, []);
+  }, [carList]);
 
   return (
     <div>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={6000}
         hideProgressBar
         newestOnTop
         closeOnClick={false}
