@@ -9,6 +9,8 @@ const List = () => {
   const [carInOp, setCarInOp] = useState(true);
   const [carCharge, setCharge] = useState(true);
   const [carWaiting, setWaiting] = useState(true);
+  const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const carsInfo = useSelector((state) => state.carStore.carsInfo);
   const dispatch = useDispatch();
@@ -19,24 +21,50 @@ const List = () => {
     dispatch(getCarsInfo({ carsInfo: data }));
   };
 
-  let cars = [];
+  // let cars = [];
 
+  // 검색 기능
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  //검색, 체크박스 필터
   const handleOpst = (opst, str) => {
+    let filteredCars = [];
+
     if (opst) {
-      cars = cars.concat(carsInfo.filter((car) => car.operation_st === str));
+      filteredCars = carsInfo.filter((car) => car.operation_st === str);
     }
+
+    if (!search) {
+      return filteredCars;
+    }
+    const regExp = new RegExp(search, 'i');
+    filteredCars = filteredCars.filter((car) => regExp.test(car.car_name));
+
+    return filteredCars;
   };
 
   useEffect(() => {
     handleGetCars();
   }, []);
 
-  handleOpst(carInOp, '운행');
-  handleOpst(carCharge, '충전');
-  handleOpst(carWaiting, '대기');
-  const list = cars.map((car) => {
-    return <CarEntry key={car.id} car={car} />;
-  });
+  const filteredCars = handleOpst(carInOp, '운행')
+    .concat(handleOpst(carCharge, '충전'))
+    .concat(handleOpst(carWaiting, '대기'));
+
+  // const list = cars.map((car) => {
+  //   return <CarEntry key={car.id} car={car} />;
+  // });
+
+  // 페이지당 데이터 8개 제한
+  const itemsPerPage = 8;
+
+  // 페이지별 data
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedCars = filteredCars.slice(startIndex, endIndex);
+
   return (
     <>
       <div className="boxheader">
@@ -46,6 +74,8 @@ const List = () => {
             type="text"
             name=""
             placeholder="Search..."
+            value={search}
+            onChange={handleSearch}
           />
           <div className="carsearch-button" type="submit">
             <i className="fa fa-search" aria-hidden="true"></i>
@@ -88,11 +118,19 @@ const List = () => {
       </div>
 
       <div className="carlist">
-        <div className="carbox">{list}</div>
+        <div className="carbox">
+          {displayedCars.map((car) => (
+            <CarEntry key={car.id} car={car} />
+          ))}
+        </div>
       </div>
       <div className="car-paging">
         <div className="paging">
-          <PaginationComp />
+          <PaginationComp
+            currentPage={currentPage}
+            totalPages={Math.ceil(filteredCars.length / itemsPerPage)}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
         </div>
       </div>
     </>
