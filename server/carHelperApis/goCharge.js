@@ -1,4 +1,5 @@
 const goCharge = async (id, lowBat, io, updateInteval) => {
+  lowBat.charge.car_id = id;
   io.emit('operationalStatus', {
     id,
     msg: 'lowBattery',
