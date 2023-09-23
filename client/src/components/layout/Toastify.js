@@ -1,12 +1,14 @@
 import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getSpeech } from '../../pathToGetSpeech';
 import socket from '../../soket';
+import { addCharge, deleteCharge } from '../../store/chargeSlice';
 
 const Toastify = () => {
   const carList = useSelector((state) => state.carStore.carList);
+  const dispatch = useDispatch();
   const notify = (str) => {
     toast.info(str, { position: toast.POSITION.TOP_RIGHT });
   };
@@ -32,6 +34,9 @@ const Toastify = () => {
         notify(noti);
         getSpeech(noti);
       } else if (data.msg === 'lowBattery') {
+        const charge = data.info;
+        console.log(charge);
+        dispatch(addCharge({ charge }));
         noti = `${car.car_name} 차량이 배터리가 부족하여 충전소로 이동합니다.`;
         notify(noti);
         getSpeech(noti);
@@ -41,6 +46,7 @@ const Toastify = () => {
         getSpeech(noti);
       } else if (data.msg === 'arrivedCarge') {
         noti = `${car.car_name} 차량이 충전소에 도착하였습니다.`;
+        dispatch(deleteCharge({ id: data.id }));
         notify(noti);
         getSpeech(noti);
       } else if (data.msg === 'charging') {

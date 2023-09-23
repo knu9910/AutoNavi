@@ -25,8 +25,6 @@ const List = () => {
     }
   };
 
-  // let cars = [];
-
   // 검색 기능
   const handleSearch = (e) => {
     setSearch(e.target.value);
