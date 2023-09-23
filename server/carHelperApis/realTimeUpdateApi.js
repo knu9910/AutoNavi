@@ -71,8 +71,16 @@ const updateInteval = async (id, destination, check = true) => {
       let x = '';
       let y = '';
       for (const location of coordinates) {
-        distance -= Math.floor(road_distance / vertexes.length);
-        duration -= Math.floor(road_duration / vertexes.length);
+        distance -= road_distance / (vertexes.length / 2);
+        duration -= road_duration / (vertexes.length / 2);
+
+        console.log(
+          road_distance,
+          vertexes.length,
+          Math.floor(road_duration / vertexes.length),
+          road_distance / vertexes.length,
+          distance,
+        );
         battery -= 0.1;
         let [location_y, location_x] = location;
         if (check) {
@@ -92,8 +100,8 @@ const updateInteval = async (id, destination, check = true) => {
           operation_st: '운행',
           origin,
           destination,
-          distance,
-          duration,
+          distance: parseInt(distance),
+          duration: parseInt(duration),
           traffic_speed,
           traffic_state,
           traffic_name: name,
