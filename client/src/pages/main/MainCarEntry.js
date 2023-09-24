@@ -15,7 +15,7 @@ const MainCarEntry = ({ carInfo }) => {
 
   const totalSeconds = duration;
   const timeString = secondsToHMS(totalSeconds);
-  console.log(timeString); // 출력: "1시간 1분 5초"
+  console.log(timeString);
 
   function secondsToHMS(seconds) {
     const hours = Math.floor(seconds / 3600);
