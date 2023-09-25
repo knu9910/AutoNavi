@@ -3,13 +3,14 @@ import blueLogo from '../../img/bluelogo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/header.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { isLogout } from '../../store/userSlice';
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
+  const role = useSelector((state) => state.userStore.role);
 
   if (
     window.location.pathname === '/' ||
@@ -29,9 +30,11 @@ const Header = () => {
   return (
     <header>
       <div className="logout-btn">
-        <Link to="/auth/adminList" className="link-admin">
-          <button className="btn-admin">관리자</button>
-        </Link>
+        {role === 'master' && (
+          <Link to="/auth/adminList" className="link-admin">
+            <button className="btn-admin">관리자</button>
+          </Link>
+        )}
         <div className="link-logout">
           <button className="btn-logout" onClick={handleLogout}>
             Logout
