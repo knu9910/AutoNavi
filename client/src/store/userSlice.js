@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
   name: 'userApp',
-  initialState: { auth: false, role: null },
+  initialState: { auth: false, role: null, controlRights: '없음' },
   reducers: {
     isLogin(state) {
       state.auth = true;
@@ -14,8 +14,11 @@ const userSlice = createSlice({
     isMaster(state) {
       state.role = 'master';
     },
+    isControl(state) {
+      state.controlRights = '있음';
+    },
   },
 });
 
 export default userSlice;
-export const { isLogin, isLogout, isMaster } = userSlice.actions;
+export const { isLogin, isLogout, isMaster, isControl } = userSlice.actions;

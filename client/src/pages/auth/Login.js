@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import mainLogo from '../../img/autoNavi_Logo.jpg';
 import '../../styles/LogIn.css';
 import { useDispatch } from 'react-redux';
-import { isLogin, isMaster } from '../../store/userSlice';
+import { isControl, isLogin, isMaster } from '../../store/userSlice';
 
 const Login = () => {
   const [userId, setUserId] = useState('');
@@ -28,6 +28,11 @@ const Login = () => {
           if (response.data.role === 'master') {
             dispatch(isMaster());
           }
+
+          if (response.data.controlRights === '있음') {
+            dispatch(isControl());
+          }
+
           navigate('/main');
         } else {
           alert('id 또는 비밀번호를 잘못 입력했습니다.');

@@ -175,6 +175,12 @@
     grid-area: start;
 }
 
+.delete:disabled,
+.start:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
 
 
 .input_box {

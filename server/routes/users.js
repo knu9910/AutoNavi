@@ -89,8 +89,13 @@ router.post('/login', async (req, res, next) => {
     if (result.length > 0) {
       // 로그인 성공
       const userRole = result[0].role;
+      const rights = result[0].controlRights;
       console.log('로그인 성공!');
-      res.status(200).json({ message: 'Login successful', role: userRole });
+      res.status(200).json({
+        message: 'Login successful',
+        role: userRole,
+        controlRights: rights,
+      });
     } else {
       // 로그인 실패
       console.log('로그인 실패!');

@@ -5,6 +5,7 @@ import Toastify from './layout/Toastify';
 const PrivateRoute = () => {
   const auth = useSelector((state) => state.userStore.auth);
   const role = useSelector((state) => state.userStore.role);
+  const controlRights = useSelector((state) => state.userStore.controlRights);
   const location = useLocation();
 
   if (!auth) {
@@ -16,6 +17,11 @@ const PrivateRoute = () => {
 
   if (masterPaths.includes(location.pathname) && role !== 'master') {
     alert('접근권한이 없습니다.');
+    return <Navigate to="/main" />;
+  }
+
+  if (location.pathname === '/car/carreg' && controlRights !== '있음') {
+    alert('접근 권한이 없습니다.');
     return <Navigate to="/main" />;
   }
 
