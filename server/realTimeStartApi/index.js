@@ -24,13 +24,13 @@ const realTimeStartApi = async (req, res, io) => {
       io.emit('operationalStatus', { id, msg: 'arrived' });
       await wait(1000 * 20);
       io.emit('operationalStatus', { id, msg: 'goBack' });
-      lowBat = await updateInteval(id, origin);
+      lowBat = await updateInteval(id, origin, true, true);
       if (lowBat && lowBat.msg === 'low') {
         await goCharge(id, lowBat, io, updateInteval);
         io.emit('operationalStatus', { id, msg: 'arrivedCarge' });
         await charging(id, io);
         io.emit('operationalStatus', { id, msg: 'restart' });
-        await updateInteval(id, origin);
+        await updateInteval(id, origin, true, true);
         io.emit('operationalStatus', { id, msg: 'backArrived' });
       } else {
         io.emit('operationalStatus', { id, msg: 'backArrived' });

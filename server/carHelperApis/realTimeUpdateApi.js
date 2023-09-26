@@ -46,7 +46,12 @@ async function getDirections(origin, destination) {
   }
 }
 
-const updateInteval = async (id, destination, check = true) => {
+const updateInteval = async (
+  id,
+  destination,
+  check = true,
+  desCheck = false,
+) => {
   try {
     const car = await carModel.findCar(id);
     if (!car) throw new Error('Bad Request');
@@ -113,20 +118,22 @@ const updateInteval = async (id, destination, check = true) => {
         y = location_y;
       }
 
-      await axios.patch('http://localhost:8080/api/real/realcar', {
-        location_x: x,
-        location_y: y,
-        battery,
-        operation_st: '대기',
-        origin: null,
-        destination: null,
-        distance: null,
-        duration: null,
-        traffic_speed: null,
-        traffic_state: null,
-        traffic_name: name,
-        id,
-      });
+      if (desCheck) {
+        await axios.patch('http://localhost:8080/api/real/realcar', {
+          location_x: x,
+          location_y: y,
+          battery,
+          operation_st: '대기',
+          origin: null,
+          destination: null,
+          distance: null,
+          duration: null,
+          traffic_speed: null,
+          traffic_state: null,
+          traffic_name: name,
+          id,
+        });
+      }
     }
   } catch (err) {
     throw new Error(err.message);
