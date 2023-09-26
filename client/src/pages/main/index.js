@@ -40,6 +40,11 @@ const Main = () => {
         <button className="car-btn" onClick={handleToggleMap}>
           {buttonText}
         </button>
+        <select className="car-selbtn">
+          <option>운행중</option>
+          <option>충전중</option>
+          <option>대기중</option>
+        </select>
       </div>
       {isNavVisible && <List carList={carList} />}
       <div className="map">

@@ -1,0 +1,17 @@
+.map div {
+    border: none !important; 
+}
+.up-marker{
+    z-index: 5 ;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 15px;
+    width: 300px;
+    outline: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin: 14px;
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
+    text-decoration: none;
+    color: #6e6e6e;
+}

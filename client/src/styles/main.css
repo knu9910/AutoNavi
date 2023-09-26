@@ -42,6 +42,24 @@ main > .mainnav > .nav-car-list {
     transition: transform 80ms ease-in;
     box-shadow: -5px -5px 10px #d3d3d3, 5px 5px 8px #babebc;
 }
+
+.car-selbtn {
+    color: black;
+    background: #fff;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 900;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    padding: 8px 15px;
+    margin: 10px 5px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: transform 80ms ease-in;
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
+}
+
 .battery-bar-info {
     text-align: center;
 }
@@ -65,6 +83,11 @@ main > .mainnav > .nav-car-list {
     font-family: 'Nanum Gothic', sans-serif;
     font-weight: 600;
 
+}
+
+.menu {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 /*progress-bar*/
@@ -102,4 +125,7 @@ main > .mainnav > .nav-car-list {
 .battery-bar .battery-red {
     --bs-progress-bar-bg: rgb(184, 52, 52);
     color: red;
+}
+.map div{
+    border: none;
 }
