@@ -1,0 +1,220 @@
+.car_wrap_detail_running {
+    margin-top: 100px;
+    width: 100%;
+}
+
+.car_detail_wrap_running {
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
+    width: 60%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 0.7fr;
+    /* grid-template-rows: 0.2fr 7fr; */
+    grid-template-areas: 
+    "car_info car_location"
+    "car_info_wrap map";
+}
+.car_location_running{
+    grid-area: car_location;
+    margin: auto;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+}
+.car_info_running {
+    grid-area: car_info;
+    margin: auto;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.car_info_wrap_running {
+    grid-area: car_info_wrap;
+    margin: auto;
+
+}
+.map_running {
+    grid-area: map;
+
+}
+
+.car_info_inner_running > .info_box_running {
+    font-size: 13px;
+    font-weight: bold;
+}
+.car_info_inner_running {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 0.1fr 1fr);
+    grid-template-areas: 
+    "label1 label3"
+    "box2 box4"
+    "label5 label7"
+    "box6 box8"
+    "label9 label11"
+    "box10 box12"
+    "label13 label15"
+    "box14 box16";
+    row-gap: 5px;
+    column-gap: 20px;
+}
+.car_info_inner_running div:nth-child(1) {
+    grid-area: label1;
+}
+.car_info_inner_running div:nth-child(3) {
+    grid-area: label3;
+}
+.car_info_inner_running div:nth-child(5) {
+    grid-area: label5;
+}
+.car_info_inner_running div:nth-child(7) {
+    grid-area: label7;
+}
+.car_info_inner_running div:nth-child(9) {
+    grid-area: label9;
+}
+.car_info_inner_running div:nth-child(11) {
+    grid-area: label11;
+}
+.car_info_inner_running div:nth-child(13) {
+    grid-area: label13;
+}
+.car_info_inner_running div:nth-child(15) {
+    grid-area: label15;
+}
+.car_info_inner_running div:nth-child(2) {
+    grid-area: box2;
+}
+.car_info_inner_running div:nth-child(4) {
+    grid-area: box4;
+}
+.car_info_inner_running div:nth-child(6) {
+    grid-area: box6;
+}
+.car_info_inner_running div:nth-child(8) {
+    grid-area: box8;
+}
+.car_info_inner_running div:nth-child(10) {
+    grid-area: box10;
+}
+.car_info_inner_running div:nth-child(12) {
+    grid-area: box12;
+}
+.car_info_inner_running div:nth-child(14) {
+    grid-area: box14;
+}
+.car_info_inner_running div:nth-child(16) {
+    grid-area: box16;
+}
+
+.info_label_running {
+    margin-left: 5px;
+    width: 100px;
+    height: 30px;
+    color: #6D758F;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+    
+}
+
+.info_box_running {
+
+    font-family: 'Nanum Gothic', sans-serif;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+    border: 1px solid var(--neutral-colors-300, #F1F3F7);
+    background: var(--neutral-colors-100, #f0f0f0);
+    width: 200px;
+    height: 30px;
+    padding: 1.125rem 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0px;
+    
+}
+
+@media (max-width: 780px) {
+    .car_detail_wrap_running {
+        width: 80%;
+        padding-top: 50px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "car_info"
+        "car_info_wrap"
+        "map"
+        ;
+    }
+    
+    .input_box_running {
+        margin: auto;
+        margin-top: 60px;
+        width: 230px;
+    }
+
+    .map_running {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 530px) {
+    .car_info_running {
+        grid-area: car_info;
+        margin: auto;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .car_detail_wrap_running {
+        width: 80%;
+        padding-top: 50px;
+        margin: auto;
+        display: grid;
+        grid-template-areas: 
+        "car_info"
+        "car_info_wrap"
+        "map";
+    }
+    
+    .input_box_running {
+        margin: auto;
+        margin-top: 60px;
+        width: 230px;
+    }
+
+    .car_info_inner_running {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(8, 0.1fr 1fr);
+        grid-template-areas: 
+        "label1"
+        "box2"
+        "label3"
+        "box4"
+        "label5"
+        "box6"
+        "label7"
+        "box8"
+        "label9"
+        "box10"
+        "label11"
+        "box12"
+        "label13"
+        "box14"
+        "label15"
+        "box16";
+        row-gap: 5px;
+        column-gap: 20px;
+    }
+}
+
