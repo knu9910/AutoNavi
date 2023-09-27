@@ -33,6 +33,11 @@ const Login = () => {
             dispatch(isControl());
           }
 
+          // 로컬 스토리지에 저장
+          localStorage.setItem('userId', response.data.userId);
+          localStorage.setItem('role', response.data.role);
+          localStorage.setItem('controlRights', response.data.controlRights);
+
           navigate('/main');
         } else {
           alert('id 또는 비밀번호를 잘못 입력했습니다.');

@@ -3,14 +3,14 @@ import blueLogo from '../../img/bluelogo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/header.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { isLogout } from '../../store/userSlice';
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const role = useSelector((state) => state.userStore.role);
+  const storedRole = localStorage.getItem('role');
 
   if (
     window.location.pathname === '/' ||
@@ -21,6 +21,11 @@ const Header = () => {
   }
 
   const handleLogout = () => {
+    // 로컬 스토리지에서 데이터 삭제
+    localStorage.removeItem('userId');
+    localStorage.removeItem('role');
+    localStorage.removeItem('controlRights');
+
     dispatch(isLogout());
 
     alert('로그아웃 되었습니다.');
@@ -30,7 +35,7 @@ const Header = () => {
   return (
     <header>
       <div className="logout-btn">
-        {role === 'master' && (
+        {storedRole === 'master' && (
           <Link to="/auth/adminList" className="link-admin">
             <button className="btn-admin">관리자</button>
           </Link>
