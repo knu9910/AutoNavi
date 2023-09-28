@@ -87,7 +87,7 @@ const historyCarModel = {
     `;
 
     const [rows] = await pool.query(sql, [carId]);
-    return rows;
+    return rows[0];
   },
 };
 
