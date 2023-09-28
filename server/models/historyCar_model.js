@@ -32,27 +32,43 @@ const historyCarModel = {
     return rows;
   },
   async historyUpdate(id, article) {
-    const sql = `UPDATE car_history SET
-      ${article.accident !== undefined ? 'accident = ?,' : ''}
-      ${article.cum_distance !== undefined ? 'cum_distance = ?,' : ''}
-      ${article.cum_battery !== undefined ? 'cum_battery = ?,' : ''}
-      ${article.tire_change !== undefined ? 'tire_change = ?,' : ''}
-      ${article.battery_change !== undefined ? 'battery_change = ?,' : ''}
-      updatedAt = NOW()
+    console.log(article);
+    const conditions = [];
+    const values = [];
+
+    if (article.accident !== undefined) {
+      conditions.push('accident = ?');
+      values.push(article.accident);
+    }
+    if (article.cum_distance !== undefined) {
+      conditions.push('cum_distance = ?');
+      values.push(article.cum_distance);
+    }
+    if (article.cum_battery !== undefined) {
+      conditions.push('cum_battery = ?');
+      values.push(article.cum_battery);
+    }
+    if (article.tire_change !== undefined) {
+      conditions.push('tire_change = ?');
+      values.push(article.tire_change);
+    }
+    if (article.battery_change !== undefined) {
+      conditions.push('battery_change = ?');
+      values.push(article.battery_change);
+    }
+
+    // 조건을 쉼표로 연결하여 SQL 쿼리 문자열 생성
+    const conditionsString = conditions.join(', ');
+
+    const sql = `
+      UPDATE car_history
+      SET ${conditionsString}, updatedAt = NOW()
       WHERE car_id = ?;
     `;
 
-    // 업데이트할 속성 값들을 추출
-    const values = [
-      article.accident,
-      article.cum_distance,
-      article.cum_battery,
-      article.tire_change,
-      article.battery_change,
-      id,
-    ];
+    values.push(id);
 
-    // SQL 쿼리와 바인딩할 값을 반환
+    // SQL 쿼리 실행
     const [rows] = await pool.query(sql, values);
     return rows;
   },
