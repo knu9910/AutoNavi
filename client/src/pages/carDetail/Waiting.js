@@ -9,7 +9,7 @@ import { deleteCar, getCurrentCar } from '../../store/carSlice';
 const Waiting = () => {
   const destinationRef = useRef(null);
   const coordinates = useRef({ x: null, y: null });
-  const controlRights = useSelector((state) => state.userStore.controlRights);
+  const storedControlRights = localStorage.getItem('controlRights');
   const currentCar = useSelector((state) => state.carStore.currentCar);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -148,14 +148,14 @@ const Waiting = () => {
           <button
             className="delete"
             onClick={handleDeleteCar}
-            disabled={controlRights === '없음'}
+            disabled={storedControlRights === '없음'}
           >
             차량 삭제
           </button>
           <button
             className="start"
             onClick={sendDataToServer}
-            disabled={controlRights === '없음'}
+            disabled={storedControlRights === '없음'}
           >
             운행 시작
           </button>

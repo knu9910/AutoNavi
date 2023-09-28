@@ -88,6 +88,7 @@ router.post('/login', async (req, res, next) => {
 
     if (result.length > 0) {
       // 로그인 성공
+      const userId = result[0].userId;
       const userRole = result[0].role;
       const rights = result[0].controlRights;
       console.log('로그인 성공!');
@@ -95,6 +96,7 @@ router.post('/login', async (req, res, next) => {
         message: 'Login successful',
         role: userRole,
         controlRights: rights,
+        userId: userId,
       });
     } else {
       // 로그인 실패
