@@ -9,7 +9,7 @@ const carService = {
 
       // car_realtime 테이블에서 관련 데이터 삭제
       await connection.query('DELETE FROM car_realtime WHERE car_id = ?', [id]);
-
+      await connection.query('DELETE FROM car_history WHERE car_id = ?', [id]);
       // car 테이블에서 데이터 삭제
       const [result] = await connection.query('DELETE FROM car WHERE id = ?', [
         id,
