@@ -16,16 +16,16 @@ const KaKaoMap = ({ carList }) => {
   return (
     <Map // 지도를 표시할 Container
       center={{
-        // 지도의 중심좌표
-        lat: 37.54699,
-        lng: 127.09598,
+        // 멀티캠퍼스
+        lat: 37.501307705888195,
+        lng: 127.03963860275336,
       }}
       style={{
         // 지도의 크기
         width: '100%',
         height: '800px',
       }}
-      level={11} // 지도의 확대 레벨
+      level={5} // 지도의 확대 레벨
     >
       {carMarkers}
       {chargeMarkers}
