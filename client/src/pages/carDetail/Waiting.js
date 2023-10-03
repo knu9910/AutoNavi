@@ -5,6 +5,7 @@ import '../../styles/waiting.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { deleteCar, getCurrentCar } from '../../store/carSlice';
+import History from './History';
 
 const Waiting = () => {
   const destinationRef = useRef(null);
@@ -95,71 +96,78 @@ const Waiting = () => {
   };
 
   return (
-    <div className="car_wrap_detail">
-      <div className="car_detail_wrap">
-        <div className="car_info">1234 차량정보</div>
-        <div className="car_info_wrap">
-          <div className="car_info_inner">
-            <div className="info_label">차량ID</div>
-            <div className="info_box">{currentCar.car_id}</div>
-            <div className="info_label">차량번호</div>
-            <div className="info_box">{currentCar.car_number}</div>
-            <div className="info_label">차명</div>
-            <div className="info_box">{currentCar.car_name}</div>
-            <div className="info_label">차종</div>
-            <div className="info_box">{currentCar.car_type}</div>
-            <div className="info_label">제조년월일</div>
-            <div className="info_box">{currentCar.mfg_date}</div>
-            <div className="info_label">등록일</div>
-            <div className="info_box">
-              {currentCar.createdAt
-                ? currentCar.createdAt.slice(0, 10).replace(/-/g, '.')
-                : ''}
-            </div>
+    <div>
+      <div className="car_wrap_detail">
+        <div className="car_detail_wrap">
+          <div className="car_info">1234 차량정보</div>
+          <div className="car_info_wrap">
+            <div className="car_info_inner">
+              <div className="info_label">차량ID</div>
+              <div className="info_box">{currentCar.car_id}</div>
+              <div className="info_label">차량번호</div>
+              <div className="info_box">{currentCar.car_number}</div>
+              <div className="info_label">차명</div>
+              <div className="info_box">{currentCar.car_name}</div>
+              <div className="info_label">차종</div>
+              <div className="info_box">{currentCar.car_type}</div>
+              <div className="info_label">제조년월일</div>
+              <div className="info_box">{currentCar.mfg_date}</div>
+              <div className="info_label">등록일</div>
+              <div className="info_box">
+                {currentCar.createdAt
+                  ? currentCar.createdAt.slice(0, 10).replace(/-/g, '.')
+                  : ''}
+              </div>
 
-            <div className="info_label">배터리</div>
-            <div className="info_box">{currentCar.realtime_battery}</div>
-            <div className="info_label">운행 현황</div>
-            <div className="info_box">{currentCar.realtime_operation_st}</div>
+              <div className="info_label">배터리</div>
+              <div className="info_box">{currentCar.realtime_battery}</div>
+              <div className="info_label">운행 현황</div>
+              <div className="info_box">{currentCar.realtime_operation_st}</div>
+            </div>
+          </div>
+          <div className="input_box">
+            <div className="icon"></div>
+            <div className="origin_wrap">
+              <input
+                className="origin"
+                type="text"
+                placeholder="출발지"
+                readOnly
+              ></input>
+            </div>
+            <div className="destination_wrap">
+              <input
+                ref={destinationRef}
+                className="destination"
+                type="text"
+                placeholder="목적지 검색"
+                readOnly
+                onClick={() =>
+                  open({ onComplete: (data) => handleClick(data) })
+                }
+              ></input>
+            </div>
+          </div>
+          <div className="search_wrap">
+            <button
+              className="delete"
+              onClick={handleDeleteCar}
+              disabled={storedControlRights === '없음'}
+            >
+              차량 삭제
+            </button>
+            <button
+              className="start"
+              onClick={sendDataToServer}
+              disabled={storedControlRights === '없음'}
+            >
+              운행 시작
+            </button>
           </div>
         </div>
-        <div className="input_box">
-          <div className="icon"></div>
-          <div className="origin_wrap">
-            <input
-              className="origin"
-              type="text"
-              placeholder="출발지"
-              readOnly
-            ></input>
-          </div>
-          <div className="destination_wrap">
-            <input
-              ref={destinationRef}
-              className="destination"
-              type="text"
-              placeholder="목적지 검색"
-              readOnly
-              onClick={() => open({ onComplete: (data) => handleClick(data) })}
-            ></input>
-          </div>
-        </div>
-        <div className="search_wrap">
-          <button
-            className="delete"
-            onClick={handleDeleteCar}
-            disabled={storedControlRights === '없음'}
-          >
-            차량 삭제
-          </button>
-          <button
-            className="start"
-            onClick={sendDataToServer}
-            disabled={storedControlRights === '없음'}
-          >
-            운행 시작
-          </button>
-        </div>
+      </div>
+      <div>
+        <History />
       </div>
     </div>
   );

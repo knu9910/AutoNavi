@@ -1,0 +1,120 @@
+.history_wrap_detail {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.car_history_wrap {
+  border-radius: 10px;
+  box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
+  width: 60%;
+  padding-top: 30px;
+  margin: auto;
+  display: grid;
+}
+
+.car_history_wrap > .car_info {
+  grid-column: 1 / 4;
+	grid-row: 1 / 2;
+  margin-bottom: 30px;
+}
+
+.car_history_wrap > .table1 {
+  grid-column: 1 / 4;
+	grid-row: 2 / 3;
+}
+
+#chart1.bar {
+  max-height: 300px;
+  max-width: 300px;
+  margin: 0 auto;
+  --labels-size: 150px;
+}
+
+#chart1 tbody tr:first-child td {
+  background-color: rgb(4, 163, 249);
+}
+
+#chart1 tbody tr:nth-child(2) td {
+  background-color: rgb(25, 134, 211);
+}
+
+#chart1 tbody tr:nth-child(3) td {
+  background-color: rgb(123, 55, 240);
+}
+#chart1 tbody tr:nth-child(4) td {
+  background-color: rgb(179, 103, 255);
+}
+
+#chart1 tbody tr:last-child td {
+  background-color: rgb(110, 110, 243);
+}
+
+#chart1 tr {
+  transition-duration: 0.3s;
+}
+/* #chart1 tr:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+} */
+
+#chart1 tr:hover th {
+  color: #029cfb;
+}
+
+tr {
+  font-size: 0.9rem;
+  color: #6D758F;
+}
+
+tr .data {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+#chart1 tbody td {
+  transform-origin: left;
+  animation: revealing-bars 6s linear forwards;
+}
+@keyframes revealing-bars {
+  0%  { transform: scaleX( 0 ); }
+  15% { transform: scaleX( 1 ); }
+}
+
+.history_info_wrap {
+  grid-column: 1 / 4;
+	grid-row: 3 / 4;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.info_label_history {
+  height: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #6D758F;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+.info_box_history {
+
+  font-family: 'Nanum Gothic', sans-serif;
+  outline: none;
+  border-radius: 15px;
+  box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+  border: 1px solid var(--neutral-colors-300, #F1F3F7);
+  background: var(--neutral-colors-100, #f0f0f0);
+  width: 200px;
+  height: auto;
+  padding: 0.56rem 0.5rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+
