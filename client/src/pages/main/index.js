@@ -4,14 +4,14 @@ import KaKaoMap from './KakaoMap';
 import '../../styles/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getCarList } from '../../store/carSlice';
-import { toggleButton } from '../../store/toggleSlice';
+import { toggleButton } from '../../store/mainSlice';
 import List from './MainCarList';
 import socket from '../../soket';
 
 const Main = () => {
   const carList = useSelector((state) => state.carStore.carList);
-  const isNavVisible = useSelector((state) => state.toggleStore.isNavVisible);
-  const buttonText = useSelector((state) => state.toggleStore.buttonText);
+  const isNavVisible = useSelector((state) => state.mainStore.isNavVisible);
+  const buttonText = useSelector((state) => state.mainStore.buttonText);
   const dispatch = useDispatch();
 
   console.log(carList[0]);
