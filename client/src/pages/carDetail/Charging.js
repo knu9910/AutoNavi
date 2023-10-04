@@ -34,7 +34,9 @@ const Charging = () => {
     <div>
       <div className="car_wrap_detail_charging">
         <div className="car_detail_wrap_charging">
-          <div className="car_info_charging">1234 차량정보</div>
+          <div className="car_info_charging">
+            {currentCar.car_name} 차량정보
+          </div>
           <div className="car_location_charging"></div>
           <div className="car_info_wrap_charging">
             <div className="car_info_inner_charging">

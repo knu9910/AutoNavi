@@ -99,7 +99,7 @@ const Waiting = () => {
     <div>
       <div className="car_wrap_detail">
         <div className="car_detail_wrap">
-          <div className="car_info">1234 차량정보</div>
+          <div className="car_info">{currentCar.car_name} 차량정보</div>
           <div className="car_info_wrap">
             <div className="car_info_inner">
               <div className="info_label">차량ID</div>

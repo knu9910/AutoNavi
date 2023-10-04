@@ -33,7 +33,7 @@ const Running = () => {
     <div>
       <div className="car_wrap_detail_running">
         <div className="car_detail_wrap_running">
-          <div className="car_info_running">1234 차량정보</div>
+          <div className="car_info_running">{currentCar.car_name} 차량정보</div>
           <div className="car_location_running"></div>
           <div className="car_info_wrap_running">
             <div className="car_info_inner_running">
