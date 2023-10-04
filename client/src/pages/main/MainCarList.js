@@ -3,8 +3,9 @@ import MainCarEntry from './MainCarEntry';
 
 const List = () => {
   const carList = useSelector((state) => state.carStore.carList);
+  const carStatus = useSelector((state) => state.carStore.carStatus);
   const operationCarList = carList.filter(
-    (car) => car.realtime_operation_st === '운행',
+    (car) => car.realtime_operation_st === carStatus,
   );
   const list = operationCarList.map((car) => {
     return <MainCarEntry key={car.car_id} carInfo={car} />;
