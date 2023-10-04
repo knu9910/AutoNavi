@@ -62,7 +62,8 @@ const CarMarkerEntry = ({ car }) => {
               }}
             >
               <span className="title">차량 정보</span>
-              <div className="title">차량 번호: {car.car_number}</div>
+              <div className="title">차량 이름: {car.car_name}</div>
+              <div>차량번호: {car.car_number}</div>
               <div>남은거리: {car.distance}</div>
               <div>운행시간: {car.duration}</div>
               <div className="title"></div>
