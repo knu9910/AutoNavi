@@ -10,10 +10,12 @@ const List = () => {
     return <MainCarEntry key={car.car_id} carInfo={car} />;
   });
   return (
-    <div className="mainnav">
-      {/* 운행중 화면 */}
-      <div className="nav-car-list">{list}</div>
-    </div>
+    <>
+      <div className="mainnav">
+        {/* 운행중 화면 */}
+        <div className="nav-car-list">{list}</div>
+      </div>
+    </>
   );
 };
 

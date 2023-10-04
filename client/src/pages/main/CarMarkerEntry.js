@@ -9,6 +9,7 @@ const CarMarkerEntry = ({ car }) => {
   const handleMarkerClick = () => {
     setIsOpen(!isOpen); // 마커를 클릭할 때 isOpen 상태를 토글합니다.
   };
+  //배터리
 
   return (
     <>

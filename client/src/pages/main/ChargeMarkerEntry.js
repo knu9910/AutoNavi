@@ -1,5 +1,5 @@
 import { MapMarker } from 'react-kakao-maps-sdk';
-import Marker from '../../img/charging.png';
+import Marker from '../../img/station.png';
 import { useState } from 'react';
 
 const ChargeMarkerEntry = ({ charge }) => {
