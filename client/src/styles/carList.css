@@ -82,10 +82,12 @@ Link {
 }
 .doughnut-chart > .smallbox > .totalbox > p{
     text-align: center;
+    margin: 0;
     font-weight: 600;
     font-family: 'Nanum Gothic', sans-serif;
 }
 .doughnut-chart > .smallbox > .totalbox > .total-content {
+
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 30px;
     font-weight: 900;
