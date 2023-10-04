@@ -10,6 +10,12 @@ const History = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const currentDate = `${year}-${month}-${day}`;
+
   useEffect(() => {
     const getCar = async () => {
       try {
@@ -27,7 +33,7 @@ const History = () => {
     const getChargeHistory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/history/chargeFind/${id}/2023-09-26/2023-09-28`,
+          `http://localhost:8080/api/history/chargeFind/${id}/2023-09-26/${currentDate}`,
         );
         const chargeHistoryData = response.data;
         setChargeHistory(chargeHistoryData);
@@ -41,11 +47,11 @@ const History = () => {
     getChargeHistory();
   }, [id]);
 
-  const accidentSize = carData?.accident * 0.1;
-  const cumDistanceSize = carData?.cum_distance * 0.0003;
-  const cumBatterySize = carData?.cum_battery * 0.01;
+  const cumBatterySize = carData?.cum_battery * 0.025;
   const tireChangeSize = carData?.tire_change * 0.1;
   const batteryChangeSize = carData?.battery_change * 0.1;
+  const totalDistance = (carData?.cum_distance * 0.1).toFixed(2);
+  const cumDistanceSize = totalDistance * 0.0025;
 
   return (
     <div className="history_wrap_detail">
@@ -65,15 +71,9 @@ const History = () => {
             </thead>
             <tbody>
               <tr>
-                <th scope="row"> 사고 발생 횟수 </th>
-                <td style={{ '--size': accidentSize }}>
-                  <span className="data"> {carData?.accident} </span>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"> 총 운행거리 </th>
+                <th scope="row"> 총 운행거리 (10km) </th>
                 <td style={{ '--size': cumDistanceSize }}>
-                  <span className="data"> {carData?.cum_distance} </span>
+                  <span className="data"> {totalDistance} </span>
                 </td>
               </tr>
               <tr>
@@ -103,11 +103,12 @@ const History = () => {
             <div className="info_box_history">
               <table>
                 <tbody>
-                  {chargeHistory.map((historyItem, index) => (
+                  {chargeHistory.slice(0, 3).map((historyItem, index) => (
                     <tr key={index}>
                       <td>{historyItem.createdAt}</td>
                       <td>{historyItem.name}</td>
                       <td>{historyItem.fee}</td>
+                      <br />
                     </tr>
                   ))}
                 </tbody>
@@ -116,10 +117,6 @@ const History = () => {
           </div>
           <div className="info_input">
             <div className="info_label_history">최근 운행 경로</div>
-            <div className="info_box_history"></div>
-          </div>
-          <div className="info_input">
-            <div className="info_label_history">사고 발생 이력</div>
             <div className="info_box_history"></div>
           </div>
         </div>
