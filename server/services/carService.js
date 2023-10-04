@@ -9,17 +9,22 @@ const carService = {
 
       // car_realtime 테이블에서 관련 데이터 삭제
       await connection.query('DELETE FROM car_realtime WHERE car_id = ?', [id]);
-
+      await connection.query('DELETE FROM charge_history WHERE car_id = ?', [
+        id,
+      ]);
+      await connection.query('DELETE FROM car_history WHERE car_id = ?', [id]);
+      await connection.query('DELETE FROM trip_history WHERE car_id = ?', [id]);
       // car 테이블에서 데이터 삭제
       const [result] = await connection.query('DELETE FROM car WHERE id = ?', [
         id,
       ]);
-
+      console.log(result);
       // 트랜잭션 커밋
       await connection.commit();
       return result.affectedRows;
     } catch (error) {
       // 에러 발생 시 트랜잭션 롤백
+      console.error(error);
       await connection.rollback();
       throw new Error('Service Error');
     } finally {

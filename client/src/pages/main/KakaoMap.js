@@ -2,9 +2,12 @@ import { Map } from 'react-kakao-maps-sdk';
 import { useSelector } from 'react-redux';
 import CarMarkerEntry from './CarMarkerEntry';
 import ChargeMarkerEntry from './ChargeMarkerEntry';
+
 const KaKaoMap = ({ carList }) => {
   const cargeList = useSelector((state) => state.chargeStore.chargeList);
 
+  const lat = useSelector((state) => state.mainStore.lat);
+  const lng = useSelector((state) => state.mainStore.lng);
   const chargeMarkers = cargeList.map((charge) => {
     return <ChargeMarkerEntry key={charge.car_id} charge={charge} />;
   });
@@ -16,16 +19,16 @@ const KaKaoMap = ({ carList }) => {
   return (
     <Map // 지도를 표시할 Container
       center={{
-        // 지도의 중심좌표
-        lat: 37.54699,
-        lng: 127.09598,
+        // 멀티캠퍼스
+        lat: lat,
+        lng: lng,
       }}
       style={{
         // 지도의 크기
         width: '100%',
         height: '800px',
       }}
-      level={11} // 지도의 확대 레벨
+      level={3} // 지도의 확대 레벨
     >
       {carMarkers}
       {chargeMarkers}

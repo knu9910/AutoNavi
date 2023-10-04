@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './userSlice';
 import carSlice from './carSlice';
-import toggleReducer from './toggleSlice';
+import mainReducer from './mainSlice';
 import chargeSlice from './chargeSlice';
 
 const store = configureStore({
@@ -9,7 +9,7 @@ const store = configureStore({
     userStore: userSlice.reducer,
     carStore: carSlice.reducer,
     chargeStore: chargeSlice.reducer,
-    toggleStore: toggleReducer,
+    mainStore: mainReducer,
   },
 });
 

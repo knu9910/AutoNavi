@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import { ExclamationCircleFill } from 'react-bootstrap-icons';
+import { useDispatch } from 'react-redux';
+import { changeCenter } from '../../store/mainSlice';
+import { secondsToHMS, metersToKMAndM } from '../../helperFunction';
 
-const MainCarEntry = ({ carInfo }) => {
+const MainCarEntry = ({ carInfo, onCenterMap }) => {
   const {
     distance,
     duration,
@@ -10,31 +13,21 @@ const MainCarEntry = ({ carInfo }) => {
     car_type,
     realtime_battery,
     traffic_name,
+    location_x,
+    location_y,
   } = carInfo;
-  //duration
+  const dispatch = useDispatch();
 
+  const handleClick = () => {
+    dispatch(changeCenter({ lat: location_x, lng: location_y }));
+  };
+  //duration
   const totalSeconds = duration;
   const timeString = secondsToHMS(totalSeconds);
-  console.log(timeString);
-
-  function secondsToHMS(seconds) {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const remainingSeconds = seconds % 60;
-
-    return `${hours}시간 ${minutes}분 ${remainingSeconds}초`;
-  }
 
   //distance
   const totalMeters = distance;
   const mileage = metersToKMAndM(totalMeters);
-  console.log(mileage);
-  function metersToKMAndM(meters) {
-    const km = Math.floor(meters / 1000);
-    const m = meters % 1000;
-
-    return `${km}km ${m}m`;
-  }
 
   let batteryPercentage = realtime_battery;
   let batteryColorClass = '';
@@ -88,11 +81,7 @@ const MainCarEntry = ({ carInfo }) => {
         <ul className="battery-bar-info">
           <li className="li-detail" style={{ liststyle: 'none' }}>
             <span>
-              <FontAwesomeIcon
-                icon={faTruck}
-                size="5x"
-                onClick={() => (window.location.href = '/car/detail/:id')}
-              />
+              <FontAwesomeIcon icon={faTruck} size="5x" onClick={handleClick} />
               <p>{car_name}</p>
             </span>
             <span className="car-info">

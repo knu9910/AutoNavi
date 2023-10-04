@@ -54,6 +54,13 @@ const updateInteval = async (
 ) => {
   try {
     const car = await carModel.findCar(id);
+    const { data } = await axios.get(
+      `http://localhost:8080/api/history/getHistoryByCar/${id}`,
+    );
+    let { cum_distance, cum_battery } = data;
+    let x = '';
+    let y = '';
+
     if (!car) throw new Error('Bad Request');
     const origin = `${car.location_y},${car.location_x}`;
     let battery = car.realtime_battery;
@@ -73,24 +80,28 @@ const updateInteval = async (
         coordinates.push([vertexes[i], vertexes[i + 1]]);
       }
 
-      let x = '';
-      let y = '';
       for (const location of coordinates) {
         distance -= road_distance / (vertexes.length / 2);
+        cum_distance += road_distance / (vertexes.length / 2);
         duration -= road_duration / (vertexes.length / 2);
 
-        console.log(
-          road_distance,
-          vertexes.length,
-          Math.floor(road_duration / vertexes.length),
-          road_distance / vertexes.length,
-          distance,
-        );
+        if (distance < 0 || duration < 0) {
+          distance = 0;
+          duration = 0;
+        }
         battery -= 0.1;
+        cum_battery += 0.1;
         let [location_y, location_x] = location;
         if (check) {
           if (battery <= 30) {
             let charge = await searchChargingStations(location_x, location_y);
+            await axios.put(
+              `http://localhost:8080/api/history/updateHistory/${id}`,
+              {
+                cum_battery: parseInt(cum_battery),
+                cum_distance: parseInt(cum_distance),
+              },
+            );
             return {
               charge,
               msg: 'low',
@@ -117,23 +128,27 @@ const updateInteval = async (
         x = location_x;
         y = location_y;
       }
+    }
+    await axios.put(`http://localhost:8080/api/history/updateHistory/${id}`, {
+      cum_battery: parseInt(cum_battery),
+      cum_distance: parseInt(cum_distance),
+    });
 
-      if (desCheck) {
-        await axios.patch('http://localhost:8080/api/real/realcar', {
-          location_x: x,
-          location_y: y,
-          battery,
-          operation_st: '대기',
-          origin: null,
-          destination: null,
-          distance: null,
-          duration: null,
-          traffic_speed: null,
-          traffic_state: null,
-          traffic_name: name,
-          id,
-        });
-      }
+    if (desCheck) {
+      await axios.patch('http://localhost:8080/api/real/realcar', {
+        location_x: x,
+        location_y: y,
+        battery,
+        operation_st: '대기',
+        origin: null,
+        destination: null,
+        distance: null,
+        duration: null,
+        traffic_speed: null,
+        traffic_state: null,
+        traffic_name: null,
+        id,
+      });
     }
   } catch (err) {
     throw new Error(err.message);

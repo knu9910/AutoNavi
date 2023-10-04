@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 const carSlice = createSlice({
   name: 'carApp',
-  initialState: { carList: [], currentCar: [], carsInfo: [] },
+  initialState: {
+    carList: [],
+    currentCar: {},
+    carsInfo: [],
+    carStatus: '운행',
+  },
   reducers: {
     getCarList(state, action) {
       state.carList = action.payload.carList;
@@ -21,9 +26,18 @@ const carSlice = createSlice({
     getCarsInfo(state, { payload }) {
       state.carsInfo = payload.carsInfo;
     },
+    changeCarStatus(state, action) {
+      state.carStatus = action.payload.status;
+    },
   },
 });
 
 export default carSlice;
-export const { getCarList, getCurrentCar, addCar, deleteCar, getCarsInfo } =
-  carSlice.actions;
+export const {
+  getCarList,
+  getCurrentCar,
+  addCar,
+  deleteCar,
+  getCarsInfo,
+  changeCarStatus,
+} = carSlice.actions;

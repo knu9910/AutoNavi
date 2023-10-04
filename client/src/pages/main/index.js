@@ -3,18 +3,22 @@ import { useEffect } from 'react';
 import KaKaoMap from './KakaoMap';
 import '../../styles/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getCarList } from '../../store/carSlice';
-import { toggleButton } from '../../store/toggleSlice';
+import { changeCarStatus, getCarList } from '../../store/carSlice';
+import { toggleButton } from '../../store/mainSlice';
 import List from './MainCarList';
 import socket from '../../soket';
 
 const Main = () => {
   const carList = useSelector((state) => state.carStore.carList);
-  const isNavVisible = useSelector((state) => state.toggleStore.isNavVisible);
-  const buttonText = useSelector((state) => state.toggleStore.buttonText);
+  const isNavVisible = useSelector((state) => state.mainStore.isNavVisible);
+  const buttonText = useSelector((state) => state.mainStore.buttonText);
+
   const dispatch = useDispatch();
 
-  console.log(carList[0]);
+  const carSelector = (e) => {
+    dispatch(changeCarStatus({ status: e.target.value.slice(0, -1) }));
+  };
+
   const handleToggleMap = () => {
     dispatch(toggleButton());
   };
@@ -40,7 +44,7 @@ const Main = () => {
         <button className="car-btn" onClick={handleToggleMap}>
           {buttonText}
         </button>
-        <select className="car-selbtn">
+        <select onChange={carSelector} className="car-selbtn">
           <option>운행중</option>
           <option>충전중</option>
           <option>대기중</option>

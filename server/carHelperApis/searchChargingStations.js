@@ -10,9 +10,10 @@ const keyword = '전기차 충전소';
 // 중심 좌표 (예: 서울시청 좌표)
 
 // 검색 반경 (미터)
-const radius = 1000;
+const radius = 5000;
 
 async function searchChargingStations(centerY, centerX) {
+  console.log(centerX, centerY);
   try {
     const response = await axios.get(
       'https://dapi.kakao.com/v2/local/search/keyword.json',
@@ -32,13 +33,17 @@ async function searchChargingStations(centerY, centerX) {
     const places = response.data.documents;
     // 검색 결과를 처리하는 코드 작성
 
-    const cargeSt = places.reduce((acc, cur) => {
-      return acc.distance < cur.distance ? acc : cur;
-    });
-    return cargeSt;
+    let chargeSt;
+    if (places.length !== 0) {
+      chargeSt = places.reduce((acc, cur) => {
+        return acc.distance < cur.distance ? acc : cur;
+      });
+    }
+    console.log(places, chargeSt);
+    return chargeSt;
   } catch (error) {
     // 오류 처리
-    console.error(error);
+    console.error(error, 123123);
   }
 }
 
