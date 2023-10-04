@@ -47,11 +47,9 @@ const History = () => {
     getChargeHistory();
   }, [id]);
 
-  const cumBatterySize = carData?.cum_battery * 0.025;
+  const cumBatterySize = carData?.cum_battery * 0.015;
   const tireChangeSize = carData?.tire_change * 0.1;
   const batteryChangeSize = carData?.battery_change * 0.1;
-  const totalDistance = (carData?.cum_distance * 0.1).toFixed(2);
-  const cumDistanceSize = totalDistance * 0.0025;
 
   return (
     <div className="history_wrap_detail">
@@ -70,12 +68,6 @@ const History = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"> 총 운행거리 (10km) </th>
-                <td style={{ '--size': cumDistanceSize }}>
-                  <span className="data"> {totalDistance} </span>
-                </td>
-              </tr>
               <tr>
                 <th scope="row"> 누적 배터리 사용량 </th>
                 <td style={{ '--size': cumBatterySize }}>

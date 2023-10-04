@@ -32,14 +32,10 @@
 }
 
 #chart1 tbody tr:first-child td {
-  background-color: rgb(4, 163, 249);
-}
-
-#chart1 tbody tr:nth-child(2) td {
   background-color: rgb(25, 134, 211);
 }
 
-#chart1 tbody tr:nth-child(3) td {
+#chart1 tbody tr:nth-child(2) td {
   background-color: rgb(123, 55, 240);
 }
 
