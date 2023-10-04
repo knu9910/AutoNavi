@@ -101,9 +101,9 @@ const History = () => {
           <div className="info_input">
             <div className="info_label_history">충전소 이용 내역</div>
             <div className="info_box_history">
-              <table>
+              <table className="info_table_history">
                 <tbody>
-                  {chargeHistory.slice(0, 3).map((historyItem, index) => (
+                  {chargeHistory.slice(0, 5).map((historyItem, index) => (
                     <tr key={index}>
                       <td>{historyItem.createdAt}</td>
                       <td>{historyItem.name}</td>

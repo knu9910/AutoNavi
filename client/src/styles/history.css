@@ -108,10 +108,11 @@ tr .data {
   border: 1px solid var(--neutral-colors-300, #F1F3F7);
   background: var(--neutral-colors-100, #f0f0f0);
   width: 400px;
-  height: auto;
+  height: 200px;
   padding: 1.1rem 1.1rem;
   font-style: normal;
   font-weight: 400;
+  overflow: auto;
 }
 
 @media (max-width: 820px) {
