@@ -1,5 +1,5 @@
 import { MapMarker } from 'react-kakao-maps-sdk';
-import Marker from '../../img/marker.png';
+import Marker from '../../img/carmarker.png';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 const CarDetailMarker = ({ car }) => {
@@ -17,13 +17,13 @@ const CarDetailMarker = ({ car }) => {
       image={{
         src: Marker, // 마커이미지의 주소입니다
         size: {
-          width: 64,
-          height: 69,
+          width: 40,
+          height: 40,
         }, // 마커이미지의 크기입니다
         options: {
           offset: {
-            x: 27,
-            y: 69,
+            x: 12,
+            y: 36,
           }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
         },
       }}
@@ -32,16 +32,6 @@ const CarDetailMarker = ({ car }) => {
     >
       {/* MapMarker의 자식을 넣어줌으로 해당 자식이 InfoWindow로 만들어지게 합니다 */}
       {/* 인포윈도우에 표출될 내용으로 HTML 문자열이나 React Component가 가능합니다 */}
-      {isOpen && (
-        <div style={{ minWidth: '150px' }}>
-          <div
-            style={{ padding: '5px', color: '#000' }}
-          >{`차량이름: ${car.car_name}`}</div>
-          <div>{`차량 종류: ${car.car_type}`}</div>
-          <div>{`차량 제조년일: ${car.mfg_date}`}</div>
-          <div>{`차량 번호: ${car.car_number}`}</div>
-        </div>
-      )}
     </MapMarker>
   );
 };

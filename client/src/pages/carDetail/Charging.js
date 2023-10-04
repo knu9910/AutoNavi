@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import '../../styles/charging.css';
 import DetailMap from './DetailMap';
 import History from './History';
+import CostChart from './CostChart';
 
 const Charging = () => {
   const currentCar = useSelector((state) => state.carStore.currentCar);
@@ -64,6 +65,7 @@ const Charging = () => {
       </div>
       <div>
         <History />
+        <CostChart />
       </div>
     </div>
   );

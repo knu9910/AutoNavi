@@ -28,7 +28,7 @@ const KaKaoMap = ({ carList }) => {
         width: '100%',
         height: '800px',
       }}
-      level={5} // 지도의 확대 레벨
+      level={3} // 지도의 확대 레벨
     >
       {carMarkers}
       {chargeMarkers}

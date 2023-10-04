@@ -1,0 +1,8 @@
+.costChart {
+    width: 60%;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 10px #babebc;
+    margin: auto;
+    margin-top: 50px;
+};

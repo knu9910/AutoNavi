@@ -9,6 +9,7 @@
     width: 60%;
     padding-top: 50px;
     padding-bottom: 50px;
+    padding-right: 70px;
     margin: auto;
     display: grid;
     grid-gap: 20px;
@@ -40,7 +41,6 @@
 }
 .map_running {
     grid-area: map;
-
 }
 
 .car_info_inner_charging > .info_box_charging {
