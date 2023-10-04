@@ -88,4 +88,45 @@ router.get('/getHistoryByCar/:id', async (req, res) => {
   }
 });
 
+router.post('/addTripHistory', async (req, res) => {
+  try {
+    // 쿼리 실행
+    const result = await historyCarModel.addTripHistory(req.body);
+
+    // 성공적으로 삽입된 경우
+    if (result.affectedRows === 1) {
+      res.status(201).json({ message: 'Trip history added successfully' });
+    } else {
+      res.status(500).json({ error: 'Failed to add trip history' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+router.get('/getTripHistory/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const tripHistory = await historyCarModel.getTripHistory(id);
+
+    res.status(200).json(tripHistory);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+router.get('/getAllTripHistory', async (req, res) => {
+  try {
+    const tripHistoryList = await historyCarModel.getAllTripHistory();
+
+    res.status(200).json(tripHistoryList);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 module.exports = router;

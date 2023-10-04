@@ -89,6 +89,47 @@ const historyCarModel = {
     const [rows] = await pool.query(sql, [carId]);
     return rows[0];
   },
+
+  async addTripHistory(article) {
+    const { car_id, departure, destination, distance, msg } = article;
+
+    // MySQL 쿼리를 생성하여 데이터베이스에 삽입
+    const sql = `
+      INSERT INTO trip_history (car_id, departure, destination, distance, msg)
+      VALUES (?, ?, ?, ?, ?)
+    `;
+
+    // 쿼리 실행
+    const [result] = await pool.query(sql, [
+      car_id,
+      departure,
+      destination,
+      distance,
+      msg,
+    ]);
+
+    return result;
+  },
+
+  async getTripHistory(id) {
+    const sql = `
+        SELECT *
+        FROM trip_history
+        WHERE car_id = ?
+      `;
+
+    // 쿼리 실행
+    const [rows] = await pool.query(sql, [id]);
+    return rows;
+  },
+
+  async getAllTripHistory() {
+    const sql = `SELECT * FROM trip_history`;
+
+    // 쿼리 실행
+    const [rows] = await pool.query(sql);
+    return rows;
+  },
 };
 
 module.exports = historyCarModel;

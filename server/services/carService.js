@@ -13,6 +13,7 @@ const carService = {
         id,
       ]);
       await connection.query('DELETE FROM car_history WHERE car_id = ?', [id]);
+      await connection.query('DELETE FROM trip_history WHERE car_id = ?', [id]);
       // car 테이블에서 데이터 삭제
       const [result] = await connection.query('DELETE FROM car WHERE id = ?', [
         id,
