@@ -1,45 +1,234 @@
 a {text-decoration: none;}
+
 Link {
     text-decoration: none;
 }
-section > p{
-    margin-bottom: 30px;
-    color: #000;
-    text-align: center;
-    font-family: Libre Bodoni;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;    
-}
-
 .car-list {
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    max-width: 960px;
+    max-width: 1200px;
     height: auto;
     margin: auto;
+}
+.dashBoard {
+    background: #d1f4ff96;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+    max-width: 1200px;
+    height: 700px;
+    margin: 20px auto
+}
+
+.dashBoard > .box-dashBoard {
+    background-color: #fff;
+    margin: 45px 10px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+}
+
+.dashBoard > .box-dashBoard .carNoti {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    width: 250px;
+    height: 500px;
+    margin: 0 20px;
+}
+.dashBoard > .box-dashBoard .carNoti > p{
+    margin: 10px;
+}
+.chart-char {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+    width: 580px !important;
+    height: 300px !important;
+}
+.doughnut-chart {
+    background-color: #fff;
+    margin: 45px 10px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+    width: 220px;
+    height: 220px;
+}
+.nav-3 {
+    display: flex;
+}
+.ochart {
+    margin: 10px auto;
+
+    width: 200px !important;
+    height: 200px !important;
+}
+.smallbox {
+    width: 220px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+}
+.smallbox:nth-child(4){
+    margin: 0;
+    height: 200px;
+}
+
+.doughnut-chart > .smallbox > .totalbox {
+    margin: 20px;
+}
+.doughnut-chart > .smallbox > .totalbox > p{
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+.doughnut-chart > .smallbox > .totalbox > .total-content {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center
+}
+.small-listbox {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.small-listbox .small-carlist {
+    font-weight: 600;
+    border-radius: 15px;
+    margin: 5px;
+    display: flex;
+}
+
+.small-listbox li:nth-child(1) {
+    background: #b1e1fff1;
+    justify-content: center;
+}
+.small-listbox li:nth-child(2) {
+    background: #bee6ff;
+    justify-content: center;
+}
+.small-listbox li:nth-child(3) {
+    background: #cae9fd;
+    justify-content: center;
+}
+.small-listbox li:nth-child(4) {
+    background: #d7f0ff;
+    justify-content: center;
+}
+.small-listbox li:nth-child(5) {
+    background: #e4f5ff;
+    justify-content: center;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Inter:400");
+
+.middle {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.middle h1 {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+}
+
+.middle input[type="radio"] {
+  display: none;
+}
+
+.middle input[type="radio"]:checked + .box {
+  background-color: #0300a5;
+}
+
+.middle input[type="radio"]:checked + .box span {
+  color: white;
+  transform: translateY(70px);
+}
+
+.middle input[type="radio"]:checked + .box span:before {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.middle .box {
+  border-radius: 15px;
+  width: 100px;
+  height: auto;
+  background-color: #fff;
+  transition: all 250ms ease;
+  will-change: transition;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: 900;
+}
+
+.middle .box:active {
+  transform: translateY(10px);
+}
+
+.middle .box span {
+  transform: translate(0, 60px);
+  left: 0;
+  right: 0;
+  transition: all 300ms ease;
+  font-size: 16px;
+  user-select: none;
+  color: black;
+}
+
+.middle .box span:before {
+  font-size: 1.2em;
+  font-family: FontAwesome;
+  display: block;
+  transform: translateY(-80px);
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  font-weight: normal;
+  color: white;
+}
+.middle p a {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #fff;
 }
 
 .car-list > .boxheader {
     display: grid;
 }
 
-.car-list > .list {
-    background-color: #fff;
-    border-radius: 15px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(3, auto); 
-    grid-auto-rows: auto; 
-    gap: 20px;
-    justify-items: center;
-    height: 100%; 
+.carlist { 
+    list-style-type: none;
 }
 
+.carbox {
+    margin-top: 20px;
+}
+
+.carbox > .carbox-head > p {
+    margin: 0 ;
+    font-weight: 600;
+    width: 150px;
+    text-align: center;
+}
+.carbox > .carbox-head {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #bff2ff80;
+    height: auto;
+    margin: auto;
+
+}
 .carsearch-box {
     grid-column: 2 / 4;
-	grid-row: 1 / 2; 
+    grid-row: 1 / 2; 
 }
 
 .checkbox,
@@ -123,24 +312,20 @@ span >label {
     margin-right: 30px;
 }
 
-.carbox {
-    min-width: 1000px;
-    margin-top: 50px;
-    display: flex;
-    flex-wrap: wrap;  
-}
-.carlist > .carbox img {
+.card-1  .carlist-info {
+    border: solid 1px #e0e0e0;
     border-radius: 10px;
-    height: 200px;
-    width: 200px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
 }
-.car{
-    margin: 20px;
-    list-style-type: none;
+
+.card-1 .businfo {
+    width: 140px;
+    text-align: center;
+    margin: 0;
 }
-.bus-img{
-    width: 100%;
-}
+
 .businfo {
     color: var(--neutral-colors-600, #6D758F);
     text-decoration: none;
@@ -185,18 +370,24 @@ span >label {
 
 .car-list .paging {
     grid-column: 1 / 4;
-	grid-row: 5 / 6; 
+    grid-row: 5 / 6; 
     align-self: center;
     justify-self: end;
     margin-right: 30px;
+}
+.page-item .page-link {
+    font-size: 11px;
+    border-color: #e0e0e0;
+    background-color: #fff;
+    margin-bottom: 20px;
 }
 .pagination{
     --bs-pagination-active-border-color : #fff;
     --bs-pagination-active-color : #black;
     --bs-pagination-active-bg : #D7F0FF;
     --bs-pagination-active-boxshadow :-5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    margin: 0;
-    justify-content: center;
+    margin: auto;
+    justify-content: end;
     --bs-pagination-color: #black;
 }
 

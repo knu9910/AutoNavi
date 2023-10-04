@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import bus from '../../img/bus.jpg';
 
 const CarEntry = ({ car }) => {
-  const { car_name, id } = car;
+  const { operation_st, car_name, battery, destination, id } = car;
   return (
     <div className="card-1">
       <li className="car">
-        <Link to={`/car/detail/${id}`}>
-          <img className="bus-img" src={bus} alt=" "></img>
+        <Link className="carlist-info" to={`/car/detail/${id}`}>
+          <p className="businfo">{operation_st}</p>
           <p className="businfo">{car_name}</p>
+          <p className="businfo">{destination}30.000km</p>
+          <p className="businfo">{battery}185.235</p>
         </Link>
       </li>
     </div>

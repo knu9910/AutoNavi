@@ -121,6 +121,13 @@ const List = () => {
 
       <div className="carlist">
         <div className="carbox">
+          <div className="carbox-head">
+            <p> Status </p>
+            <p> ID </p>
+            <p> Total Distance </p>
+            <p> Battery Utilization </p>
+          </div>
+
           {displayedCars.map((car) => (
             <CarEntry key={car.id} car={car} />
           ))}
