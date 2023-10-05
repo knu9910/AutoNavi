@@ -47,23 +47,6 @@ const CarReg = () => {
           <p className="carrst-title"> 차량 등록 </p>
 
           <div className="carreg-form">
-            <div className="carrstimg-container">
-              <div>
-                <img id="user_image" src="#" alt="" />
-              </div>
-              <div className="custom-file-upload">
-                <label>
-                  <input
-                    accept=".jpg"
-                    style={{ display: 'none' }}
-                    onChange={PreviewImage}
-                    type="file"
-                    id="user_profile_img"
-                  />
-                  <i className="fa fa-cloud-upload"></i>Img Upload
-                </label>
-              </div>
-            </div>
             <div className="form-container">
               <div className="carrstform-container">
                 <form action="#">

@@ -15,21 +15,9 @@
 .carreg-form{
     margin-top: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
-.carrstimg-container, .form-container {
-margin: auto;
-}
-.custom-file-upload{
-    border: none;
-    outline: none;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 10px 30px;
-    margin: 15px;
-    letter-spacing: 1px;
-    cursor: pointer;
-}
+
 .carreg-btn{
     border-radius: 1.5rem;
     background: #0300A5;
