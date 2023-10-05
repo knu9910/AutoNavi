@@ -1,7 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/carReg.css';
 import { useState } from 'react';
 import axios from 'axios';
+import { addCar } from '../../store/carSlice';
+import { useDispatch } from 'react-redux';
 
 const CarReg = () => {
   const [carName, setCarName] = useState('');
@@ -12,18 +14,26 @@ const CarReg = () => {
 
   const navigate = useNavigate();
 
-  const addCar = async (e) => {
+  const dispatch = useDispatch();
+  const handleAddCar = async (e) => {
     try {
       e.preventDefault();
-      const res = await axios.post('http://localhost:8080/api/cars/carReg', {
+      let car = {
         car_number: carNumber,
         battery_type: batteryType,
         car_type: carType,
         car_name: carName,
         mfg_date: carMfg,
-      });
+      };
+      const res = await axios.post(
+        'http://localhost:8080/api/cars/carReg',
+        car,
+      );
       const { id } = res.data;
+
       if (!id) return alert('이미 존재하는 차량입니다');
+      car.car_id = id;
+      dispatch(addCar({ car }));
       alert('차량등록이 완료되었습니다');
       navigate('/car/carlist');
     } catch (err) {
@@ -32,14 +42,6 @@ const CarReg = () => {
     }
   };
 
-  function PreviewImage() {
-    var preview = new FileReader();
-    preview.onload = function (e) {
-      document.getElementById('user_image').src = e.target.result;
-    };
-
-    preview.readAsDataURL(document.getElementById('user_profile_img').files[0]);
-  }
   return (
     <>
       <section>
@@ -85,7 +87,7 @@ const CarReg = () => {
                       className="carreg-btn"
                       type="submit"
                       value="차량등록"
-                      onClick={addCar}
+                      onClick={handleAddCar}
                     />
                   </div>
                 </form>
