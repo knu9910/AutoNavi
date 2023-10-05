@@ -6,8 +6,25 @@ import History from './History';
 import TotalDistance from './TotalDistance';
 import TotalBattery from './TotalBattery';
 import MostDriveCar from './MostDriveCar';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { getCarsTripHistorys } from '../../../store/historySlice';
+import { useEffect } from 'react';
 
 const CarDashBoard = () => {
+  const dispatch = useDispatch();
+
+  const handleCarsTripHistorys = async () => {
+    const res = await axios.get(
+      'http://localhost:8080/api/history/getAllTripHistory',
+    );
+    const allTripHistorys = res.data;
+    dispatch(getCarsTripHistorys({ allTripHistorys }));
+  };
+
+  useEffect(() => {
+    handleCarsTripHistorys();
+  }, []);
   return (
     <div className="dashBoard">
       <div className="box-dashBoard">
