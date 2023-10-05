@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { changeCenter } from '../../store/mainSlice';
 import { secondsToHMS, metersToKMAndM } from '../../helperFunction';
 
-const MainCarEntry = ({ carInfo, onCenterMap }) => {
+const MainCarEntry = ({ carInfo }) => {
   const {
     distance,
     duration,

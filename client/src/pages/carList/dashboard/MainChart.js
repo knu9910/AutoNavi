@@ -254,7 +254,7 @@ const MainChart = () => {
         labels: ['운행', '미운행'],
         datasets: [
           {
-            data: [15, 10],
+            data: [10, 0],
             backgroundColor: ['#0300a5', '#D7F0FF'],
             cutout: '65%',
           },
