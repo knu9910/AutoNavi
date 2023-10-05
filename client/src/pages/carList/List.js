@@ -13,6 +13,7 @@ const List = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const carsInfo = useSelector((state) => state.carStore.carsInfo);
+
   const carsHistorys = useSelector(
     (state) => state.historyStore.allCarsHistorys,
   );
@@ -65,7 +66,7 @@ const List = () => {
   const endIndex = startIndex + itemsPerPage;
   const displayedCars = filteredCars.slice(startIndex, endIndex);
 
-  const list = displayedCars.map((car, index) => {
+  const list = displayedCars.map((car) => {
     const carHistory = carsHistorys.find(
       (history) => car.id === history.car_id,
     );

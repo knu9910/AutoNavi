@@ -3,7 +3,7 @@ import '../../styles/carList.css';
 import List from './List';
 import CarDashBoard from './dashboard/index';
 import axios from 'axios';
-import { getCarsHistorys } from '../../store/historySlice';
+import { getCarsHistorys, sortCarsHistorys } from '../../store/historySlice';
 import { useEffect } from 'react';
 
 const CarList = () => {
@@ -16,6 +16,7 @@ const CarList = () => {
       );
       const historys = res.data;
       dispatch(getCarsHistorys({ historys }));
+      dispatch(sortCarsHistorys());
     } catch (err) {
       console.error(err);
     }

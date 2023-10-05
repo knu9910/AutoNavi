@@ -1,11 +1,11 @@
 import '../../../styles/carList.css';
 import 'chart.js';
-import MainChart from './mainChart';
-import DoughnutChart from './doughnutChart';
-import History from './history';
-import TotalDistance from './totalDistance';
-import TotalBattery from './totalBattery';
-import MostDriveCar from './mostDriveCar';
+import MainChart from './MainChart';
+import DoughnutChart from './DoughnutChart';
+import History from './History';
+import TotalDistance from './TotalDistance';
+import TotalBattery from './TotalBattery';
+import MostDriveCar from './MostDriveCar';
 
 const CarDashBoard = () => {
   return (
