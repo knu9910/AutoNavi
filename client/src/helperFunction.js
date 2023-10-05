@@ -12,3 +12,19 @@ export function secondsToHMS(seconds) {
 
   return `${hours}시간 ${minutes}분 ${remainingSeconds}초`;
 }
+
+export function parseDateString(dateString) {
+  const date = new Date(dateString);
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  const formattedDate = `${year}-${month}-${day}`;
+  const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+  return { date: formattedDate, time: formattedTime };
+}
