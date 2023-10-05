@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
 const History = () => {
-  // const [carData, setCarData] = useState({});
   const [chargeHistory, setChargeHistory] = useState([]);
+  const [tripHistory, setTripHistory] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -17,19 +17,6 @@ const History = () => {
   const currentDate = `${year}-${month}-${day}`;
 
   useEffect(() => {
-    // const getCar = async () => {
-    //   try {
-    //     const response = await axios.get(
-    //       `http://localhost:8080/api/history/getHistoryByCar/${id}`,
-    //     );
-    //     const carData = response.data;
-    //     setCarData(carData);
-    //   } catch (err) {
-    //     navigate('/notFound');
-    //     console.error(err);
-    //   }
-    // };
-
     const getChargeHistory = async () => {
       try {
         const response = await axios.get(
@@ -43,8 +30,21 @@ const History = () => {
       }
     };
 
-    // getCar();
+    const getTripHistory = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/history/getTripHistory/${id}`,
+        );
+        const TripHistoryData = response.data;
+        setTripHistory(TripHistoryData);
+      } catch (err) {
+        navigate('/notFound');
+        console.error(err);
+      }
+    };
+
     getChargeHistory();
+    getTripHistory();
   }, [id]);
 
   return (
@@ -74,7 +74,22 @@ const History = () => {
           </div>
           <div className="info_input">
             <div className="info_label_history">최근 운행 경로</div>
-            <div className="info_box_history"></div>
+            <div className="info_box_history">
+              <table className="info_table_history">
+                <tbody>
+                  {tripHistory.slice(0, 7).map((historyItem, index) => (
+                    <tr key={index}>
+                      <td>{historyItem.createdAt}</td>
+                      <td>출발지: {historyItem.departure}</td>
+                      <td>행선지: {historyItem.destination}</td>
+                      <td>거리 {historyItem.distance}km</td>
+                      <td>{historyItem.msg}</td>
+                      <br />
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
           <div className="info_input">
             <div className="info_label_history">사고 발생 내역</div>
