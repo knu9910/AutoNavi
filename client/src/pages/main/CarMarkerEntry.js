@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk';
 import Marker from '../../img/carmarker.png';
 import { secondsToHMS, metersToKMAndM } from '../../helperFunction';
@@ -45,7 +46,7 @@ const CarMarkerEntry = ({ car }) => {
             lat: car.location_x, // 마커 위치와 동일한 위치에 오버레이 표시
             lng: car.location_y,
           }}
-          yAnchor={1.25}
+          yAnchor={1.54}
         >
           <div
             className="custom-overlay"
@@ -53,7 +54,7 @@ const CarMarkerEntry = ({ car }) => {
               fontSize: '13px',
               backgroundColor: '#fff',
               borderRadius: '15px',
-              width: '230px',
+              width: '200px',
               outline: 'none',
               fontWeight: 'bold',
               padding: '5px 10px',
@@ -64,12 +65,10 @@ const CarMarkerEntry = ({ car }) => {
             }}
           >
             <span className="title">차량 정보</span>
-            <div className="title">차량 이름: {car.car_name}</div>
-            <div>차량번호: {car.car_number}</div>
-            <div>남은거리: {distance}</div>
-            <div>남은 도착 시간: {duration}</div>
-            <div className="title"></div>
-            <div></div>
+            <div className="title">차량 번호: {car.car_number}</div>
+            <div>남은거리: {car.distance}</div>
+            <div>운행시간: {car.duration}</div>
+            <Link to={`/car/detail/${car.car_id}`}>차량상세정보보기 </Link>
           </div>
         </CustomOverlayMap>
       )}
