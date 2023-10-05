@@ -129,4 +129,15 @@ router.get('/getAllTripHistory', async (req, res) => {
   }
 });
 
+router.get('/getTodayTotalDistance', async (req, res) => {
+  try {
+    // 오늘 날짜 구하기
+    const totalDistance = await historyCarModel.getTodayTotalDistance();
+    res.status(200).json({ totalDistance });
+  } catch (error) {
+    console.error('쿼리 실행 오류:', error.message);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 module.exports = router;

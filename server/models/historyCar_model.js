@@ -140,6 +140,21 @@ const historyCarModel = {
     const [rows] = await pool.query(sql);
     return rows;
   },
+
+  async getTodayTotalDistance() {
+    const today = new Date().toISOString().slice(0, 10);
+
+    // 오늘 저장된 거리(distance) 합계 쿼리
+    const query = `
+      SELECT SUM(distance) AS total_distance
+      FROM trip_history
+      WHERE DATE(createdAt) = ?;
+    `;
+
+    const [results] = await pool.query(query, [today]);
+    const totalDistance = results[0].total_distance || 0;
+    return totalDistance;
+  },
 };
 
 module.exports = historyCarModel;
