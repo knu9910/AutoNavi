@@ -5,6 +5,7 @@ import CarDashBoard from './dashboard/index';
 import axios from 'axios';
 import { getCarsHistorys, sortCarsHistorys } from '../../store/historySlice';
 import { useEffect } from 'react';
+import { getCarsInfo } from '../../store/carSlice';
 
 const CarList = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,19 @@ const CarList = () => {
       console.error(err);
     }
   };
+  const handleGetCars = async () => {
+    try {
+      const res = await axios.get('http://localhost:8080/api/cars');
+      const data = res.data;
+      dispatch(getCarsInfo({ carsInfo: data }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     handleCarsHistorys();
+    handleGetCars();
   }, []);
   return (
     <>

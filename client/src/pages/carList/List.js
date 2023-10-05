@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PaginationComp from '../../components/common/PaginationComp';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CarEntry from './CarEntry';
-import axios from 'axios';
-import { getCarsInfo } from '../../store/carSlice';
 
 const List = () => {
   const [carInOp, setCarInOp] = useState(true);
@@ -17,17 +15,6 @@ const List = () => {
   const carsHistorys = useSelector(
     (state) => state.historyStore.allCarsHistorys,
   );
-  const dispatch = useDispatch();
-
-  const handleGetCars = async () => {
-    try {
-      const res = await axios.get('http://localhost:8080/api/cars');
-      const data = res.data;
-      dispatch(getCarsInfo({ carsInfo: data }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   // 검색 기능
   const handleSearch = (e) => {
@@ -51,10 +38,6 @@ const List = () => {
     return filteredCars;
   };
 
-  useEffect(() => {
-    handleGetCars();
-  }, []);
-
   const filteredCars = handleOpst(carInOp, '운행')
     .concat(handleOpst(carCharge, '충전'))
     .concat(handleOpst(carWaiting, '대기'));
@@ -70,7 +53,7 @@ const List = () => {
     const carHistory = carsHistorys.find(
       (history) => car.id === history.car_id,
     );
-
+    console.log(carHistory, car, 12312);
     return <CarEntry key={car.id} car={car} history={carHistory} />;
   });
   return (
