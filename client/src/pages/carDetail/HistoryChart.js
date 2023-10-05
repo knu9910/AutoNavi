@@ -16,14 +16,9 @@ const HistoryChart = () => {
     '타이어 교체 횟수',
     '배터리 교체 횟수',
   ];
-  const barColors = [
-    'rgb(100, 153, 233)',
-    'rgb(158, 221, 255)',
-    'rgb(166, 246, 255)',
-    'rgb(190, 255, 247)',
-  ];
+  const barColors = ['#3B6BA5', '#72A5D3', '#98DCE8', '#B1D3E3'];
 
-  // 데이터 로딩 useEffect
+  // 데이터 로딩
   useEffect(() => {
     const getCar = async () => {
       try {
@@ -41,7 +36,7 @@ const HistoryChart = () => {
     getCar();
   }, [id, navigate]);
 
-  // 차트 렌더링 useEffect
+  // 차트 렌더링
   useEffect(() => {
     const canvas = document.getElementById('myChart');
     if (!canvas) {
@@ -49,7 +44,6 @@ const HistoryChart = () => {
       return;
     }
 
-    // 새로운 차트를 생성하기 전에 이전 차트를 파괴
     if (chartRef.current) {
       chartRef.current.destroy();
     }
@@ -72,10 +66,10 @@ const HistoryChart = () => {
         labels: xValues,
         datasets: [
           {
-            barPercentage: 0.6,
+            barPercentage: 0.5,
             backgroundColor: barColors,
             data: [
-              carData?.cum_battery, // carData 값이 없을 때 기본값 0으로 설정
+              carData?.cum_battery,
               carData?.accident,
               carData?.tire_change,
               carData?.battery_change,
