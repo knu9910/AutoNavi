@@ -13,6 +13,9 @@ const List = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const carsInfo = useSelector((state) => state.carStore.carsInfo);
+  const carsHistorys = useSelector(
+    (state) => state.historyStore.allCarsHistorys,
+  );
   const dispatch = useDispatch();
 
   const handleGetCars = async () => {
@@ -55,11 +58,6 @@ const List = () => {
     .concat(handleOpst(carCharge, '충전'))
     .concat(handleOpst(carWaiting, '대기'));
 
-  // const list = cars.map((car) => {
-  //   return <CarEntry key={car.id} car={car} />;
-  // });
-
-  // 페이지당 데이터 8개 제한
   const itemsPerPage = 8;
 
   // 페이지별 data
@@ -67,6 +65,13 @@ const List = () => {
   const endIndex = startIndex + itemsPerPage;
   const displayedCars = filteredCars.slice(startIndex, endIndex);
 
+  const list = displayedCars.map((car, index) => {
+    const carHistory = carsHistorys.find(
+      (history) => car.id === history.car_id,
+    );
+
+    return <CarEntry key={car.id} car={car} history={carHistory} />;
+  });
   return (
     <>
       <div className="boxheader">
@@ -128,9 +133,7 @@ const List = () => {
             <p> Battery Utilization </p>
           </div>
 
-          {displayedCars.map((car) => (
-            <CarEntry key={car.id} car={car} />
-          ))}
+          {list}
         </div>
       </div>
       <div className="car-paging">
