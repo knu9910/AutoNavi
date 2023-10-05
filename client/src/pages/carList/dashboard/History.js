@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
-import HistoryEntry from '../HistoryEntry';
+import HistoryEntry from './HistoryEntry';
 const History = () => {
   const allTripHistorys = useSelector(
     (state) => state.historyStore.allCarsTripHistorys,
