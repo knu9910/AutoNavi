@@ -155,6 +155,23 @@ const historyCarModel = {
     const totalDistance = results[0].total_distance || 0;
     return totalDistance;
   },
+  async getTodayChargeTotal() {
+    // 오늘 날짜 구하기
+
+    const today = new Date().toISOString().slice(0, 10);
+
+    // 오늘 저장된 충전 요금 합계 쿼리
+    const sql = `
+        SELECT SUM(fee) AS total_charge
+        FROM charge_history
+        WHERE DATE(createdAt) = ?;
+      `;
+
+    const [rows] = await pool.query(sql, [today]);
+    const totalCharge = rows[0].total_charge || 0;
+
+    return totalCharge;
+  },
 };
 
 module.exports = historyCarModel;

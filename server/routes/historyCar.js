@@ -140,4 +140,15 @@ router.get('/getTodayTotalDistance', async (req, res) => {
   }
 });
 
+router.get('/getTodayChargeTotal', async (req, res) => {
+  try {
+    const totalCharge = await historyCarModel.getTodayChargeTotal();
+
+    res.json({ totalCharge });
+  } catch (error) {
+    console.error('쿼리 실행 오류:', error.message);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 module.exports = router;
