@@ -10,11 +10,11 @@ const historyCarModel = {
 
   // 하나의 차량의 날짜별 충전소 history
   async chargeFind(id, preDate, nextDate) {
-    console.log(id, preDate, nextDate);
     const sql = `
-    SELECT *
-    FROM charge_history
-    WHERE car_id = ? AND createdAt >= ? AND createdAt <= ?
+    SELECT ch.*, c.car_name  -- car_name 추가
+    FROM charge_history ch
+    JOIN car c ON ch.car_id = c.id
+    WHERE ch.car_id = ? AND ch.createdAt >= ? AND ch.createdAt <= ?
   `;
 
     const [rows] = await pool.query(sql, [id, preDate, nextDate]);
@@ -23,14 +23,18 @@ const historyCarModel = {
 
   // 전체 차량의 토탈 금액 history
   async chargeFindAll(preDate, nextDate) {
-    const sql = `SELECT car_id, SUM(fee) AS total_charge
-      FROM charge_history
-      WHERE createdAt >= ? AND createdAt <= ?
-      GROUP BY car_id`;
+    const sql = `
+      SELECT ch.car_id, c.car_name, SUM(ch.fee) AS total_charge  -- car_name 추가
+      FROM charge_history ch
+      JOIN car c ON ch.car_id = c.id
+      WHERE ch.createdAt >= ? AND ch.createdAt <= ?
+      GROUP BY ch.car_id, c.car_name;
+    `;
 
     const [rows] = await pool.query(sql, [preDate, nextDate]);
     return rows;
   },
+
   async historyUpdate(id, article) {
     console.log(article);
     const conditions = [];
@@ -74,16 +78,19 @@ const historyCarModel = {
   },
 
   async getCarAllHistory() {
-    const sql = `SELECT * FROM car_history`;
+    const sql = `SELECT ch.*, c.car_name  -- car_name 추가
+                 FROM car_history ch
+                 JOIN car c ON ch.car_id = c.id`;
     const [history] = await pool.query(sql);
     return history;
   },
 
   async getCarHistoryByCarId(carId) {
     const sql = `
-      SELECT *
-      FROM car_history
-      WHERE car_id = ?
+      SELECT ch.*, c.car_name  -- car_name 추가
+      FROM car_history ch
+      JOIN car c ON ch.car_id = c.id
+      WHERE ch.car_id = ?
     `;
 
     const [rows] = await pool.query(sql, [carId]);
@@ -113,9 +120,10 @@ const historyCarModel = {
 
   async getTripHistory(id) {
     const sql = `
-        SELECT *
-        FROM trip_history
-        WHERE car_id = ?
+        SELECT th.*, c.car_name  -- car_name 추가
+        FROM trip_history th
+        JOIN car c ON th.car_id = c.id
+        WHERE th.car_id = ?
       `;
 
     // 쿼리 실행
@@ -124,7 +132,9 @@ const historyCarModel = {
   },
 
   async getAllTripHistory() {
-    const sql = `SELECT * FROM trip_history`;
+    const sql = `SELECT th.*, c.car_name  -- car_name 추가
+                 FROM trip_history th
+                 JOIN car c ON th.car_id = c.id`;
 
     // 쿼리 실행
     const [rows] = await pool.query(sql);
