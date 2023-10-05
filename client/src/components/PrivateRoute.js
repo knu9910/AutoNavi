@@ -21,7 +21,8 @@ const PrivateRoute = () => {
 
   if (
     masterPaths.includes(location.pathname) &&
-    (role !== 'master' || storedRole !== 'master')
+    role !== 'master' &&
+    storedRole !== 'master'
   ) {
     alert('접근권한이 없습니다.');
     return <Navigate to="/main" />;
@@ -29,7 +30,8 @@ const PrivateRoute = () => {
 
   if (
     location.pathname === '/car/carreg' &&
-    (controlRights !== '있음' || storedControlRights !== '있음')
+    controlRights !== '있음' &&
+    storedControlRights !== '있음'
   ) {
     alert('접근 권한이 없습니다.');
     return <Navigate to="/main" />;
