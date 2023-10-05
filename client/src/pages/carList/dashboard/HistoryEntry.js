@@ -1,4 +1,4 @@
-import { metersToKMAndM, parseDateString } from '../../helperFunction';
+import { metersToKMAndM, parseDateString } from '../../../helperFunction';
 
 const HistoryEntry = ({ tripHistory }) => {
   console.log(tripHistory);
