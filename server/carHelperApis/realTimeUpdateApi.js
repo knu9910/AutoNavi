@@ -6,6 +6,7 @@ const searchChargingStations = require('./searchChargingStations');
 // 카카오 API 키
 const REST_API_KEY = process.env.REST_API;
 const wait = require('./wait');
+const getCoordinateAddress = require('./getAddress');
 async function getDirections(origin, destination) {
   const waypoints = '';
   const priority = 'RECOMMEND';
@@ -53,6 +54,13 @@ const updateInteval = async (
   desCheck = false,
 ) => {
   try {
+    let msg = '출발';
+    if (!check) {
+      msg = '충전';
+    } else if (desCheck) {
+      msg = '복귀';
+    }
+
     const car = await carModel.findCar(id);
     const { data } = await axios.get(
       `http://localhost:8080/api/history/getHistoryByCar/${id}`,
@@ -63,12 +71,28 @@ const updateInteval = async (
 
     if (!car) throw new Error('Bad Request');
     const origin = `${car.location_y},${car.location_x}`;
+
+    const distanceArr = destination.split(',');
+
+    let start = await getCoordinateAddress(car.location_y, car.location_x);
+    let end = await getCoordinateAddress(distanceArr[0], distanceArr[1]);
+
     let battery = car.realtime_battery;
 
     let { distance, duration, roads } = await getDirections(
       origin,
       destination,
     );
+
+    let body = {
+      car_id: id,
+      departure: start,
+      destination: end,
+      distance,
+      msg,
+    };
+    await axios.post('http://localhost:8080/api/history/addTripHistory', body);
+
     for (const real of roads) {
       const { name, traffic_speed, traffic_state, vertexes } = real;
       const road_distance = real.distance;
@@ -150,6 +174,9 @@ const updateInteval = async (
         id,
       });
     }
+
+    body.msg = '도착';
+    await axios.post('http://localhost:8080/api/history/addTripHistory', body);
   } catch (err) {
     throw new Error(err.message);
   }
