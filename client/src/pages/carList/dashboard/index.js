@@ -1,7 +1,6 @@
 import '../../../styles/carList.css';
 import 'chart.js';
 import MainChart from './MainChart';
-import DoughnutChart from './DoughnutChart';
 import History from './History';
 import TotalDistance from './TotalDistance';
 import TotalBattery from './TotalBattery';
@@ -14,6 +13,7 @@ import {
 } from '../../../store/historySlice';
 import { useEffect } from 'react';
 import { metersToKMAndM } from '../../../helperFunction';
+import OpreationState from './OpreationState';
 
 const CarDashBoard = () => {
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ const CarDashBoard = () => {
     handleCarsTripHistorys();
     handleTodayTotalDistance();
   }, []);
+
   return (
     <div className="dashBoard">
       <div className="box-dashBoard">
@@ -47,7 +48,7 @@ const CarDashBoard = () => {
       <MainChart />
       <div className="nav-3">
         <div className="doughnut-chart">
-          <DoughnutChart />
+          <OpreationState />
           <div className="smallbox">
             <TotalDistance />
           </div>
