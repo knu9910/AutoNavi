@@ -1,8 +1,4 @@
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentCar } from '../../store/carSlice';
-import { useNavigate, useParams } from 'react-router';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import '../../styles/charging.css';
 import DetailMap from './DetailMap';
 import History from './DetailHistory';
@@ -10,25 +6,7 @@ import CostChart from './CostChart';
 
 const Charging = () => {
   const currentCar = useSelector((state) => state.carStore.currentCar);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { id } = useParams();
   const carList = useSelector((state) => state.carStore.carList);
-
-  const getCar = async () => {
-    try {
-      const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
-      const car = res.data;
-      dispatch(getCurrentCar({ currentCar: car }));
-    } catch (err) {
-      navigate('/notFound');
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getCar();
-  }, []);
 
   return (
     <div>

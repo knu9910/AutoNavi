@@ -3,8 +3,8 @@ import { useDaumPostcodePopup } from 'react-daum-postcode';
 import { useNavigate, useParams } from 'react-router';
 import '../../styles/waiting.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef } from 'react';
-import { deleteCar, getCurrentCar } from '../../store/carSlice';
+import { useRef } from 'react';
+import { deleteCar } from '../../store/carSlice';
 import History from './DetailHistory';
 
 const Waiting = () => {
@@ -15,21 +15,6 @@ const Waiting = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-
-  const getCar = async () => {
-    try {
-      const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
-      const car = res.data;
-      dispatch(getCurrentCar({ currentCar: car }));
-    } catch (err) {
-      navigate('/notFound');
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getCar();
-  }, []);
 
   const handleDeleteCar = async () => {
     try {
