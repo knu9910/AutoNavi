@@ -10,13 +10,8 @@ const HistoryChart = () => {
   const { id } = useParams();
   const chartRef = useRef(null);
 
-  const xValues = [
-    '누적 배터리 사용량',
-    '사고 발생 횟수',
-    '타이어 교체 횟수',
-    '배터리 교체 횟수',
-  ];
-  const barColors = ['#3B6BA5', '#72A5D3', '#98DCE8', '#B1D3E3'];
+  const xValues = ['사고 발생 횟수', '타이어 교체 횟수', '배터리 교체 횟수'];
+  const barColors = ['#3B6BA5', '#72A5D3', '#98DCE8'];
 
   // 데이터 로딩
   useEffect(() => {
@@ -69,7 +64,6 @@ const HistoryChart = () => {
             barPercentage: 0.5,
             backgroundColor: barColors,
             data: [
-              carData?.cum_battery,
               carData?.accident,
               carData?.tire_change,
               carData?.battery_change,
