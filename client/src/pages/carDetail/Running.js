@@ -29,6 +29,43 @@ const Running = () => {
     getCar();
   }, []);
 
+  const getTrafficStateText = (trafficState) => {
+    switch (trafficState) {
+      case 0:
+        return '교통 상태 정보 없음';
+      case 1:
+        return '교통 정체';
+      case 2:
+        return '교통 지체';
+      case 3:
+        return '교통 서행';
+      case 4:
+        return '교통 원활';
+      case 6:
+        return '교통사고(통행 불가)';
+      default:
+        return 'nodata';
+    }
+  };
+
+  const getTrafficStateColor = (trafficState) => {
+    switch (trafficState) {
+      case 0:
+        return '';
+      case 1:
+        return 'rgb(239, 11, 11, 0.3)'; // Red
+      case 2:
+        return 'rgb(162, 165, 19, 0.3)'; // Yellow
+      case 3:
+        return 'rgb(31, 154, 31, 0.3)'; // Green
+      case 4:
+        return 'rgb(19, 69, 165, 0.3)'; // Blue
+      case 6:
+        return 'rgb(239, 11, 11, 0.3)'; // Red
+      default:
+        return 'rgb(0, 0, 0)';
+    }
+  };
   return (
     <div>
       <div className="car_wrap_detail_running">
@@ -48,7 +85,16 @@ const Running = () => {
               <div className="info_label_running">현재위치</div>
               <div className="info_box_running">{currentCar.traffic_name}</div>
               <div className="info_label_running">교통상태</div>
-              <div className="info_box_running">{currentCar.traffic_state}</div>
+              <div
+                className="info_box_running"
+                style={{
+                  backgroundColor: getTrafficStateColor(
+                    currentCar.traffic_state,
+                  ),
+                }}
+              >
+                {getTrafficStateText(currentCar.traffic_state)}
+              </div>
               <div className="info_label_running">배터리 잔량</div>
               <div className="info_box_running">
                 {currentCar.realtime_battery + '%'}
