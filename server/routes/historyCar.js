@@ -150,5 +150,15 @@ router.get('/getTodayChargeTotal', async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+// routes.js 파일에 다음 라우트를 추가합니다.
+router.get('/getDailyDistanceData', async (req, res) => {
+  try {
+    const monthlyTotalDistance = await historyCarModel.getDailyDistanceData();
+    res.status(200).json(monthlyTotalDistance);
+  } catch (error) {
+    console.error('쿼리 실행 오류:', error.message);
+    res.status(500).json({ error: '서버 오류' });
+  }
+});
 
 module.exports = router;
