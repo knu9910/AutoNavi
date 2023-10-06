@@ -172,8 +172,8 @@ const historyCarModel = {
 
     return totalCharge;
   },
-  // historyCarModel.js 파일에 다음 함수를 추가합니다.
-  async getMonthlyTotalDistance() {
+
+  async getDailyDistanceData() {
     // 이번 달의 시작 날짜와 종료 날짜를 계산합니다.
     const today = new Date();
     const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -213,44 +213,26 @@ const historyCarModel = {
 
     return results;
   },
+  async getMonthlyTotalDistance() {
+    // 이번 년도를 가져옵니다.
+    const thisYear = new Date().getFullYear();
 
-  async getDailyDistanceData() {
-    // 이번 달의 시작 날짜와 종료 날짜를 계산합니다.
-    const today = new Date();
-    const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-    const lastDayOfMonth = new Date(
-      today.getFullYear(),
-      today.getMonth() + 1,
-      0,
-    );
-
-    // 이번 달의 모든 날짜를 생성합니다.
-    const dates = [];
-    const currentDate = new Date(firstDayOfMonth);
-    while (currentDate <= lastDayOfMonth) {
-      dates.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() + 1);
-    }
-
-    // 이번 달의 각 일자에 대한 total_distance를 계산하는 쿼리
+    // 1월부터 12월까지의 월별 total_distance를 계산하는 쿼리
     const sql = `
-      SELECT DATE(createdAt) AS date, SUM(distance) AS total_distance
-      FROM trip_history
-      WHERE DATE(createdAt) >= ? AND DATE(createdAt) <= ?
-      GROUP BY date
-      ORDER BY date;
+      SELECT months.month, IFNULL(SUM(distance), 0) AS total_distance
+      FROM (
+        SELECT 1 AS month
+        UNION SELECT 2 UNION SELECT 3 UNION SELECT 4
+        UNION SELECT 5 UNION SELECT 6 UNION SELECT 7
+        UNION SELECT 8 UNION SELECT 9 UNION SELECT 10
+        UNION SELECT 11 UNION SELECT 12
+      ) AS months
+      LEFT JOIN trip_history ON months.month = MONTH(createdAt) AND YEAR(createdAt) = ?
+      GROUP BY months.month
+      ORDER BY months.month;
     `;
 
-    const results = await Promise.all(
-      dates.map(async (date) => {
-        const [rows] = await pool.query(sql, [date, date]);
-        const formattedDate = date.getDate(); // 날짜만 추출
-        return {
-          date: formattedDate,
-          total_distance: rows[0] ? rows[0].total_distance : 0,
-        };
-      }),
-    );
+    const [results] = await pool.query(sql, [thisYear]);
 
     return results;
   },
