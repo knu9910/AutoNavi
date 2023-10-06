@@ -18,6 +18,7 @@ const HistoryEntry = ({ tripHistory }) => {
         <span>
           시간 : {date} {time}
         </span>
+        <span>메세지: {msg}</span>
       </div>
     </li>
   );
