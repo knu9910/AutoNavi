@@ -7,6 +7,8 @@ const historySlice = createSlice({
     currentCarHistory: {},
     mostDrivenList: [],
     allCarsTripHistorys: [],
+    carTripHistory: [],
+    chargeHistory: [],
     todayTotalDistance: '',
   },
   reducers: {
@@ -22,6 +24,12 @@ const historySlice = createSlice({
     getCarsTripHistorys(state, action) {
       state.allCarsTripHistorys = action.payload.allTripHistorys;
     },
+    getOneTripHistory(state, action) {
+      state.carTripHistory = action.payload.tripData;
+    },
+    getChargeHistory(state, action) {
+      state.chargeHistory = action.payload.chargeData;
+    },
     getTodayTotalDistance(state, action) {
       state.todayTotalDistance = action.payload.distance;
     },
@@ -33,5 +41,7 @@ export const {
   getCarsHistorys,
   sortCarsHistorys,
   getCarsTripHistorys,
+  getOneTripHistory,
+  getChargeHistory,
   getTodayTotalDistance,
 } = historySlice.actions;

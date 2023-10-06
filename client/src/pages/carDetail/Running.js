@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import { useEffect } from 'react';
 import '../../styles/running.css';
 import DetailMap from './DetailMap';
-import History from './History';
+import History from './DetailHistory';
 
 const Running = () => {
   const currentCar = useSelector((state) => state.carStore.currentCar);

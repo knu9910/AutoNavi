@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import { useEffect } from 'react';
 import '../../styles/charging.css';
 import DetailMap from './DetailMap';
-import History from './History';
+import History from './DetailHistory';
 import CostChart from './CostChart';
 
 const Charging = () => {

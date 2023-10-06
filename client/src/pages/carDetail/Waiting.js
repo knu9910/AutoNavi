@@ -5,7 +5,7 @@ import '../../styles/waiting.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { deleteCar, getCurrentCar } from '../../store/carSlice';
-import History from './History';
+import History from './DetailHistory';
 
 const Waiting = () => {
   const destinationRef = useRef(null);
