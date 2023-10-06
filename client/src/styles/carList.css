@@ -45,7 +45,6 @@ Link {
     margin: 10px;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    width: 580px !important;
     height: 300px !important;
 }
 .doughnut-chart {
