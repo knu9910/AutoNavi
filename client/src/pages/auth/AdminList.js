@@ -178,7 +178,7 @@ const AdminList = () => {
           <tfoot>
             <tr className="table-foot">
               <td>
-                <span className="item-filter-text"></span>
+                <span className="item-filter-text">items per page: </span>
                 <div className="item-filter" tabIndex="1">
                   <input
                     className="selectopt"

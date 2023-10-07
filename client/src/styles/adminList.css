@@ -9,7 +9,7 @@ tbody, td, tfoot, th, thead, tr {
     .cp-table > thead > tr{
         display: flex;
         text-align: center;
-        width: 1000px;
+        width: 1280px;
         border-radius: 15px;
         border: none;
         outline: none;
@@ -26,7 +26,7 @@ tbody, td, tfoot, th, thead, tr {
     }
     .cp-table tbody {
         transition: transform 80ms ease-in;
-        width: 1000px;
+        width: 1280px;
         border-radius: 15px;
         border: none;
         outline: none;
@@ -44,14 +44,15 @@ tbody, td, tfoot, th, thead, tr {
         background:#D7F0FF;
     }
     .cp-table > tbody > tr{
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(7, 180px);
     }
     
     .cp-table > tfoot > tr {
     
         display: flex;
         text-align: center;
-        width: 1000px;
+        width: 1280px;
         border-radius: 15px;
         border: none;
         outline: none;
@@ -71,12 +72,12 @@ tbody, td, tfoot, th, thead, tr {
     }
     .cp-table tbody > tr > td {
         text-align: center;
-        width: 1000px;
+        width: 180px;
     }
     
     .cp-search-box{
         margin: auto;
-        width: 1000px;
+        width: 1250px;
         display: flex;
         justify-content: space-between;
     }
@@ -84,13 +85,13 @@ tbody, td, tfoot, th, thead, tr {
         margin: 0;
     }
     .cp-button1{
-        margin-top: 45px;
+        margin-top: 50px;
         border-radius: 15px;
         border: none;
         outline: none;
         font-size: 13px;
         font-weight: bold;
-        padding: 5px 15px;
+        padding: 7px 17px;
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
@@ -114,8 +115,8 @@ tbody, td, tfoot, th, thead, tr {
     }
     
     .cp-search-box .cp-search {
-        width: 140px;
-        height: 25px;
+        width: 150px;
+        height: 30.5px;
         background: #6e6e6e;
         border-radius: 25px;
         position: relative;
@@ -141,10 +142,14 @@ tbody, td, tfoot, th, thead, tr {
         position: absolute;
         top: 0;
         right: 0;
-        width: 26px;
+        width: 30px;
         height: 100%;
         border-radius: 50%;
         border: none;
+    }
+
+    .cp-button > i {
+        margin-top: 6px;
     }
     
     
@@ -323,8 +328,8 @@ tbody, td, tfoot, th, thead, tr {
     }
     
     .item-filter-text {
-        margin: 0;
-        font-weight: bold;
+        margin-right: 5px;
+        font-weight: lighter;
     }
     
     .text-center { 
