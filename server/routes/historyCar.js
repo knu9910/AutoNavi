@@ -172,4 +172,26 @@ router.get('/getMonthlyTotalDistance', async (req, res) => {
   }
 });
 
+router.get('/getChargeTotal/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const chargeTotal = await historyCarModel.getWeeklyChargeTotal(id);
+    res.status(200).json(chargeTotal);
+  } catch (error) {
+    console.error('쿼리 실행 오류:', error.message);
+    res.status(500).json({ error: '서버 오류' });
+  }
+});
+
+router.get('/getMonthlyChargeTotal/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const monthlyChargeTotal = await historyCarModel.getMonthlyChargeTotal(id);
+    res.status(200).json(monthlyChargeTotal);
+  } catch (error) {
+    console.error('쿼리 실행 오류:', error.message);
+    res.status(500).json({ error: '서버 오류' });
+  }
+});
+
 module.exports = router;

@@ -236,6 +236,71 @@ const historyCarModel = {
 
     return results;
   },
+
+  async getWeeklyChargeTotal(carId) {
+    const today = new Date();
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    const results = [];
+
+    // 일주일 간의 각 날짜에 대한 토탈 충전 요금을 가져옵니다.
+    for (
+      let date = oneWeekAgo;
+      date <= today;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const currentDate = date.toISOString().slice(0, 10);
+
+      const sql = `
+        SELECT IFNULL(SUM(fee), 0) AS total_charge
+        FROM charge_history
+        WHERE car_id = ? AND DATE(createdAt) = ?
+      `;
+
+      const [rows] = await pool.query(sql, [carId, currentDate]);
+      const totalCharge = rows[0].total_charge || 0;
+
+      results.push({
+        date: currentDate,
+        total_charge: totalCharge,
+      });
+    }
+
+    return results;
+  },
+  async getMonthlyChargeTotal(carId) {
+    const today = new Date();
+    const thisYear = today.getFullYear();
+
+    const results = [];
+
+    for (let month = 1; month <= 12; month++) {
+      const firstDayOfMonth = new Date(thisYear, month - 1, 1);
+      const lastDayOfMonth = new Date(thisYear, month, 0);
+
+      const sql = `
+        SELECT IFNULL(SUM(fee), 0) AS total_charge
+        FROM charge_history
+        WHERE car_id = ? AND DATE(createdAt) >= ? AND DATE(createdAt) <= ?
+      `;
+
+      const [rows] = await pool.query(sql, [
+        carId,
+        firstDayOfMonth.toISOString().slice(0, 10),
+        lastDayOfMonth.toISOString().slice(0, 10),
+      ]);
+
+      const totalCharge = rows[0].total_charge || 0;
+
+      results.push({
+        month: month,
+        total_charge: totalCharge,
+      });
+    }
+
+    return results;
+  },
 };
 
 module.exports = historyCarModel;
