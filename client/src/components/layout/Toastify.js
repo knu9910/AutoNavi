@@ -16,7 +16,7 @@ const Toastify = () => {
   useEffect(() => {
     socket.on('operationalStatus', (data) => {
       // currentCar 초기 값 체크
-      if (!carList) {
+      if (!carList && carList.length === 0) {
         return;
       }
 
@@ -26,6 +26,7 @@ const Toastify = () => {
       let noti = '';
       if (data.msg === 'start') {
         console.log('운행시작');
+        console.log(car);
         noti = `${car.car_name} 차량이 운행을 시작했습니다.`;
         notify(noti);
         getSpeech(noti);
@@ -35,7 +36,6 @@ const Toastify = () => {
         getSpeech(noti);
       } else if (data.msg === 'lowBattery') {
         const charge = data.info;
-        console.log(charge);
         dispatch(addCharge({ charge }));
         noti = `${car.car_name} 차량이 배터리가 부족하여 충전소로 이동합니다.`;
         notify(noti);

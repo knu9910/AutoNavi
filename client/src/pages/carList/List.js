@@ -54,6 +54,7 @@ const List = () => {
       (history) => car.id === history.car_id,
     );
     console.log(carHistory, car, 12312);
+    if (!carHistory) return '';
     return <CarEntry key={car.id} car={car} history={carHistory} />;
   });
   return (

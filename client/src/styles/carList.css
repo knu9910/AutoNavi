@@ -21,6 +21,20 @@ Link {
     margin: 20px auto
 }
 
+.chargeChart {
+  background: #d1f4ff96;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+    max-width: 1200px;
+    height: 700px;
+    margin: 20px auto;
+}
+
 .dashBoard > .box-dashBoard {
     background-color: #fff;
     margin: 45px 10px;
