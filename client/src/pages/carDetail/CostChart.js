@@ -7,42 +7,29 @@ import { useParams } from 'react-router';
 const CostChart = () => {
   const { id } = useParams();
   const chartRef = useRef(null);
-  const [chartData, setChartData] = useState([]);
   const [chartLabels, setChartLabels] = useState([]);
   const [chartFees, setChartFees] = useState([]);
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  const currentDate = `${year}-${month}-${day}`;
-
   const handleChartDataChange = async (type) => {
     try {
-      const costRes = await axios.get(
-        `http://localhost:8080/api/history/chargeFind/${id}/2023-09-20/${currentDate}`,
-      );
-      const data = costRes.data;
-      setChartData(data);
-      setChartLabels(data);
-
       var chartFeesData;
       var chartLabelsData;
 
       if (type === 'day') {
-        chartLabelsData = data.map((row) => row.location);
-        chartFeesData = data.map((row) => row.id);
+        const res = await axios.get(
+          `http://localhost:8080/api/history/getChargeTotal/${id}`,
+        );
+        const weekData = res.data;
+        chartLabelsData = weekData.map((row) => row.date);
+        chartFeesData = weekData.map((row) => row.total_charge);
       } else if (type === 'month') {
-        chartLabelsData = data.map((row) => row.createdAt);
-        chartFeesData = data.map((row) => row.fee);
-      } else if (type === 'year') {
-        chartLabelsData = data.map((row) => row.name);
-        chartFeesData = data.map((row) => row.car_id);
-      } else {
-        chartLabelsData = data.map((row) => row.location);
-        chartFeesData = data.map((row) => row.fee);
+        const res = await axios.get(
+          `http://localhost:8080/api/history/getMonthlyChargeTotal/${id}`,
+        );
+        const month = res.data;
+        chartLabelsData = month.map((row) => `${row.month} 월`);
+        chartFeesData = month.map((row) => row.total_charge);
       }
-
       setChartFees(chartFeesData);
       setChartLabels(chartLabelsData);
     } catch (error) {
@@ -52,11 +39,6 @@ const CostChart = () => {
 
   useEffect(() => {
     const getCost = async () => {
-      const costRes = await axios.get(
-        `http://localhost:8080/api/history/chargeFind/${id}/2023-09-20/${currentDate}`,
-      );
-      const costData = costRes.data;
-
       const canvas = document.getElementById('costChart');
       if (!canvas) {
         console.error("Canvas element with id 'myChart' not found.");
@@ -66,7 +48,6 @@ const CostChart = () => {
       if (chartRef.current) {
         chartRef.current.destroy();
       }
-      console.log(costData);
       const context = canvas.getContext('2d');
       context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -118,9 +99,7 @@ const CostChart = () => {
       <button className="delete" onClick={() => handleChartDataChange('month')}>
         month
       </button>
-      <button className="delete" onClick={() => handleChartDataChange('year')}>
-        year
-      </button>
+
       <div style={{ width: '630px' }}>
         <canvas id="costChart"></canvas>
       </div>
