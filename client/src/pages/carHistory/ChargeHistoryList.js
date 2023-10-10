@@ -1,7 +1,32 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import ChargeHistoryEntry from './ChargeHistoryEntry';
+import PaginationComp from '../../components/common/PaginationComp';
 
 const ChargeHistoryList = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const allChargeHistorys = useSelector(
+    (state) => state.historyStore.chargeHistoryAll,
+  );
+
+  let newChargeHistory = allChargeHistorys.slice(0, 40);
+  newChargeHistory.sort((a, b) => b.id - a.id);
+
+  const historyList = newChargeHistory.map((chargeHistory) => {
+    return (
+      <ChargeHistoryEntry
+        key={chargeHistory.id}
+        chargeHistory={chargeHistory}
+      />
+    );
+  });
+
+  const itemsPerPage = 15;
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedChargeHistorys = historyList.slice(startIndex, endIndex);
+
   return (
     <div className="carchargehistorybox">
       <div className="carchargehistory-head">
@@ -12,47 +37,14 @@ const ChargeHistoryList = () => {
         <p> 시간 </p>
       </div>
       <div className="carchargehistory-content">
-        <ul>
-          <li>
-            <p>무인 1호</p>
-            <p> 전기차 충전소 </p>
-            <p> 강남구 어쩌구 저쩌구 </p>
-            <p> 50000원 </p>
-            <p>2023.09.20 11:30</p>
-          </li>
-          <li>
-            <p>무인 1호</p>
-            <p> 강남구 어쩌구 저쩌구 </p>
-            <p> 강남구 어쩌구 저쩌구 </p>
-            <p>135km </p>
-            <p>2023.09.20 11:30</p>
-          </li>
-        </ul>
+        <ul>{displayedChargeHistorys}</ul>
       </div>
       <div className="chargepagination">
-        <ul>
-          <a href="#">
-            <li>{'<'}</li>
-          </a>
-          <a className="is-active" href="#">
-            <li>1</li>
-          </a>
-          <a href="#">
-            <li>2</li>
-          </a>
-          <a href="#">
-            <li>3</li>
-          </a>
-          <a href="#">
-            <li>4</li>
-          </a>
-          <a href="#">
-            <li>5</li>
-          </a>
-          <a href="#">
-            <li>{'>'}</li>
-          </a>
-        </ul>
+        <PaginationComp
+          currentPage={currentPage}
+          totalPages={Math.ceil(historyList.length / itemsPerPage)}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );

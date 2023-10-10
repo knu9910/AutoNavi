@@ -13,7 +13,7 @@ const HistoryList = () => {
   let newTripHistory = allTripHistorys.slice(0, 40);
   newTripHistory.sort((a, b) => b.id - a.id);
 
-  const itemsPerPage = 8;
+  const itemsPerPage = 15;
   const historyList = newTripHistory.map((tripHistory) => {
     return (
       <MainCarHistoryEntry key={tripHistory.id} tripHistory={tripHistory} />
@@ -22,7 +22,7 @@ const HistoryList = () => {
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const displayedCars = historyList.slice(startIndex, endIndex);
+  const displayedTripHistorys = historyList.slice(startIndex, endIndex);
   return (
     <div className="carhistorybox">
       <div className="carhistory-head">
@@ -34,7 +34,7 @@ const HistoryList = () => {
         <p> 운행 현황 </p>
       </div>
       <div className="carhistory-content">
-        <ul>{displayedCars}</ul>
+        <ul>{displayedTripHistorys}</ul>
       </div>
       <div className="hispagination">
         <PaginationComp
