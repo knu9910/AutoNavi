@@ -11,6 +11,7 @@ const historySlice = createSlice({
     chargeHistory: [],
     todayTotalDistance: '',
     todayTotalChargePrice: '',
+    chargeHistoryAll: [],
   },
   reducers: {
     getCarsHistorys(state, action) {
@@ -37,6 +38,9 @@ const historySlice = createSlice({
     getTodayTotalChargePrice(state, action) {
       state.todayTotalChargePrice = action.payload.chargePrice;
     },
+    getChargeHistoryAll(state, action) {
+      state.chargeHistoryAll = action.payload.chargeHistorys;
+    },
   },
 });
 
@@ -49,4 +53,5 @@ export const {
   getChargeHistory,
   getTodayTotalDistance,
   getTodayTotalChargePrice,
+  getChargeHistoryAll,
 } = historySlice.actions;
