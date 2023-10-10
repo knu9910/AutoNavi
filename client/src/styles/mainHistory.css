@@ -134,3 +134,23 @@
     text-align: center;
     margin: 0;
 }
+@media (max-width: 768px) {
+    .carhistorybox > .carhistory-head > p {
+        font-size: 13px;
+    }
+    .carhistorybox,
+    .carchargehistorybox {
+        max-width: 100%; /* 화면 크기에 따라 최대 너비 100%로 조절 */
+        box-shadow: none; /* 모바일에서 그림자 효과 제거 */
+    }
+
+    .carhistory-content li,
+    .carchargehistory-content li {
+        text-align: center;
+    }
+
+    .carhistory-content p,
+    .carchargehistory-content p {
+        width: auto; /* 모바일에서 텍스트 너비 자동으로 조절 */
+    }
+}

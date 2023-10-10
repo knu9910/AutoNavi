@@ -6,7 +6,7 @@ const TotalDistance = () => {
   );
   return (
     <div className="totalbox">
-      <p>Today Total Distance</p>
+      <p>Today&apos;s Total Distance</p>
       <p className="total-content">{totalDistance}</p>
     </div>
   );
