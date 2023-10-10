@@ -13,7 +13,7 @@
     margin: auto;
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: 1fr 0.7fr;
+    grid-template-columns: 0.9fr 0.7fr;
     /* grid-template-rows: 0.2fr 7fr; */
     grid-template-areas: 
     "car_info car_location"
@@ -41,7 +41,6 @@
 }
 .map_running {
     grid-area: map;
-
 }
 
 .car_info_inner_running > .info_box_running {
@@ -142,19 +141,20 @@
     line-height: 0px;
     
 }
-
-@media (max-width: 780px) {
+@media (max-width: 1411px) {
     .car_detail_wrap_running {
-        width: 80%;
+        padding-right: 0px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 820px) {
+    .car_detail_wrap_running {
+        width: 90%;
         padding-top: 50px;
         margin: auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-        "car_info"
-        "car_info_wrap"
-        "map"
-        ;
+        display: flex;
+        flex-direction: column;
     }
     
     .input_box_running {
@@ -180,11 +180,10 @@
         width: 80%;
         padding-top: 50px;
         margin: auto;
-        display: grid;
-        grid-template-areas: 
-        "car_info"
-        "car_info_wrap"
-        "map";
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     
     .input_box_running {
