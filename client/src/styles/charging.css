@@ -142,18 +142,20 @@
     
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1411px) {
     .car_detail_wrap_charging {
-        width: 80%;
+        padding-right: 0px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 820px) {
+    .car_detail_wrap_charging {
+        width: 90%;
         padding-top: 50px;
         margin: auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-        "car_info"
-        "car_info_wrap"
-        "map"
-        ;
+        display: flex;
+        flex-direction: column;
     }
     
     .input_box_charging {
@@ -179,11 +181,10 @@
         width: 80%;
         padding-top: 50px;
         margin: auto;
-        display: grid;
-        grid-template-areas: 
-        "car_info"
-        "car_info_wrap"
-        "map";
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     
     .input_box_charging {
