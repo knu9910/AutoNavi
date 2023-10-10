@@ -37,7 +37,7 @@ const PaginationComp = ({ currentPage, totalPages, onPageChange }) => {
   return (
     <div className="custom-pagination">
       <div
-        className={`custom-pagination-item custom-pagination-prev ${
+        className={`is-active custom-pagination-prev ${
           currentPage === 1 ? 'disabled' : ''
         }`}
         onClick={handlePrevClick}
