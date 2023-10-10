@@ -5,7 +5,6 @@ import DoughnutChart from './DoughnutChart';
 import History from './History';
 import TotalDistance from './TotalDistance';
 import MostDriveCar from './MostDriveCar';
-import ChargeChart from './ChargeChart';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import {
@@ -17,6 +16,7 @@ import { useEffect } from 'react';
 import { metersToKMAndM } from '../../../helperFunction';
 import TodayCharPrice from './TodayCharPrice';
 import { Link } from 'react-router-dom';
+import ChargeChart from './ChargeChart';
 
 const CarDashBoard = () => {
   const dispatch = useDispatch();
@@ -57,20 +57,7 @@ const CarDashBoard = () => {
     <div>
       <div className="AdashBoard">
         <div className="dashBoard">
-          <div className="boxdashboard">
-            <Link to="/car/carHistory" className="GoHistory">
-              최근 운행 기록
-            </Link>
-            <div className="scroll">
-              <div className="nav-1">
-                <History />
-              </div>
-            </div>
-          </div>
           <div className="nav-2">
-            <MainChart />
-          </div>
-          <div className="nav-3">
             <div className="doughnut-chart">
               <DoughnutChart />
             </div>
@@ -84,10 +71,25 @@ const CarDashBoard = () => {
               <MostDriveCar />
             </div>
           </div>
+          <div>
+            <MainChart />
+          </div>
         </div>
-      </div>
-      <div>
-        <ChargeChart />
+        <div className="dashBoard">
+          <div className="boxdashboard">
+            <Link to="/car/carHistory" className="GoHistory">
+              최근 운행 기록
+            </Link>
+            <div className="scroll">
+              <div className="nav-1">
+                <History />
+              </div>
+            </div>
+          </div>
+          <div className="nav-3">
+            <ChargeChart />
+          </div>
+        </div>
       </div>
     </div>
   );

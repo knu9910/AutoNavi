@@ -6,7 +6,7 @@ Link {
 .car-list {
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    max-width: 1300px;
+    max-width: 1600px;
     height: auto;
     margin: auto;
 }
@@ -17,34 +17,29 @@ Link {
     justify-content: center;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    max-width: 1300px;
+    max-width: 1600px;
     height: auto;
     margin: 20px auto
 }
 
 .chargeChart {
-  background: #d1f4ff96;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 90px;
+    padding: 15px;
+    background: #fff;
     align-items: center;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    max-width: 1200px;
-    height: 700px;
-    margin: 20px auto;
+    margin: 10px;
 }
 
 
 .dashBoard {
     display: flex;
     justify-content: center;
-    max-width: 1200px;
-    margin: 20px auto
+    max-width: 1600px;
+
 }
 .boxdashboard {
-    margin: 10px 0;
+    margin: 30px;
     text-align: center;
 }
 .boxdashboard > .GoHistory {
@@ -86,7 +81,7 @@ Link {
 
 .scroll{
     width: 300px;
-    height: 680px;
+    height: 500px;
     background-color: #fff;
     margin: 10px 10px;
     border-radius: 10px;
@@ -109,31 +104,34 @@ Link {
     margin: 10px;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    height: 335px !important;
+    height: 355px !important;
 }
 .doughnut-chart {
-    margin: 7px 0;
+    margin-bottom: 7px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 330px;
+}
+.nav-2 {
+    margin: 30px;
 }
 .nav-3 {
-    margin: 10px;
-    margin-top: 42px;
+    margin: 60px 0px;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 .ochart {
     margin: 10px auto;
-    width: 200px !important;
-    height: 200px !important;
+    width: 300px !important;
+    height: 300px !important;
 }
 .smallbox {
+    text-align: center;
     margin: 7px 0;
-    width: 250px;
+    width: 300px;
     height: auto;
     background: #fff;
     border-radius: 10px;

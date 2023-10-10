@@ -36,20 +36,22 @@ const ChargeChart = () => {
       {
         label: 'Total Charge',
         data: totalCharges, // API에서 받아온 토탈 충전 요금 데이터 사용
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
+        backgroundColor: '#0300a5',
+        borderColor: '#0300a5',
       },
     ],
   };
 
   return (
-    <div className="chargeChart">
-      <h2>Total Charge Place</h2>
+    <div>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <Bar data={chartData} style={{ background: 'white' }} />
+        <Bar
+          className="chargeChart"
+          data={chartData}
+          style={{ background: 'white', width: '1000px' }}
+        />
       )}
     </div>
   );

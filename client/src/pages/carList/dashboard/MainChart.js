@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import 'chart.js';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
-
 const MainChart = () => {
   const monthDisRef = useRef(null);
   const dayDisRef = useRef(null);
