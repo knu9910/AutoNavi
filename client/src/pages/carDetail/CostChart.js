@@ -54,6 +54,7 @@ const CostChart = () => {
       const newChart = new Chart(canvas, {
         type: 'bar',
         options: {
+          responsive: true,
           scales: {
             x: {
               display: true,
@@ -74,6 +75,7 @@ const CostChart = () => {
           labels: chartLabels,
           datasets: [
             {
+              barPercentage: 0.6,
               label: '총 충전요금',
               data: chartFees,
 
@@ -108,7 +110,10 @@ const CostChart = () => {
         </button>
       </div>
       <div className="chart">
-        <canvas id="costChart"></canvas>
+        <canvas
+          id="costChart"
+          style={{ width: '100%', height: '120px' }}
+        ></canvas>
       </div>
     </div>
   );
