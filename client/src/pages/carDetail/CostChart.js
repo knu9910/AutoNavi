@@ -93,14 +93,21 @@ const CostChart = () => {
 
   return (
     <div className="costChart">
-      <button className="delete" onClick={() => handleChartDataChange('day')}>
-        day
-      </button>
-      <button className="delete" onClick={() => handleChartDataChange('month')}>
-        month
-      </button>
-
-      <div style={{ width: '630px' }}>
+      <div className="buttons">
+        <button
+          className="daymonth"
+          onClick={() => handleChartDataChange('day')}
+        >
+          day
+        </button>
+        <button
+          className="daymonth"
+          onClick={() => handleChartDataChange('month')}
+        >
+          month
+        </button>
+      </div>
+      <div className="chart">
         <canvas id="costChart"></canvas>
       </div>
     </div>
