@@ -55,6 +55,7 @@ const HistoryChart = () => {
             display: false,
           },
         },
+        responsive: true,
         // scales: { x: { display: false } },
       },
       data: {
@@ -76,8 +77,8 @@ const HistoryChart = () => {
   }, [carData]);
 
   return (
-    <div style={{ width: '630px' }}>
-      <canvas id="myChart"></canvas>
+    <div>
+      <canvas id="myChart" style={{ width: '100%' }}></canvas>
     </div>
   );
 };

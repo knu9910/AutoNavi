@@ -1,7 +1,7 @@
 import '../../../styles/carList.css';
 import 'chart.js';
 import MainChart from './MainChart';
-import DoughnutChart from './DoughnutChart';
+import OperationState from './OpreationState';
 import History from './History';
 import TotalDistance from './TotalDistance';
 import MostDriveCar from './MostDriveCar';
@@ -59,7 +59,7 @@ const CarDashBoard = () => {
         <div className="dashBoard">
           <div className="nav-2">
             <div className="doughnut-chart">
-              <DoughnutChart />
+              <OperationState />
             </div>
             <div className="smallbox">
               <TotalDistance />

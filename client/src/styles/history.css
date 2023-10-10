@@ -67,18 +67,45 @@
   font-size: small;
 }
 
-@media (max-width: 820px) {
+@media (max-width: 780px) {
   .car_history_wrap {
-    width: 90%; 
+    width: 100%; 
+    padding: 10px; 
+  }
+
+  .history_chart {
+    width: 100%;
   }
 
   .history_info_wrap {
     flex-direction: column; 
     align-items: center; 
+    width: 100%;
   }
 
-  .info_box_history {
+  .info_table_history {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .car_history_wrap {
     width: 100%; 
+    padding: 5px; 
+  }
+
+  .history_chart {
+    width: 100%;
+  }
+
+  .history_info_wrap {
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%;
+  }
+
+  .info_table_history {
+    width: 100%;
   }
 }
 
