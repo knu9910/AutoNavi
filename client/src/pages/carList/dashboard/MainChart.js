@@ -126,14 +126,10 @@ const MainChart = () => {
     chart();
   }, []);
   return (
-    <div className="chart-dashBoard" style={{ width: '1000px' }}>
+    <div className="chart-dashBoard">
       <div className="middle" style={{ marginTop: '40px' }}></div>
-      <div>
-        <>
-          <canvas className="chart-char" ref={monthDisRef}></canvas>
-          <canvas className="chart-char" ref={dayDisRef}></canvas>
-        </>
-      </div>
+      <canvas className="chart-char" ref={monthDisRef}></canvas>
+      <canvas className="chart-char" ref={dayDisRef}></canvas>
     </div>
   );
 };

@@ -10,6 +10,9 @@ Link {
     height: auto;
     margin: auto;
 }
+.chart-dashBoard {
+    width: 1000px;
+}
 .AdashBoard {
     font-size: 20px;
     font-weight: 600;
@@ -433,31 +436,18 @@ span >label {
     border: none;
 }
 
-.car-list .paging {
-    grid-column: 1 / 4;
-    grid-row: 5 / 6; 
-    align-self: center;
-    justify-self: end;
-    margin-right: 30px;
-}
-.page-item .page-link {
-    font-size: 11px;
-    border-color: #e0e0e0;
-    background-color: #fff;
-    margin-bottom: 20px;
-}
-.pagination{
-    --bs-pagination-active-border-color : #fff;
-    --bs-pagination-active-color : #black;
-    --bs-pagination-active-bg : #D7F0FF;
-    --bs-pagination-active-boxshadow :-5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    margin: auto;
-    justify-content: end;
-    --bs-pagination-color: #black;
-}
-
 
 @media (max-width: 480px) {
+    .car-list > .boxheader {
+        display: contents;
+    }
+    .carbox > .carbox-head > p {
+        font-size: 13px;
+        margin: 0;
+        font-weight: 600;
+        width: 85px;
+        text-align: center;
+    }
     content > p{
         margin-bottom: 30px;
         color: #000;
@@ -469,10 +459,10 @@ span >label {
         line-height: normal;    
     }
     .car-list {
-        border-radius: 10px;
-        background-color: #f1f6f8;
-        box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-        margin: auto 30px;
+        max-width: 450px;
+        border-radius: none;
+        background-color: #fff;
+        box-shadow: none;
 
     }
     .car-list > .list img {
@@ -482,7 +472,7 @@ span >label {
         box-shadow: #c4c4c4 5px 0px 5px 0px;
     }
     .car{
-        margin: 20px;
+        margin: 0;
     }
     .businfo {
         color: var(--neutral-colors-600, #6D758F);
@@ -492,5 +482,220 @@ span >label {
         font-weight: 600;
         line-height: 28px; /* 140% */
     }
+   
 
+    span >label {
+        font-size: 13px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-weight: bold;
+    }
+
+    [type=checkbox] {
+        width: 13px;
+        height: 13px;
+        color: dodgerblue;
+        vertical-align: middle;
+        -webkit-appearance: none;
+        background: none;
+        border: 0;
+        outline: 0;
+        flex-grow: 0;
+        border-radius: 50%;
+        transition: background 300ms;
+        cursor: pointer;
+        margin-right: 7px;
+    }
+    .custom-pagination-item, .is-active.custom-pagination-prev {
+        width: 20px !important;
+        height: 20px !important;
+        line-height: 20px !important;
+        padding: 0;
+        text-align: center;
+        display: inline-block;
+        color: #222;
+    }
+    .AdashBoard {
+        font-size: 10px;
+        font-weight: 600;
+        background: none;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: none;
+        max-width: 353px;
+        height: auto;
+        margin: 20px auto;
+    }
+    .dashBoard {
+        display: contents;
+    }
+    .small-listbox .small-carlist {
+        font-size: 10px;
+        font-weight: 600;
+        border-radius: 10px;
+        margin: 5px;
+        display: flex;
+    }
+    .chart-char {
+        width: 350px !important;
+        height: 170px !important;
+    }
+    .boxdashboard > .GoHistory {
+        padding: 5px;
+        font-size: 15px;
+        text-align: center;
+        margin: 10px;
+        color: #fff;
+        background: #0300a5;
+        border-radius: 20px;
+    }
+    .scroll {
+        width: 300px;
+        height: 500px;
+        background-color: #fff;
+        margin: 10px 0;
+        border-radius: 10px;
+        box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+    }
+    canvas.chargeChart {
+        width: 350px !important;
+        height: 170px !important;
+    }
+    .carsearch-box {
+        width: 120px;
+        height: 25px;
+        background: #6e6e6e;
+        border-radius: 25px;
+        position: relative;
+    }
+}
+@media (max-width: 768px) {
+    .car-list > .boxheader {
+        display: contents;
+    }
+    .carbox > .carbox-head > p {
+        font-size: 13px;
+        margin: 0;
+        font-weight: 600;
+        width: 85px;
+        text-align: center;
+    }
+    content > p{
+        margin-bottom: 30px;
+        color: #000;
+        text-align: center;
+        font-family: Libre Bodoni;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;    
+    }
+    .car-list {
+        max-width: 450px;
+        border-radius: none;
+        background-color: #fff;
+        box-shadow: none;
+
+    }
+    .car-list > .list img {
+        border-radius: 10px;
+        height: 50px;
+        width: 50px;
+        box-shadow: #c4c4c4 5px 0px 5px 0px;
+    }
+    .car{
+        margin: 0;
+    }
+    .businfo {
+        color: var(--neutral-colors-600, #6D758F);
+        text-decoration: none;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 28px; /* 140% */
+    }
+   
+
+    span >label {
+        font-size: 13px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-weight: bold;
+    }
+
+    [type=checkbox] {
+        width: 13px;
+        height: 13px;
+        color: dodgerblue;
+        vertical-align: middle;
+        -webkit-appearance: none;
+        background: none;
+        border: 0;
+        outline: 0;
+        flex-grow: 0;
+        border-radius: 50%;
+        transition: background 300ms;
+        cursor: pointer;
+        margin-right: 7px;
+    }
+    .custom-pagination-item, .is-active.custom-pagination-prev {
+        width: 20px !important;
+        height: 20px !important;
+        line-height: 20px !important;
+        padding: 0;
+        text-align: center;
+        display: inline-block;
+        color: #222;
+    }
+    .AdashBoard {
+        font-size: 10px;
+        font-weight: 600;
+        background: none;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: none;
+        max-width: 353px;
+        height: auto;
+        margin: 20px auto;
+    }
+    .dashBoard {
+        display: contents;
+    }
+    .small-listbox .small-carlist {
+        font-size: 10px;
+        font-weight: 600;
+        border-radius: 10px;
+        margin: 5px;
+        display: flex;
+    }
+    .chart-char {
+        width: 350px !important;
+        height: 170px !important;
+    }
+    .boxdashboard > .GoHistory {
+        padding: 5px;
+        font-size: 15px;
+        text-align: center;
+        margin: 10px;
+        color: #fff;
+        background: #0300a5;
+        border-radius: 20px;
+    }
+    .scroll {
+        width: 300px;
+        height: 500px;
+        background-color: #fff;
+        margin: 10px 0;
+        border-radius: 10px;
+        box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
+    }
+    canvas.chargeChart {
+        width: 350px !important;
+        height: 170px !important;
+    }
+    .carsearch-box {
+        width: 120px;
+        height: 25px;
+        background: #6e6e6e;
+        border-radius: 25px;
+        position: relative;
+    }
 }
