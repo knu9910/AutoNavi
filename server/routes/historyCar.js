@@ -194,4 +194,14 @@ router.get('/getMonthlyChargeTotal/:id', async (req, res) => {
   }
 });
 
+router.get('/getChargeHistoryAll', async (req, res) => {
+  try {
+    const chargeHistoryAll = await historyCarModel.getChargeHistoryAll();
+    res.status(200).json(chargeHistoryAll);
+  } catch (error) {
+    console.error('쿼리 실행 오류:', error.message);
+    res.status(500).json({ error: '서버 오류' });
+  }
+});
+
 module.exports = router;

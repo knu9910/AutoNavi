@@ -301,6 +301,16 @@ const historyCarModel = {
 
     return results;
   },
+
+  async getChargeHistoryAll() {
+    const sql = `SELECT ch.*, c.car_name
+    FROM charge_history ch
+    JOIN car c ON ch.car_id = c.id`;
+
+    const [rows] = await pool.query(sql);
+
+    return rows;
+  },
 };
 
 module.exports = historyCarModel;
