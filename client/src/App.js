@@ -5,6 +5,7 @@ import StartPage from './pages/StartPage';
 import Main from './pages/main';
 import CarList from './pages/carList';
 import CarReg from './pages/carReg';
+import CarHistory from './pages/carHistory';
 import CarDetail from './pages/carDetail';
 import LayOut from './components/layout';
 import NotFound from './pages/NotFound';
@@ -25,6 +26,7 @@ const App = () => {
               <Route path="/auth/adminedit/:id" element={<AdminEdit />} />
               <Route path="/car/carList" element={<CarList />} />
               <Route path="/car/carReg" element={<CarReg />} />
+              <Route path="/car/carHistory" element={<CarHistory />} />
               <Route path="/car/detail/:id" element={<CarDetail />} />
             </Route>
           </Route>

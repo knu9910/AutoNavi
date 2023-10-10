@@ -4,7 +4,7 @@ const mainSlice = createSlice({
   name: 'toggle',
   initialState: {
     isNavVisible: true,
-    buttonText: '충전소',
+    buttonText: 'MAP',
     lat: 37.501307705888195,
     lng: 127.03963860275336,
   },
