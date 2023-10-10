@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import '../../styles/running.css';
 import DetailMap from './DetailMap';
 import History from './DetailHistory';
+import CostChart from './CostChart';
 
 const Running = () => {
   const currentCar = useSelector((state) => state.carStore.currentCar);
@@ -64,6 +65,7 @@ const Running = () => {
       </div>
       <div>
         <History />
+        <CostChart />
       </div>
     </div>
   );

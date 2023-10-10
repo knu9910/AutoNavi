@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { deleteCar } from '../../store/carSlice';
 import History from './DetailHistory';
+import CostChart from './CostChart';
 
 const Waiting = () => {
   const destinationRef = useRef(null);
@@ -153,6 +154,7 @@ const Waiting = () => {
       </div>
       <div>
         <History />
+        <CostChart />
       </div>
     </div>
   );
