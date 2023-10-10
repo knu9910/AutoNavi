@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import HistoryEntry from './HistoryEntry';
 const History = () => {
@@ -14,12 +12,10 @@ const History = () => {
     return <HistoryEntry key={tripHistory.id} tripHistory={tripHistory} />;
   });
   return (
-    <div className="carNoti">
-      <p>
-        <FontAwesomeIcon icon={faBell} style={{ color: '#000000' }} />
-        History
-      </p>
-      <ul>{list}</ul>
+    <div className="hisbigbox">
+      <div className="carNoti">
+        <ul>{list}</ul>
+      </div>
     </div>
   );
 };
