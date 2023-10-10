@@ -6,7 +6,7 @@ const TodayCharPrice = () => {
   );
   return (
     <div className="totalbox">
-      <p>Today Total charge</p>
+      <p>Today&apos;s Total Charge</p>
       <p className="total-content">{chargePice}</p>
     </div>
   );

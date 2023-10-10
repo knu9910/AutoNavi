@@ -34,7 +34,7 @@ const ChargeChart = () => {
     labels: carNames, // 차 이름을 라벨로 사용
     datasets: [
       {
-        label: 'Total Charge',
+        label: 'Total Charge Amount',
         data: totalCharges, // API에서 받아온 토탈 충전 요금 데이터 사용
         backgroundColor: '#0300a5',
         borderColor: '#0300a5',
