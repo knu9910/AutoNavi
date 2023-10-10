@@ -77,8 +77,8 @@ const HistoryChart = () => {
   }, [carData]);
 
   return (
-    <div>
-      <canvas id="myChart" style={{ width: '100%' }}></canvas>
+    <div className="myChart">
+      <canvas id="myChart"></canvas>
     </div>
   );
 };

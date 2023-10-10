@@ -26,7 +26,10 @@
 .car_history_wrap > .history_chart {
   grid-area: main;
 }
-
+#myChart {
+  box-sizing: border-box;
+  width: 100%;
+}
 .history_info_wrap {
   grid-area: footer;
   display: flex;
@@ -66,15 +69,26 @@
 .info_table_history {
   font-size: small;
 }
-
-@media (max-width: 780px) {
+@media (max-width: 1282px) {
+  .history_info_wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .info_input {
+    margin: auto;
+  }
+}
+@media (max-width: 820px) {
   .car_history_wrap {
-    width: 100%; 
-    padding: 10px; 
+    width: 90%;
+    padding-top: 50px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .history_chart {
-    width: 100%;
+    margin: auto;
   }
 
   .history_info_wrap {
@@ -90,21 +104,30 @@
 
 @media (max-width: 480px) {
   .car_history_wrap {
-    width: 100%; 
-    padding: 5px; 
-  }
-
-  .history_chart {
-    width: 100%;
+    width: 90%; 
+    padding-top: 50px; 
+    margin: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .history_info_wrap {
     flex-direction: column; 
     align-items: center; 
     width: 100%;
+    margin: auto;
   }
 
   .info_table_history {
+    width: 100%;
+  }
+  .history_chart {
+    margin: auto;
+  }
+  .info_label_history {
+    width: 100%;
+  }
+  .info_box_history {
     width: 100%;
   }
 }
