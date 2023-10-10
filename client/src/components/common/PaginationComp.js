@@ -1,6 +1,5 @@
 import React from 'react';
-import Pagination from 'react-bootstrap/Pagination';
-
+import '../../styles/pagination.css';
 const PaginationComp = ({ currentPage, totalPages, onPageChange }) => {
   const pageItems = [];
   const itemsPerPage = 5;
@@ -9,32 +8,52 @@ const PaginationComp = ({ currentPage, totalPages, onPageChange }) => {
   const startPage = (currentPageGroup - 1) * itemsPerPage + 1;
   const endPage = Math.min(startPage + itemsPerPage - 1, totalPages);
 
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
   for (let page = startPage; page <= endPage; page++) {
     pageItems.push(
-      <Pagination.Item
+      <div
         key={page}
-        active={page === currentPage}
+        className={`custom-pagination-item ${
+          page === currentPage ? 'active' : ''
+        }`}
         onClick={() => onPageChange(page)}
       >
         {page}
-      </Pagination.Item>,
+      </div>,
     );
   }
 
   return (
-    <>
-      <Pagination size="md">
-        <Pagination.Prev
-          onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        />
-        {pageItems}
-        <Pagination.Next
-          onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        />
-      </Pagination>
-    </>
+    <div className="custom-pagination">
+      <div
+        className={`custom-pagination-item custom-pagination-prev ${
+          currentPage === 1 ? 'disabled' : ''
+        }`}
+        onClick={handlePrevClick}
+      >
+        &lt;
+      </div>
+      {pageItems}
+      <div
+        className={`custom-pagination-item custom-pagination-next ${
+          currentPage === totalPages ? 'disabled' : ''
+        }`}
+        onClick={handleNextClick}
+      >
+        &gt;
+      </div>
+    </div>
   );
 };
 
