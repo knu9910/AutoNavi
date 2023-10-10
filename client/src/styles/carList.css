@@ -6,18 +6,19 @@ Link {
 .car-list {
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    max-width: 1200px;
+    max-width: 1300px;
     height: auto;
     margin: auto;
 }
-.dashBoard {
+.AdashBoard {
+    font-size: 20px;
+    font-weight: 600;
     background: #d1f4ff96;
-    display: flex;
     justify-content: center;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    max-width: 1200px;
-    height: 700px;
+    max-width: 1300px;
+    height: auto;
     margin: 20px auto
 }
 
@@ -35,58 +36,110 @@ Link {
     margin: 20px auto;
 }
 
-.dashBoard > .box-dashBoard {
+
+.dashBoard {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 20px auto
+}
+.boxdashboard {
+    margin: 10px 0;
+    text-align: center;
+}
+.boxdashboard > .GoHistory {
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px;
+    color: #fff;
+    background: #0300a5;
+    border-radius: 20px;
+}
+.AdashBoard .scroll {
+    overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+.carNoti ul{
+    padding: 0px !important;
+}
+.carNoti li{
+    border-bottom: solid 1px #e0e0e0;
+    list-style: none;
+    font-size: 13px;
+}
+.carNoti p {
+    margin: 0 !important;
+}
+.historyinfo {
+    margin: 5px;
+}
+
+.historybox {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.scroll{
+    width: 300px;
+    height: 680px;
     background-color: #fff;
-    margin: 45px 10px;
+    margin: 10px 10px;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
 }
-
-.dashBoard > .box-dashBoard .carNoti {
-    font-size: 20px;
-    font-weight: 600;
+.hissamllbox {
     text-align: center;
-    width: 250px;
-    height: 500px;
-    margin: 0 20px;
+    font-family: 'Nanum Gothic', sans-serif;
+    outline: none;
+    background: var(--neutral-colors-100, #f0f0f0);
 }
-.dashBoard > .box-dashBoard .carNoti > p{
-    margin: 10px;
+.historylist  p {
+    font-size: 13px;
+    margin-bottom: 0 !important;
 }
+
 .chart-char {
     background-color: #fff;
     padding: 15px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    height: 300px !important;
+    height: 335px !important;
 }
 .doughnut-chart {
+    margin: 7px 0;
     background-color: #fff;
-    margin: 45px 10px;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    width: 220px;
-    height: 220px;
+    width: 250px;
+    height: 250px;
 }
 .nav-3 {
+    margin: 10px;
+    margin-top: 42px;
     display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 .ochart {
     margin: 10px auto;
-
     width: 200px !important;
     height: 200px !important;
 }
 .smallbox {
-    width: 220px;
+    margin: 7px 0;
+    width: 250px;
     height: auto;
     background: #fff;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
 }
 .smallbox:nth-child(4){
-    margin: 0;
     height: 200px;
 }
 
@@ -200,7 +253,6 @@ Link {
 
 .middle .box span:before {
   font-size: 1.2em;
-  font-family: FontAwesome;
   display: block;
   transform: translateY(-80px);
   opacity: 0;
@@ -328,9 +380,9 @@ span >label {
 }
 
 .card-1  .carlist-info {
-    border: solid 1px #e0e0e0;
-    border-radius: 10px;
-    margin: 10px;
+    border-top: solid 1px #e0e0e0;
+    border-bottom: solid 1px #e0e0e0;
+    margin: 10px 0;
     display: flex;
     justify-content: space-evenly;
 }

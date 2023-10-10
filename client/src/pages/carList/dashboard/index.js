@@ -4,17 +4,19 @@ import MainChart from './MainChart';
 import DoughnutChart from './DoughnutChart';
 import History from './History';
 import TotalDistance from './TotalDistance';
-import TotalBattery from './TotalBattery';
 import MostDriveCar from './MostDriveCar';
 import ChargeChart from './ChargeChart';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import {
   getCarsTripHistorys,
+  getTodayTotalChargePrice,
   getTodayTotalDistance,
 } from '../../../store/historySlice';
 import { useEffect } from 'react';
 import { metersToKMAndM } from '../../../helperFunction';
+import TodayCharPrice from './TodayCharPrice';
+import { Link } from 'react-router-dom';
 
 const CarDashBoard = () => {
   const dispatch = useDispatch();
@@ -36,26 +38,47 @@ const CarDashBoard = () => {
     dispatch(getTodayTotalDistance({ distance }));
   };
 
+  const handleTodayChargePrice = async () => {
+    const res = await axios.get(
+      'http://localhost:8080/api/history/getTodayChargeTotal',
+    );
+
+    const totalChargePrice = res.data.totalCharge;
+    dispatch(getTodayTotalChargePrice({ chargePrice: totalChargePrice }));
+  };
+
   useEffect(() => {
     handleCarsTripHistorys();
     handleTodayTotalDistance();
+    handleTodayChargePrice();
   }, []);
-  return (
-    <>
-      <div className="dashBoard">
-        <div className="box-dashBoard">
-          <History />
-        </div>
-        <MainChart />
 
-        <div className="nav-3">
-          <div className="doughnut-chart">
-            <DoughnutChart />
+  return (
+    <div>
+      <div className="AdashBoard">
+        <div className="dashBoard">
+          <div className="boxdashboard">
+            <Link to="/car/carHistory" className="GoHistory">
+              최근 운행 기록
+            </Link>
+            <div className="scroll">
+              <div className="nav-1">
+                <History />
+              </div>
+            </div>
+          </div>
+          <div className="nav-2">
+            <MainChart />
+          </div>
+          <div className="nav-3">
+            <div className="doughnut-chart">
+              <DoughnutChart />
+            </div>
             <div className="smallbox">
               <TotalDistance />
             </div>
             <div className="smallbox">
-              <TotalBattery />
+              <TodayCharPrice />
             </div>
             <div className="smallbox">
               <MostDriveCar />
@@ -66,7 +89,7 @@ const CarDashBoard = () => {
       <div>
         <ChargeChart />
       </div>
-    </>
+    </div>
   );
 };
 export default CarDashBoard;

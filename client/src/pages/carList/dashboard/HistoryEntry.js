@@ -1,24 +1,15 @@
-import { metersToKMAndM, parseDateString } from '../../../helperFunction';
-
 const HistoryEntry = ({ tripHistory }) => {
   console.log(tripHistory);
-  let { distance, destination, departure, car_name, createdAt, msg } =
-    tripHistory;
-
-  distance = metersToKMAndM(distance);
-  let { date, time } = parseDateString(createdAt);
+  let { destination, departure, car_name, msg } = tripHistory;
 
   return (
     <li>
-      <div>
-        <span>{car_name}</span>
-        <span>출발지: {departure} </span>
-        <span>목적지: {destination} </span>
-        <span>거리 : {distance} </span>
-        <span>
-          시간 : {date} {time}
-        </span>
-        <span>메세지: {msg}</span>
+      <div className="historyinfo">
+        <p>
+          {car_name} {msg}
+        </p>
+        <p>출발지: {departure} </p>
+        <p>목적지: {destination} </p>
       </div>
     </li>
   );
