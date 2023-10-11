@@ -61,11 +61,11 @@ const Waiting = () => {
         const userConfirmed = window.confirm('정말로 운행을 시작하시겠습니까?');
 
         if (userConfirmed) {
+          window.location.replace(`/car/detail/${id}`);
           const response = await axios.post(
             'http://localhost:8080/realTimeStart',
             {
               id: currentCar.car_id,
-              departure: '127.111925428711, 37.3968925296743',
               destination: `${coordinates.current.x}, ${coordinates.current.y}`,
             },
           );
@@ -117,7 +117,7 @@ const Waiting = () => {
               <input
                 className="origin"
                 type="text"
-                placeholder="출발지"
+                placeholder="(주) AutoNavi"
                 readOnly
               ></input>
             </div>
