@@ -22,7 +22,10 @@ Link {
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
     max-width: 1600px;
     height: auto;
-    margin: 20px auto
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+
 }
 
 .chargeChart {
@@ -36,13 +39,13 @@ Link {
 
 
 .dashBoard {
-    display: flex;
-    justify-content: center;
     max-width: 1600px;
+    margin: 0 20px;
 
 }
 .boxdashboard {
-    margin: 30px;
+    margin: 35px 0;
+    width: 300px;
     text-align: center;
 }
 .boxdashboard > .GoHistory {
@@ -84,9 +87,9 @@ Link {
 
 .scroll{
     width: 300px;
-    height: 500px;
+    height: 660px;
+    margin-top: 15px;
     background-color: #fff;
-    margin: 10px 10px;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
 }
@@ -107,10 +110,10 @@ Link {
     margin: 10px;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
-    height: 355px !important;
+    width: 980px !important;
+    height: 500px !important;
 }
 .doughnut-chart {
-    margin-bottom: 7px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
@@ -118,10 +121,11 @@ Link {
     height: 330px;
 }
 .nav-2 {
-    margin: 30px;
+    margin: 40px 30px 20px 30px;
+    justify-content: center;
 }
 .nav-3 {
-    margin: 60px 0px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -133,13 +137,14 @@ Link {
 }
 .smallbox {
     text-align: center;
-    margin: 7px 0;
+    margin: 35px 0;
     width: 300px;
     height: auto;
     background: #fff;
     border-radius: 10px;
     box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
 }
+
 .smallbox:nth-child(4){
     height: 200px;
 }
@@ -524,6 +529,8 @@ span >label {
         max-width: 353px;
         height: auto;
         margin: 20px auto;
+        display: flex;
+        justify-content: center;
     }
     .dashBoard {
         display: contents;
@@ -681,9 +688,9 @@ span >label {
     }
     .scroll {
         width: 300px;
-        height: 500px;
+        height: 660px;
         background-color: #fff;
-        margin: 10px 0;
+        margin-top: 15px;
         border-radius: 10px;
         box-shadow: -5px -5px 13px #D7F0FF, 5px 5px 10px #babebc;
     }

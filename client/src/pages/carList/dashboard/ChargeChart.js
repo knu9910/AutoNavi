@@ -50,7 +50,7 @@ const ChargeChart = () => {
         <Bar
           className="chargeChart"
           data={chartData}
-          style={{ background: 'white', width: '1000px' }}
+          style={{ background: 'white', width: '980px' }}
         />
       )}
     </div>

@@ -1,7 +1,7 @@
-const MostDriveCarEntry = ({ car, num }) => {
+const MostDriveCarEntry = ({ car }) => {
   return (
     <li className="small-carlist">
-      <span className="small-number">{num}.</span>
+      <span className="small-number"></span>
       <span className="small-name">{car.car_name}</span>
     </li>
   );

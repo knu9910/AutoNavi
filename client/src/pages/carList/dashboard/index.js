@@ -70,21 +70,21 @@ const CarDashBoard = () => {
             <div className="smallbox">
               <MostDriveCar />
             </div>
-          </div>
-          <div>
-            <MainChart />
+            <div className="boxdashboard">
+              <Link to="/car/carHistory" className="GoHistory">
+                최근 운행 기록
+              </Link>
+              <div className="scroll">
+                <div className="nav-1">
+                  <History />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="dashBoard">
-          <div className="boxdashboard">
-            <Link to="/car/carHistory" className="GoHistory">
-              최근 운행 기록
-            </Link>
-            <div className="scroll">
-              <div className="nav-1">
-                <History />
-              </div>
-            </div>
+          <div>
+            <MainChart />
           </div>
           <div className="nav-3">
             <ChargeChart />

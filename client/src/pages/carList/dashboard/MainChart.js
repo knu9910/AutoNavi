@@ -51,6 +51,17 @@ const MainChart = () => {
           },
           options: {
             plugins: {
+              title: {
+                display: true,
+                text: '전 차량 월 별 이동거리',
+                font: {
+                  size: 20,
+                },
+                padding: {
+                  top: 10,
+                  bottom: 30,
+                },
+              },
               legend: {
                 display: false,
               },
@@ -76,7 +87,7 @@ const MainChart = () => {
             labels: dailyData.map((row) => row.date),
             datasets: [
               {
-                label: '전 차량 일 별 평균 이동거리',
+                label: '전 차량 일별 평균 이동거리',
                 data: dailyData.map((row) => row.total_distance),
                 borderWidth: 1,
                 borderColor: '#0300a5',
@@ -93,6 +104,14 @@ const MainChart = () => {
             plugins: {
               title: {
                 display: true,
+                text: '전 차량 일별 평균 이동거리',
+                font: {
+                  size: 20,
+                },
+                padding: {
+                  top: 10,
+                  bottom: 30,
+                },
               },
               legend: {
                 display: false,
