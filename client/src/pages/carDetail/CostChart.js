@@ -78,8 +78,7 @@ const CostChart = () => {
               barPercentage: 0.6,
               label: '총 충전요금',
               data: chartFees,
-
-              backgroundColor: 'rgb(100, 153, 233)',
+              backgroundColor: '#0300a5',
             },
           ],
         },

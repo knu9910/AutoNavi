@@ -269,6 +269,7 @@
 }
 
 .daymonth {
+    margin-top: 10px;
     border-radius: 1.5rem;
     background: #0300A5;
     border: none;
