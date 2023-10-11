@@ -9,16 +9,17 @@ const historyCarModel = {
   },
 
   // 하나의 차량의 날짜별 충전소 history
-  async chargeFind(id, preDate, nextDate) {
+  async chargeFind(id) {
     const sql = `
     SELECT ch.*, c.car_name  -- car_name 추가
     FROM charge_history ch
     JOIN car c ON ch.car_id = c.id
-    WHERE ch.car_id = ? AND ch.createdAt >= ? AND ch.createdAt <= ?
+    WHERE ch.car_id = ?
   `;
 
-    const [rows] = await pool.query(sql, [id, preDate, nextDate]);
-    return rows;
+    const [rows] = await pool.query(sql, [id]);
+    const chargeHistorys = rows.reverse();
+    return chargeHistorys;
   },
 
   // 전체 차량의 토탈 금액 history
@@ -127,7 +128,8 @@ const historyCarModel = {
 
     // 쿼리 실행
     const [rows] = await pool.query(sql, [id]);
-    return rows;
+    const carTripHistory = rows.reverse();
+    return carTripHistory;
   },
 
   async getAllTripHistory() {
@@ -137,7 +139,8 @@ const historyCarModel = {
 
     // 쿼리 실행
     const [rows] = await pool.query(sql);
-    return rows;
+    const allTripHistorys = rows.reverse();
+    return allTripHistorys;
   },
 
   async getTodayTotalDistance() {

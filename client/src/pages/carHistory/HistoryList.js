@@ -10,11 +10,8 @@ const HistoryList = () => {
     (state) => state.historyStore.allCarsTripHistorys,
   );
 
-  let newTripHistory = allTripHistorys.slice(0, 40);
-  newTripHistory.sort((a, b) => b.id - a.id);
-
   const itemsPerPage = 15;
-  const historyList = newTripHistory.map((tripHistory) => {
+  const historyList = allTripHistorys.map((tripHistory) => {
     return (
       <MainCarHistoryEntry key={tripHistory.id} tripHistory={tripHistory} />
     );

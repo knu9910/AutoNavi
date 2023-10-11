@@ -3,18 +3,11 @@ const historyCarModel = require('../models/historyCar_model');
 
 const router = express.Router();
 
-router.get('/chargeFind/:id/:preDate/:nextDate', async (req, res) => {
+router.get('/chargeFind/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
-    const { preDate, nextDate } = req.params;
-    const preDateTime = `${preDate} 00:00:00`;
-    const nextDateTime = `${nextDate} 23:59:59`;
-    console.log(preDateTime);
-    const result = await historyCarModel.chargeFind(
-      id,
-      preDateTime,
-      nextDateTime,
-    );
+
+    const result = await historyCarModel.chargeFind(id);
     res.status(200).json(result);
   } catch (err) {
     console.error(err);
@@ -24,13 +17,7 @@ router.get('/chargeFind/:id/:preDate/:nextDate', async (req, res) => {
 
 router.get('/chargeFindAll', async (req, res) => {
   try {
-    const { preDate, nextDate } = req.params;
-    const preDateTime = `${preDate} 00:00:00`;
-    const nextDateTime = `${nextDate} 23:59:59`;
-    const result = await historyCarModel.chargeFindAll(
-      preDateTime,
-      nextDateTime,
-    );
+    const result = await historyCarModel.chargeFindAll();
     res.status(200).json(result);
   } catch (err) {
     console.error(err);

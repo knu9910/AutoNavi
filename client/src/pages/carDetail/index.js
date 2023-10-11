@@ -9,11 +9,6 @@ import Waiting from './Waiting';
 import { getChargeHistory, getOneTripHistory } from '../../store/historySlice';
 
 const CarDetail = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  const currentDate = `${year}-${month}-${day}`;
   const currentCar = useSelector((state) => state.carStore.currentCar);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,7 +28,7 @@ const CarDetail = () => {
   const handleGetCharge = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/history/chargeFind/${id}/2023-09-26/${currentDate}`,
+        `http://localhost:8080/api/history/chargeFind/${id}`,
       );
       const chargeData = res.data;
       dispatch(getChargeHistory({ chargeData }));
