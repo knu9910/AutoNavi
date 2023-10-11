@@ -40,7 +40,6 @@ const History = () => {
                       </td>
                       <td>{historyItem.name}</td>
                       <td>요금: {historyItem.fee}원</td>
-                      <br />
                     </tr>
                   ))}
                 </tbody>
@@ -62,7 +61,6 @@ const History = () => {
                       <td>행선지: {historyItem.destination}</td>
                       <td>거리: {metersToKMAndM(historyItem.distance)}</td>
                       <td>{historyItem.msg}</td>
-                      <br />
                     </tr>
                   ))}
                 </tbody>
