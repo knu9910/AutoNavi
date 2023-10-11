@@ -1,6 +1,21 @@
 .pagego {
     width: 1800px;
 }
+.pagego a {
+    border-radius: 1.5rem;
+    background: #0300A5;
+    box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60), -4px -4px 12px 0px rgba(253, 255, 255, 0.80);
+    border: none;
+    outline: none;
+    font-size: 0.7375rem; 
+    font-weight: bolder;
+    color: #fff;
+    padding: 0.5375rem 0.7125rem; 
+    letter-spacing: 0.0625rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100px;
+}
 .carmainhistory {
     display: flex;
     justify-content: center;
@@ -24,6 +39,7 @@
     max-width: 1800px;
     height: auto;
     margin: auto;
+    margin-top: 20px;
 }
 
 .carhistory-content ul {
@@ -38,6 +54,12 @@
     align-items: center;
     display: flex;
     justify-content: space-evenly;
+    color: var(--neutral-colors-600, #6D758F);
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 28px; /* 140% */
 }
 .carhistory-content p {
     width: 300px;
@@ -50,6 +72,7 @@
 }
 .hispagination p, li, a{
     font-size: 14px;
+    
 }
 
 
@@ -122,6 +145,7 @@
     max-width: 1800px;
     height: auto;
     margin: auto;
+    margin-top: 20px;
 }
 
 .carchargehistory-content ul {
@@ -136,6 +160,12 @@
     align-items: center;
     display: flex;
     justify-content: space-evenly;
+    color: var(--neutral-colors-600, #6D758F);
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 28px; /* 140% */
 }
 .carchargehistory-content p {
     width: 600px;

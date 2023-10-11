@@ -29,7 +29,7 @@ const charging = async (id, io, lowBat) => {
       duration: 0,
       traffic_speed: null,
       traffic_state: null,
-      traffic_name: null,
+      traffic_name: lowBat.charge.chargeSt.place_name,
       id,
     });
     await wait(1000 * 10);

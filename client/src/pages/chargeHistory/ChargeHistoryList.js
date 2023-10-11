@@ -32,7 +32,7 @@ const ChargeHistoryList = () => {
     <>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div className="pagego">
-          <Link to="/car/carHistory" style={{ color: 'black' }}>
+          <Link to="/car/carHistory" style={{ color: 'white' }}>
             운행 이력 보기
           </Link>
         </div>
