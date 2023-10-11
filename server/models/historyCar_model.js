@@ -22,16 +22,15 @@ const historyCarModel = {
   },
 
   // 전체 차량의 토탈 금액 history
-  async chargeFindAll(preDate, nextDate) {
+  async chargeFindAll() {
     const sql = `
-      SELECT ch.car_id, c.car_name, SUM(ch.fee) AS total_charge  -- car_name 추가
-      FROM charge_history ch
-      JOIN car c ON ch.car_id = c.id
-      WHERE ch.createdAt >= ? AND ch.createdAt <= ?
-      GROUP BY ch.car_id, c.car_name;
+    SELECT c.id AS car_id, c.car_name, COALESCE(SUM(ch.fee), 0) AS total_charge
+    FROM car c
+    LEFT JOIN charge_history ch ON c.id = ch.car_id
+    GROUP BY c.id, c.car_name;
     `;
 
-    const [rows] = await pool.query(sql, [preDate, nextDate]);
+    const [rows] = await pool.query(sql);
     return rows;
   },
 

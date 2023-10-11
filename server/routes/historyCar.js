@@ -22,7 +22,7 @@ router.get('/chargeFind/:id/:preDate/:nextDate', async (req, res) => {
   }
 });
 
-router.get('/chargeFindAll/:preDate/:nextDate', async (req, res) => {
+router.get('/chargeFindAll', async (req, res) => {
   try {
     const { preDate, nextDate } = req.params;
     const preDateTime = `${preDate} 00:00:00`;
