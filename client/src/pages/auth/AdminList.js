@@ -151,12 +151,12 @@ const AdminList = () => {
           <tbody>
             {displayedData.map((admin) => (
               <tr key={admin.id}>
-                <td>{admin.no}</td>
-                <td>{admin.userId}</td>
-                <td>{admin.userName}</td>
-                <td>{admin.position}</td>
-                <td>{admin.controlRights}</td>
-                <td>{admin.email}</td>
+                <td className="admin_no">{admin.no}</td>
+                <td className="admin_userId">{admin.userId}</td>
+                <td className="admin_userName">{admin.userName}</td>
+                <td className="admin_position">{admin.position}</td>
+                <td className="admin_controlRights">{admin.controlRights}</td>
+                <td className="admin_email">{admin.email}</td>
 
                 <td>
                   <Link to={`/auth/adminedit/${admin.id}`}>

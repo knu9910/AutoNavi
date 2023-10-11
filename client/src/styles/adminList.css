@@ -2,38 +2,44 @@ tbody, td, tfoot, th, thead, tr {
     margin: auto;
     display: block;
     font-family: 'Nanum Gothic', sans-serif;
+    width: 100%;
+    }
+    .cp-container {
+        width: 100%;
+        margin: auto;
     }
     .cp-table {
         margin: auto;
+        width: 60%;
     }
-    .cp-table > thead > tr{
-        display: flex;
-        text-align: center;
-        width: 1280px;
+    .cp-table > thead {
+        width: 100%;
         border-radius: 15px;
         border: none;
         outline: none;
         font-size: 16px;
         font-weight: bold;
         padding: 5px 10px;
-        margin: 14px;
+        margin: 14px 0px;
         letter-spacing: 1px;
         box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
         text-decoration: none;
         color: #6e6e6e;
-    
-    
+    }
+    .cp-table > thead > tr{
+        display: grid;
+        grid-template-columns: 5% 15% 13% 13% 11% 22% 21%;
     }
     .cp-table tbody {
         transition: transform 80ms ease-in;
-        width: 1280px;
+        width: 100%;
         border-radius: 15px;
         border: none;
         outline: none;
         font-size: 16px;
         font-weight: normal;
         padding: 5px 10px;
-        margin: 14px;
+        margin: 14px 0px;
         letter-spacing: 1px;
         box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
         text-decoration: none;
@@ -45,20 +51,22 @@ tbody, td, tfoot, th, thead, tr {
     }
     .cp-table > tbody > tr{
         display: grid;
-        grid-template-columns: repeat(7, 180px);
+        grid-template-columns: 5% 15% 13% 13% 11% 22% 21%;
     }
-    
-    .cp-table > tfoot > tr {
-    
-        display: flex;
+    .cp-table tbody > tr > td {
         text-align: center;
-        width: 1280px;
+    }
+    .cp-table > tfoot > tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+        width: 100%;
         border-radius: 15px;
         border: none;
         outline: none;
         font-size: 16px;
         font-weight: bold;
-        margin: 14px;
+        margin: 14px 0px;
         letter-spacing: 1px;
         box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
         text-decoration: none;
@@ -68,16 +76,11 @@ tbody, td, tfoot, th, thead, tr {
     .cp-table th {
         border-radius: 15px;
         text-align: center;
-        width: 1000px;  
+
     }
-    .cp-table tbody > tr > td {
-        text-align: center;
-        width: 180px;
-    }
-    
     .cp-search-box{
         margin: auto;
-        width: 1250px;
+        width: 60%;
         display: flex;
         justify-content: space-between;
     }
@@ -190,189 +193,243 @@ tbody, td, tfoot, th, thead, tr {
     tbody .cp-delete:active {
         box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;    
     }
-    
-    @media (max-width: 480px) {
-    .ContactPersonList {
-        width: auto;
-        padding-top: 30px;
-    }
-    .ContactPersonList > .small-logo {
-        width: auto;
-        height: auto;    
-    }
-    .cp-search-box{
-        width: auto;
-        margin: 20px;
-    }
-    
-    .cp-button1 > p{
-        font-family: 'Nanum Gothic', sans-serif;
-        font-weight: 500;
-    }
-    
-    .cp-button1:active {
-    box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
-    }
-    
-    .cp-search-box > .cp-box2{
-        margin: 14px;
-    }
-    
-    .cp-search-box .cp-search {
-        width: 140px;
-        height: 25px;
-        background: #6e6e6e;
-        border-radius: 25px;
-        position: relative;
-    }
-    
-    .cp-search-box .cp-text {
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 25px;
-        font-size: 0.5rem;
-        padding: 8px 40px 8px 20px;
-        border: none;
-        box-shadow: 0 3px 5px 1px #9e9d9d;
-    }
-    
-    .cp-text:focus{
-        outline: none;
-    }
-    
-    .cp-table {
-        width: auto;
-        margin: auto;
-    }
-    
-    }
-    
-    .table-foot td {
-        width: calc(100% / 3);
-    }
-    
-    /* 드롭다운 박스(게시글 개수 필터링) */
-    .item-filter {
-        font-size: 12px;
-        font-weight: bold;
-        padding: 5px 5px;
-        box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
-        display: inline-flex;
-        flex-direction: column; 
-        position:relative;
-        cursor: pointer;
-        border-radius: 15px;
-        border: none;
-        outline: none;
-        text-decoration: none;
-        color: #6e6e6e;
-    }
-    
-    .option {
-        padding:0 30px;
-        display:flex;
-        align-items:center;
-        position:absolute;
-        pointer-events:none;
-        order:2;
-        z-index:1;
-        box-sizing:border-box;
-        overflow:hidden;
-        white-space:nowrap;
-        color: #000;
-        cursor: pointer;
-    }
-    
-    
-    .option:hover {
-        background:#D7F0FF;
-    }
-    
-    .item-filter:focus .option {
-        position:relative;
-        pointer-events:all;
-    }
-    
-    .selectopt {
-        opacity:0;
-        position:absolute;
-        left:-99999px;
-    }
-    
-    .selectopt:checked + label {
-        order: 1;
-        z-index:2;
-        background-color: #ffffff;
-        position:relative;
-    }
-    
-    .selectopt:checked + label:after {
-        content:'';
-        width: 0; 
-        height: 0; 
-    
-        position:absolute;
-        right:10px;
-        top:calc(50% - 2.5px);
-        pointer-events:none;
-        z-index:3;
-    }
-    
-    .selectopt:checked + label:before {
-        position:absolute;
-        right:0;
-        height: 30px;
-        width: 30px;
-        content: '';
-    }
-    
-    .item-filter-text {
-        margin-right: 5px;
-        font-weight: lighter;
-    }
-    
-    .text-center { 
-        font-weight: 100;
-        font-size: 13px;
-    }
-    
+        
     /* 페이지네이션 버튼 */
     .arrow-box {
-        text-align: right;
+        margin: 0px 0px 0px 24%;
     }
-    
-    .arr {
-        position: relative;
-        display: inline-block;
-        width:28px;
-        height:42px;
-        margin: 0 30px 0 0;
-        border-radius: 15px;
-        border: none;
-        outline: none;
-        text-decoration: none;
-        color: #6e6e6e;
-    }
-    
-    .arr div {
-        position: absolute;
-        height: 10px;
-        width: 10px;
-        border-top: 3px solid #6E6E6E;
-        border-left: 3px solid #6E6E6E;
-        transform: rotate(45deg);
-        left: 9px;
-        top: 17px;
+        /* 드롭다운 박스(게시글 개수 필터링) */
+        .item-filter {
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 5px;
+            box-shadow: -5px -5px 10px #D7F0FF, 5px 5px 8px #babebc;
+            display: inline-flex;
+            flex-direction: column; 
+            position:relative;
+            cursor: pointer;
+            border-radius: 15px;
+            border: none;
+            outline: none;
+            text-decoration: none;
+            color: #6e6e6e;
+        }
         
-    }
+        .option {
+            padding:0 30px;
+            display:flex;
+            align-items:center;
+            position:absolute;
+            pointer-events:none;
+            order:2;
+            z-index:1;
+            box-sizing:border-box;
+            overflow:hidden;
+            white-space:nowrap;
+            color: #000;
+            cursor: pointer;
+        }
+        
+        
+        .option:hover {
+            background:#D7F0FF;
+        }
+        
+        .item-filter:focus .option {
+            position:relative;
+            pointer-events:all;
+        }
+        
+        .selectopt {
+            opacity:0;
+            position:absolute;
+            left:-99999px;
+        }
+        
+        .selectopt:checked + label {
+            order: 1;
+            z-index:2;
+            background-color: #ffffff;
+            position:relative;
+        }
+        
+        .selectopt:checked + label:after {
+            content:'';
+            width: 0; 
+            height: 0; 
+        
+            position:absolute;
+            right:10px;
+            top:calc(50% - 2.5px);
+            pointer-events:none;
+            z-index:3;
+        }
+        
+        .selectopt:checked + label:before {
+            position:absolute;
+            right:0;
+            height: 30px;
+            width: 30px;
+            content: '';
+        }
+        
+        .item-filter-text {
+            margin-right: 5px;
+            font-weight: lighter;
+        }
+        
+        .text-center { 
+            font-weight: 100;
+            font-size: 13px;
+        }
     
-    .right {
-        box-shadow: 5px -5px 8px #babebc;
-        transform: rotate(90deg);
+        .arr {
+            position: relative;
+            display: inline-block;
+            width:28px;
+            height:42px;
+            margin: 0 30px 0 0;
+            border-radius: 15px;
+            border: none;
+            outline: none;
+            text-decoration: none;
+            color: #6e6e6e;
+        }
+        
+        .arr div {
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            border-top: 3px solid #6E6E6E;
+            border-left: 3px solid #6E6E6E;
+            transform: rotate(45deg);
+            left: 9px;
+            top: 17px;
+        }
+        
+        .right {
+            box-shadow: 5px -5px 8px #babebc;
+            transform: rotate(90deg);
+        }
+        
+        .left {
+            box-shadow:-5px -5px 8px #babebc;
+            transform: rotate(-90deg);
+        }
+    @media (max-width: 1090px) {
+        .cp-search-box{
+            width: 90%;
+        }
+        .cp-table {
+            width: 90%;
+        }
     }
-    
-    .left {
-        box-shadow:-5px -5px 8px #babebc;
-        transform: rotate(-90deg);
+    @media (max-width: 674px) {
+        .cp-table > thead > tr{
+            display: grid;
+            grid-template-columns: 5% 15% 13% 13% 11% 13% 28%;
+        }
+        .cp-table > tbody > tr{
+            display: grid;
+            grid-template-columns: 5% 15% 13% 13% 11% 13% 28%;
+        }
+        .cp-table > tfoot > tr {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1.2fr;
+        }
+        .arrow-box {
+            margin: 0px 0px 0px 13%;
+        }
+    }
+    @media (max-width: 530px) {
+        .cp-table > thead > tr{
+            display: grid;
+            grid-template-columns: 6% 16% 14% 14% 12% 14% 22%;
+        }
+        .cp-table > tbody > tr{
+            display: grid;
+            grid-template-columns: 6% 16% 14% 14% 12% 14% 22%;
+        }
+        .cp-table > tfoot > tr {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+        }
+        .cp-table > thead {
+            font-size: 12px;
+        }
+        .cp-table tbody {
+            font-size: 12px;
+        }
+        .cp-table > tfoot > tr {
+            font-size: 12px;
+        }
+        .cp-search-box{
+            width: 90%;
+        }
+
+        .cp-container {
+            width: 90%;
+            margin: auto;
+        }
+        .cp-table {
+            width: 90%;
+        }
+        .ContactPersonList {
+            width: auto;
+            padding-top: 30px;
+        }
+        .ContactPersonList > .small-logo {
+            width: auto;
+            height: auto;    
+        }
+        
+        .cp-button1 > p{
+            font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 500;
+        }
+        
+        .cp-button1:active {
+        box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+        }
+
+        .cp-text:focus{
+            outline: none;
+        }
+        
+        .cp-table {
+            width: auto;
+            margin: auto;
+        }
+        tbody .cp-edit {
+            font-size: 10px;
+            padding: 3px 5px;
+            margin: 5px;
+        }
+        tbody .cp-delete {
+            font-size: 10px;
+            padding: 3px 5px;
+        }
+        .arr {
+            width: 21px;
+            height: 32px;
+            margin: 0 12px 0 0;
+        }
+        .arr div {
+            height: 8px;
+            width: 8px;
+            border-top: 2px solid #6E6E6E;
+            border-left: 2px solid #6E6E6E;
+            left: 6.5px;
+            top: 12px;
+        }
+        .text-center {
+            font-size: 5px;
+        }
+        .option {
+            padding:0 10px;
+        }
+        .item-filter {
+            font-size: 8px;
+            padding: 5px 5px;
+        }
     }
