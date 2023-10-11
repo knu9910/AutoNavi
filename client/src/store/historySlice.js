@@ -18,10 +18,9 @@ const historySlice = createSlice({
       state.allCarsHistorys = action.payload.historys;
     },
     sortCarsHistorys(state, action) {
-      const sortedCarsHistorys = [...state.allCarsHistorys];
-      state.mostDrivenList = sortedCarsHistorys.sort(
-        (a, b) => b.cum_distance - a.cum_distance,
-      );
+      const sortCarsHistorys = [...state.allCarsHistorys];
+      sortCarsHistorys.sort((a, b) => b.cum_distance - a.cum_distance);
+      state.mostDrivenList = sortCarsHistorys.slice(0, 5);
     },
     getCarsTripHistorys(state, action) {
       state.allCarsTripHistorys = action.payload.allTripHistorys;
