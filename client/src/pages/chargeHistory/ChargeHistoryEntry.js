@@ -9,7 +9,7 @@ const ChargeHistoryEntry = ({ chargeHistory }) => {
       <p>{car_name}</p>
       <p>{name}</p>
       <p>{location}</p>
-      <p>{fee}</p>
+      <p>{fee}원</p>
       <p>
         {date} {time}
       </p>

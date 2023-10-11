@@ -1,3 +1,11 @@
+.pagego {
+    width: 1800px;
+}
+.carmainhistory {
+    display: flex;
+    justify-content: center;
+}
+
 .carhistorybox > .carhistory-head {
     display: flex;
     background-color: #bff2ff80;

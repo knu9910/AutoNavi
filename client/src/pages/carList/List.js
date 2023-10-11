@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PaginationComp from '../../components/common/PaginationComp';
 import { useSelector } from 'react-redux';
 import CarEntry from './CarEntry';
+import { Link } from 'react-router-dom';
 
 const List = () => {
   const [carInOp, setCarInOp] = useState(true);
@@ -128,6 +129,11 @@ const List = () => {
             totalPages={Math.ceil(filteredCars.length / itemsPerPage)}
             onPageChange={(page) => setCurrentPage(page)}
           />
+        </div>
+        <div>
+          <Link to="/car/carHistory/" style={{ color: 'black', margin: '5px' }}>
+            운행 및 충전 이력 보기
+          </Link>
         </div>
       </div>
     </>

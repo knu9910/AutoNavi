@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import '../../styles/mainHistory.css';
-import ChargeHistoryList from './ChargeHistoryList';
 import HistoryList from './HistoryList';
 import { useEffect } from 'react';
 import {
@@ -8,6 +7,7 @@ import {
   getChargeHistoryAll,
 } from '../../store/historySlice';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const CarHistory = () => {
   const dispatch = useDispatch();
@@ -34,11 +34,16 @@ const CarHistory = () => {
   }, []);
   return (
     <section>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="pagego">
+          <Link to="/car/chargeHistory" style={{ color: 'black' }}>
+            충전 이력 보기
+          </Link>
+        </div>
+      </div>
+
       <div className="carmainhistory">
         <HistoryList />
-      </div>
-      <div className="carchargehistory">
-        <ChargeHistoryList />
       </div>
     </section>
   );

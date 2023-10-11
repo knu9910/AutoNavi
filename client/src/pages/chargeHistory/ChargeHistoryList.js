@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ChargeHistoryEntry from './ChargeHistoryEntry';
 import PaginationComp from '../../components/common/PaginationComp';
+import { Link } from 'react-router-dom';
 
 const ChargeHistoryList = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,25 +29,34 @@ const ChargeHistoryList = () => {
   const displayedChargeHistorys = historyList.slice(startIndex, endIndex);
 
   return (
-    <div className="carchargehistorybox">
-      <div className="carchargehistory-head">
-        <p> ID </p>
-        <p> 충전소 이름 </p>
-        <p> 주소 </p>
-        <p> 요금 </p>
-        <p> 시간 </p>
+    <>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="pagego">
+          <Link to="/car/carHistory" style={{ color: 'black' }}>
+            운행 이력 보기
+          </Link>
+        </div>
       </div>
-      <div className="carchargehistory-content">
-        <ul>{displayedChargeHistorys}</ul>
+      <div className="carchargehistorybox">
+        <div className="carchargehistory-head">
+          <p> ID </p>
+          <p> 충전소 이름 </p>
+          <p> 주소 </p>
+          <p> 요금 </p>
+          <p> 시간 </p>
+        </div>
+        <div className="carchargehistory-content">
+          <ul>{displayedChargeHistorys}</ul>
+        </div>
+        <div className="chargepagination">
+          <PaginationComp
+            currentPage={currentPage}
+            totalPages={Math.ceil(historyList.length / itemsPerPage)}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
+        </div>
       </div>
-      <div className="chargepagination">
-        <PaginationComp
-          currentPage={currentPage}
-          totalPages={Math.ceil(historyList.length / itemsPerPage)}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
-      </div>
-    </div>
+    </>
   );
 };
 export default ChargeHistoryList;

@@ -11,6 +11,7 @@ import LayOut from './components/layout';
 import NotFound from './pages/NotFound';
 import { AdminList, AdminReg, AdminEdit, Login } from './pages/auth';
 import PrivateRoute from './components/PrivateRoute';
+import ChargeHistoryList from './pages/chargeHistory/ChargeHistoryList';
 
 const App = () => {
   return (
@@ -28,6 +29,10 @@ const App = () => {
               <Route path="/car/carReg" element={<CarReg />} />
               <Route path="/car/carHistory" element={<CarHistory />} />
               <Route path="/car/detail/:id" element={<CarDetail />} />
+              <Route
+                path="/car/chargeHistory/"
+                element={<ChargeHistoryList />}
+              />
             </Route>
           </Route>
           <Route path="/auth/login" element={<Login />} />
