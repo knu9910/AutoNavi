@@ -4,7 +4,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSpeech } from '../../pathToGetSpeech';
 import socket from '../../soket';
-import { addCharge, deleteCharge } from '../../store/chargeSlice';
+import {
+  addCharge,
+  addTopCharge,
+  deleteCharge,
+  deleteTopCharges,
+} from '../../store/chargeSlice';
 
 const Toastify = () => {
   const carList = useSelector((state) => state.carStore.carList);
@@ -29,10 +34,9 @@ const Toastify = () => {
       }
 
       let noti = '';
-      console.log(car, 'tos 에러');
+
       if (data.msg === 'start') {
         console.log('운행시작');
-        console.log(car);
         noti = `${car.car_name} 차량이 운행을 시작했습니다.`;
         notify(noti);
         getSpeech(noti);
@@ -41,7 +45,12 @@ const Toastify = () => {
         notify(noti);
         getSpeech(noti);
       } else if (data.msg === 'lowBattery') {
-        const charge = data.info;
+        const top10 = data.info.recommenPlaces;
+        top10.forEach((charge) => {
+          charge.car_id = data.id;
+          dispatch(addTopCharge({ charge }));
+        });
+        const charge = data.info.chargeSt;
         dispatch(addCharge({ charge }));
         noti = `${car.car_name} 차량이 배터리가 부족하여 충전소로 이동합니다.`;
         notify(noti);
@@ -53,6 +62,7 @@ const Toastify = () => {
       } else if (data.msg === 'arrivedCarge') {
         noti = `${car.car_name} 차량이 충전소에 도착하였습니다.`;
         dispatch(deleteCharge({ id: data.id }));
+        dispatch(deleteTopCharges({ id: data.id }));
         notify(noti);
         getSpeech(noti);
       } else if (data.msg === 'charging') {

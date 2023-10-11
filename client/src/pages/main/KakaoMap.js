@@ -5,17 +5,21 @@ import ChargeMarkerEntry from './ChargeMarkerEntry';
 
 const KaKaoMap = ({ carList }) => {
   const cargeList = useSelector((state) => state.chargeStore.chargeList);
+  const topCharges = useSelector((state) => state.chargeStore.topCharges);
 
   const lat = useSelector((state) => state.mainStore.lat);
   const lng = useSelector((state) => state.mainStore.lng);
   const chargeMarkers = cargeList.map((charge) => {
-    return <ChargeMarkerEntry key={charge.car_id} charge={charge} />;
+    return <ChargeMarkerEntry key={charge.id} charge={charge} />;
   });
 
   const carMarkers = carList.map((car) => (
     <CarMarkerEntry key={car.car_id} car={car} />
   ));
 
+  const topChargeMakers = topCharges.map((charge) => {
+    return <ChargeMarkerEntry key={charge.id} charge={charge} />;
+  });
   return (
     <Map // 지도를 표시할 Container
       center={{
@@ -32,6 +36,7 @@ const KaKaoMap = ({ carList }) => {
     >
       {carMarkers}
       {chargeMarkers}
+      {topChargeMakers}
     </Map>
   );
 };
