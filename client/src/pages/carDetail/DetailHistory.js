@@ -33,7 +33,7 @@ const History = () => {
               <table className="info_table_history">
                 <tbody>
                   {chargeHistorySort.map((historyItem, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{ margin: '20px' }}>
                       <td>
                         {parseDateString(historyItem.createdAt).date}{' '}
                         {parseDateString(historyItem.createdAt).time}
@@ -52,7 +52,7 @@ const History = () => {
               <table className="info_table_history">
                 <tbody>
                   {tripHistorySort.map((historyItem, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{ margin: '20px' }}>
                       <td>
                         {parseDateString(historyItem.createdAt).date}{' '}
                         {parseDateString(historyItem.createdAt).time}
