@@ -1,6 +1,8 @@
 /* Header 공통 start*/
 
 .logout-btn {
+    margin: auto;
+    max-width: 1800px;
     display: flex;
     justify-content: flex-end;
 }
