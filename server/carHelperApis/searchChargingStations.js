@@ -33,17 +33,15 @@ async function searchChargingStations(centerY, centerX) {
     const places = response.data.documents;
     // 검색 결과를 처리하는 코드 작성
 
-    let chargeSt;
-    if (places.length !== 0) {
-      chargeSt = places.reduce((acc, cur) => {
-        return acc.distance < cur.distance ? acc : cur;
-      });
-    }
-    console.log(places, chargeSt);
-    return chargeSt;
+    places.sort((a, b) => a.distance - b.distance);
+
+    const chargeSt = places[0];
+    const recommenPlaces = places.slice(1, 10);
+
+    return { chargeSt, recommenPlaces };
   } catch (error) {
     // 오류 처리
-    console.error(error, 123123);
+    console.error(error);
   }
 }
 

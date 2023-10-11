@@ -37,9 +37,9 @@ const charging = async (id, io, lowBat) => {
 
   const ok = await axios.post('http://localhost:8080/api/history/chargePost', {
     car_id: id,
-    name: lowBat.charge.place_name,
+    name: lowBat.charge.chargeSt.place_name,
     fee,
-    location: lowBat.charge.road_address_name,
+    location: lowBat.charge.chargeSt.road_address_name,
   });
   console.log(ok);
   io.emit('operationalStatus', { id, msg: 'compCharging' });
