@@ -36,7 +36,7 @@ const CarHistory = () => {
     <section>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div className="pagego">
-          <Link to="/car/chargeHistory" style={{ color: 'black' }}>
+          <Link to="/car/chargeHistory" style={{ color: 'white' }}>
             충전 이력 보기
           </Link>
         </div>
