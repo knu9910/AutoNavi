@@ -3,6 +3,8 @@ import PaginationComp from '../../components/common/PaginationComp';
 import { useSelector } from 'react-redux';
 import CarEntry from './CarEntry';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const List = () => {
   const [carInOp, setCarInOp] = useState(true);
@@ -130,10 +132,23 @@ const List = () => {
             onPageChange={(page) => setCurrentPage(page)}
           />
         </div>
-        <div>
-          <Link to="/car/carHistory/" style={{ color: 'black', margin: '5px' }}>
+        <div
+          style={{
+            color: 'black',
+            margin: '10px',
+            display: 'flex',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <Link to="/car/carHistory/" style={{ color: 'black' }}>
             운행 및 충전 이력 보기
           </Link>
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            style={{
+              color: '#000000',
+            }}
+          />
         </div>
       </div>
     </>
