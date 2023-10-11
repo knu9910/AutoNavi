@@ -24,7 +24,7 @@ export function parseDateString(dateString) {
   const seconds = date.getSeconds();
 
   const formattedDate = `${year}-${month}-${day}`;
-  const formattedTime = `${hours}:${minutes}:${seconds}`;
+  const formattedTime = `${hours}시 ${minutes}분 ${seconds}초`;
 
   return { date: formattedDate, time: formattedTime };
 }
