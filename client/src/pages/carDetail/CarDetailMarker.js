@@ -6,7 +6,6 @@ const CarDetailMarker = ({ car }) => {
   const [isOpen, setIsOpen] = useState(false);
   const currentCar = useSelector((state) => state.carStore.currentCar);
 
-  console.log(car);
   return (
     <MapMarker
       position={{

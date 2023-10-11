@@ -1,7 +1,6 @@
 import { metersToKMAndM, parseDateString } from '../../helperFunction';
 
 const MainCarHistoryEntry = ({ tripHistory }) => {
-  console.log(tripHistory);
   let { distance, destination, departure, car_name, createdAt, msg } =
     tripHistory;
 

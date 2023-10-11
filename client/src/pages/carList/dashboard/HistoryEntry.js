@@ -1,5 +1,4 @@
 const HistoryEntry = ({ tripHistory }) => {
-  console.log(tripHistory);
   let { destination, departure, car_name, msg } = tripHistory;
 
   return (
