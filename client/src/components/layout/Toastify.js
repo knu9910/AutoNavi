@@ -23,7 +23,13 @@ const Toastify = () => {
       const car = carList.find((car) => {
         return car.car_id === data.id;
       });
+
+      if (!car) {
+        return;
+      }
+
       let noti = '';
+      console.log(car, 'tos 에러');
       if (data.msg === 'start') {
         console.log('운행시작');
         console.log(car);
