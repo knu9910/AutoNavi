@@ -11,7 +11,7 @@ const ChargeChart = () => {
       try {
         // API에서 데이터 가져오기
         const response = await axios.get(
-          'http://localhost:8080/api/history/chargeFindAll/2023-09-02/2023-10-06',
+          'http://localhost:8080/api/history/chargeFindAll',
         );
         const data = response.data; // API 응답 데이터
 
