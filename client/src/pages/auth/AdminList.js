@@ -2,12 +2,16 @@ import '../../styles/adminList.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PaginationComp from '../../components/common/PaginationComp';
+import HistoryList from '../carHistory/HistoryList';
 
 const AdminList = () => {
-  const [adminList, setAdminList] = useState([]);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5); // or your default items per page
   const [search, setSearch] = useState('');
+  const [adminList, setAdminList] = useState([]); // Your list of data
+
+  const totalPages = Math.ceil(adminList.length / itemsPerPage);
 
   // 서버에서 데이터 가져오기!!
   useEffect(() => {
@@ -25,19 +29,6 @@ const AdminList = () => {
         console.error('데이터 가져오기 오류:', error);
       });
   }, []);
-
-  const goPrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const goNext = () => {
-    const maxPage = Math.ceil(filterAdminList().length / itemsPerPage);
-    if (currentPage < maxPage) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
 
   // 페이지당 표시되는 게시물 수 변경(핸들러)
   const handleItemsPerPageChange = (e) => {
@@ -135,107 +126,91 @@ const AdminList = () => {
       </div>
 
       <div className="cp-container">
-        <table className="cp-table">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>사원번호</th>
-              <th>이름</th>
-              <th>직급</th>
-              <th>권한</th>
-              <th>E-mail</th>
-              <th>...</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {displayedData.map((admin) => (
-              <tr key={admin.id}>
-                <td className="admin_no">{admin.no}</td>
-                <td className="admin_userId">{admin.userId}</td>
-                <td className="admin_userName">{admin.userName}</td>
-                <td className="admin_position">{admin.position}</td>
-                <td className="admin_controlRights">{admin.controlRights}</td>
-                <td className="admin_email">{admin.email}</td>
-
-                <td>
-                  <Link to={`/auth/adminedit/${admin.id}`}>
-                    <button className="cp-edit" href="#">
-                      수정
-                    </button>
-                  </Link>
-                  <button
-                    className="cp-delete"
-                    onClick={() => showDeleteAlert(admin.id)}
-                  >
-                    삭제
+        <div className="cp-table">
+          <p> No </p>
+          <p> 사원번호 </p>
+          <p> 이름 </p>
+          <p> 직급 </p>
+          <p> 권한 </p>
+          <p> E-mail </p>
+          <p> ... </p>
+        </div>
+        <div className="cp-content">
+          {displayedData.map((admin) => (
+            <ul key={admin.id}>
+              <li className="admin_no">{admin.no}</li>
+              <li className="admin_userId">{admin.userId}</li>
+              <li className="admin_userName">{admin.userName}</li>
+              <li className="admin_position">{admin.position}</li>
+              <li className="admin_controlRights">{admin.controlRights}</li>
+              <li className="admin_email">{admin.email}</li>
+              <li>
+                <Link to={`/auth/adminedit/${admin.id}`}>
+                  <button className="cp-edit" href="#">
+                    수정
                   </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-
-          <tfoot>
-            <tr className="table-foot">
-              <td>
-                <span className="item-filter-text">items per page: </span>
-                <div className="item-filter" tabIndex="1">
-                  <input
-                    className="selectopt"
-                    name="test"
-                    type="radio"
-                    id="opt1"
-                    value={5}
-                    checked={itemsPerPage === 5}
-                    onChange={handleItemsPerPageChange}
-                  />
-                  <label htmlFor="opt1" className="option">
-                    5
-                  </label>
-                  <input
-                    className="selectopt"
-                    name="test"
-                    type="radio"
-                    id="opt2"
-                    value={10}
-                    checked={itemsPerPage === 10}
-                    onChange={handleItemsPerPageChange}
-                  />
-                  <label htmlFor="opt2" className="option">
-                    10
-                  </label>
-                  <input
-                    className="selectopt"
-                    name="test"
-                    type="radio"
-                    id="opt3"
-                    value={15}
-                    checked={itemsPerPage === 15}
-                    onChange={handleItemsPerPageChange}
-                  />
-                  <label htmlFor="opt3" className="option">
-                    15
-                  </label>
-                </div>
-              </td>
-
-              <td colSpan="5" className="text-center">
-                autonavi@autonavi.kr{' '}
-                <Link to="/" target="_blank">
-                  autonavi
                 </Link>
-              </td>
-              <td className="arrow-box">
-                <button className="arr left" onClick={goPrev}>
-                  <div className="arrow"></div>
+                <button
+                  className="cp-delete"
+                  onClick={() => showDeleteAlert(admin.id)}
+                >
+                  삭제
                 </button>
-                <button className="arr right" onClick={goNext}>
-                  <div className="arrow"></div>
-                </button>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+              </li>
+            </ul>
+          ))}
+        </div>
+        <div>
+          <div className="table-foot">
+            <div className="admin-pagination">
+              <p className="item-filter-text">items per page: </p>
+              <div className="item-filter" tabIndex="1">
+                <input
+                  className="selectopt"
+                  name="test"
+                  type="radio"
+                  id="opt1"
+                  value={5}
+                  checked={itemsPerPage === 5}
+                  onChange={handleItemsPerPageChange}
+                />
+                <label htmlFor="opt1" className="option">
+                  5
+                </label>
+                <input
+                  className="selectopt"
+                  name="test"
+                  type="radio"
+                  id="opt2"
+                  value={10}
+                  checked={itemsPerPage === 10}
+                  onChange={handleItemsPerPageChange}
+                />
+                <label htmlFor="opt2" className="option">
+                  10
+                </label>
+                <input
+                  className="selectopt"
+                  name="test"
+                  type="radio"
+                  id="opt3"
+                  value={15}
+                  checked={itemsPerPage === 15}
+                  onChange={handleItemsPerPageChange}
+                />
+                <label htmlFor="opt3" className="option">
+                  15
+                </label>
+              </div>
+              <td colSpan="5" className="text-center"></td>
+              <PaginationComp
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

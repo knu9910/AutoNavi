@@ -34,19 +34,22 @@ const Header = () => {
 
   return (
     <header>
-      <div className="logout-btn">
-        {storedRole === 'master' && (
-          <Link to="/auth/adminList" className="link-admin">
-            <button className="btn-admin">관리자</button>
-          </Link>
-        )}
-        <div className="link-logout">
-          <button className="btn-logout" onClick={handleLogout}>
-            Logout
-            <FontAwesomeIcon icon={faArrowRightFromBracket} />
-          </button>
+      <div>
+        <div className="logout-btn">
+          {storedRole === 'master' && (
+            <Link to="/auth/adminList" className="link-admin">
+              <button className="btn-admin">관리자</button>
+            </Link>
+          )}
+          <div className="link-logout">
+            <button className="btn-logout" onClick={handleLogout}>
+              Logout
+              <FontAwesomeIcon icon={faArrowRightFromBracket} />
+            </button>
+          </div>
         </div>
       </div>
+
       <div className="logo-h">
         <img className="h-logo" src={blueLogo} alt="" />
       </div>

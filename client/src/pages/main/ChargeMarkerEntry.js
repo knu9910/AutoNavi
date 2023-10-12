@@ -37,7 +37,7 @@ const ChargeMarkerEntry = ({ charge }) => {
               fontSize: '13px',
               backgroundColor: '#fff',
               borderRadius: '15px',
-              width: '300px',
+              width: '400px',
               outline: 'none',
               fontWeight: 'bold',
               padding: '5px 10px',
