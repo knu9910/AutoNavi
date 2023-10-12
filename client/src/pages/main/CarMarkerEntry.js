@@ -64,10 +64,10 @@ const CarMarkerEntry = ({ car }) => {
               color: '#6e6e6e',
             }}
           >
-            <span className="title">차량 정보</span>
+            <span className="title">{car.car_name}</span>
             <div className="title">차량 번호: {car.car_number}</div>
-            <div>남은거리: {car.distance}</div>
-            <div>운행시간: {car.duration}</div>
+            <div>남은거리: {distance}</div>
+            <div>남은운행시간: {duration}</div>
             <Link to={`/car/detail/${car.car_id}`}>차량상세정보보기 </Link>
           </div>
         </CustomOverlayMap>
