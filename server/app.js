@@ -12,12 +12,9 @@ const express = require('express');
 
 const app = express();
 
-const io = app.get('io');
-
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
-const watchDatabaseChanges = require('./carHelperApis/watchDatabaseChanges');
 const realTimeStartApi = require('./realTimeStartApi');
 const path = require('path');
 
@@ -36,24 +33,11 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 app.use('/api', indexRouter);
 
 app.post('/realTimeStart', (req, res) => {
-  realTimeStartApi(req, res, io);
-});
-
-io.on('connection', (socket) => {
-  console.log('사용자가 연결 되었습니다.');
-  watchDatabaseChanges(io);
-
-  socket.on('disconnect', () => {
-    console.log('사용자가 연결 해제되었습니다.');
-  });
+  realTimeStartApi(req, res);
 });
 
 app.use('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-});
-
-app.listen(8080, () => {
-  console.log('listening on *:8080');
 });
 
 module.exports = app;
