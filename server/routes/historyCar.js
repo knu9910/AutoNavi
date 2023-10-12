@@ -47,7 +47,7 @@ router.put('/updateHistory/:id', async (req, res) => {
       .status(200)
       .json({ message: 'History updated successfully', updatedRows });
   } catch (err) {
-    console.erroror(err);
+    console.error(err);
     res.status(500).json({ error: '데이터베이스 오류' });
   }
 });
@@ -58,7 +58,7 @@ router.get('/getAllHistory', async (req, res) => {
     const history = await historyCarModel.getCarAllHistory();
     res.status(200).json(history);
   } catch (err) {
-    console.erroror(err);
+    console.error(err);
     res.status(500).json({ error: '데이터베이스 오류' });
   }
 });
@@ -70,7 +70,7 @@ router.get('/getHistoryByCar/:id', async (req, res) => {
     const history = await historyCarModel.getCarHistoryByCarId(id);
     res.status(200).json(history);
   } catch (err) {
-    console.erroror(err);
+    console.error(err);
     res.status(500).json({ error: '데이터베이스 오류' });
   }
 });
@@ -87,7 +87,7 @@ router.post('/addTripHistory', async (req, res) => {
       res.status(500).json({ error: 'Failed to add trip history' });
     }
   } catch (error) {
-    console.erroror(error);
+    console.error(error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -100,7 +100,7 @@ router.get('/getTripHistory/:id', async (req, res) => {
 
     res.status(200).json(tripHistory);
   } catch (error) {
-    console.erroror(error);
+    console.error(error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -111,7 +111,7 @@ router.get('/getAllTripHistory', async (req, res) => {
 
     res.status(200).json(tripHistoryList);
   } catch (error) {
-    console.erroror(error);
+    console.error(error);
     res.status(500).json({ error: 'Server error' });
   }
 });
