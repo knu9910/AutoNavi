@@ -2,7 +2,7 @@ const axios = require('axios');
 const wait = require('./wait');
 
 const charging = async (id, io, lowBat) => {
-  const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
+  const res = await axios.get(`${process.env.SERVER_API}/api/cars/${id}`);
   const car = res.data;
   const { location_x, location_y, realtime_battery } = car;
 
@@ -18,7 +18,7 @@ const charging = async (id, io, lowBat) => {
     if (battery >= 100) {
       battery = 100;
     }
-    await axios.patch('http://localhost:8080/api/real/realcar', {
+    await axios.patch(`${process.env.SERVER_API}/api/real/realcar`, {
       location_x,
       location_y,
       battery,
@@ -35,12 +35,15 @@ const charging = async (id, io, lowBat) => {
     await wait(1000 * 10);
   }
 
-  const ok = await axios.post('http://localhost:8080/api/history/chargePost', {
-    car_id: id,
-    name: lowBat.charge.chargeSt.place_name,
-    fee,
-    location: lowBat.charge.chargeSt.road_address_name,
-  });
+  const ok = await axios.post(
+    `${process.env.SERVER_API}/api/history/chargePost`,
+    {
+      car_id: id,
+      name: lowBat.charge.chargeSt.place_name,
+      fee,
+      location: lowBat.charge.chargeSt.road_address_name,
+    },
+  );
   console.log(ok);
   io.emit('operationalStatus', { id, msg: 'compCharging' });
   await wait(1000 * 5);

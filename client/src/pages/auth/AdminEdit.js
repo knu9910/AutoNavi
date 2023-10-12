@@ -20,7 +20,7 @@ const AdminEdit = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:8080/api/users/${id}`)
+        .get(`${process.env.REACT_APP_API_SERVER}/api/users/${id}`)
         .then((response) => {
           setAdminData(response.data);
         })
@@ -49,7 +49,10 @@ const AdminEdit = () => {
         return;
       }
       // 서버로 수정 요청 보내기
-      await axios.put(`http://localhost:8080/api/users/${id}`, adminData);
+      await axios.put(
+        `${process.env.REACT_APP_API_SERVER}/api/users/${id}`,
+        adminData,
+      );
       alert('관리자 정보가 수정되었습니다.');
     } catch (error) {
       console.error('수정 실패:', error);

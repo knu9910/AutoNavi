@@ -11,7 +11,7 @@ const ChargeChart = () => {
       try {
         // API에서 데이터 가져오기
         const response = await axios.get(
-          'http://localhost:8080/api/history/chargeFindAll',
+          `${process.env.REACT_APP_API_SERVER}/api/history/chargeFindAll`,
         );
         const data = response.data; // API 응답 데이터
 

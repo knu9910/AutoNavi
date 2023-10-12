@@ -17,14 +17,14 @@ const CostChart = () => {
 
       if (type === 'day') {
         const res = await axios.get(
-          `http://localhost:8080/api/history/getChargeTotal/${id}`,
+          `${process.env.REACT_APP_API_SERVER}/api/history/getChargeTotal/${id}`,
         );
         const weekData = res.data;
         chartLabelsData = weekData.map((row) => row.date);
         chartFeesData = weekData.map((row) => row.total_charge);
       } else if (type === 'month') {
         const res = await axios.get(
-          `http://localhost:8080/api/history/getMonthlyChargeTotal/${id}`,
+          `${process.env.REACT_APP_API_SERVER}/api/history/getMonthlyChargeTotal/${id}`,
         );
         const month = res.data;
         chartLabelsData = month.map((row) => `${row.month} 월`);

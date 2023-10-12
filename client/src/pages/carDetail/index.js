@@ -16,7 +16,9 @@ const CarDetail = () => {
 
   const getCar = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/cars/${id}`);
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_SERVER}/api/cars/${id}`,
+      );
       const car = res.data;
       dispatch(getCurrentCar({ currentCar: car }));
     } catch (err) {
@@ -28,7 +30,7 @@ const CarDetail = () => {
   const handleGetCharge = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/history/chargeFind/${id}`,
+        `${process.env.REACT_APP_API_SERVER}/api/history/chargeFind/${id}`,
       );
       const chargeData = res.data;
       dispatch(getChargeHistory({ chargeData }));
@@ -41,7 +43,7 @@ const CarDetail = () => {
   const handleGetTrip = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/history/getTripHistory/${id}`,
+        `${process.env.REACT_APP_API_SERVER}/api/history/getTripHistory/${id}`,
       );
       const tripData = res.data;
       dispatch(getOneTripHistory({ tripData }));

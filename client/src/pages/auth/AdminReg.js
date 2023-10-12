@@ -56,7 +56,7 @@ const AdminReg = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8080/api/users/register',
+        `${process.env.REACT_APP_API_SERVER}/api/users/register`,
         {
           userName: userName,
           userId: userIdReg,

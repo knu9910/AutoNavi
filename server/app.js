@@ -1,3 +1,13 @@
+const dotenv = require('dotenv');
+
+// 기본 .env 파일 로딩
+dotenv.config({ path: '.env' });
+// 환경별 .env 파일 로딩
+console.log('NODE_ENV', process.env.NODE_ENV);
+if (process.env.NODE_ENV) {
+  dotenv.config({ override: true, path: `.env.${process.env.NODE_ENV}` });
+}
+
 const express = require('express');
 const socketIo = require('socket.io');
 const http = require('http');

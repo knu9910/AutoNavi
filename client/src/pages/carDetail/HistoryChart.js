@@ -18,7 +18,7 @@ const HistoryChart = () => {
     const getCar = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/history/getHistoryByCar/${id}`,
+          `${process.env.REACT_APP_API_SERVER}/api/history/getHistoryByCar/${id}`,
         );
         const carData = response.data;
         setCarData(carData);

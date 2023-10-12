@@ -12,7 +12,7 @@ const AdminList = () => {
   // 서버에서 데이터 가져오기!!
   useEffect(() => {
     axios
-      .get('http://localhost:8080/api/users/list')
+      .get(`${process.env.REACT_APP_API_SERVER}/api/users/list`)
       .then((response) => {
         // 자동 순번매기기
         const dataNo = response.data.map((admin, index) => ({
@@ -88,7 +88,7 @@ const AdminList = () => {
   const handleDelete = async (id) => {
     try {
       // 서버로 삭제 요청
-      await axios.delete(`http://localhost:8080/api/users/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_SERVER}/api/users/${id}`);
 
       // 삭제 요청 성공 시 클라이언트에서도 삭제하기
       setAdminList((prevAdminList) =>

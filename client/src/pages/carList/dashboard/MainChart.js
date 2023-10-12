@@ -15,12 +15,12 @@ const MainChart = () => {
   useEffect(() => {
     const chart = async () => {
       const res = await axios.get(
-        'http://localhost:8080/api/history/getDailyDistanceData',
+        `${process.env.REACT_APP_API_SERVER}/api/history/getDailyDistanceData`,
       );
       const dailyData = res.data;
 
       const res2 = await axios.get(
-        'http://localhost:8080/api/history/getMonthlyTotalDistance',
+        `${process.env.REACT_APP_API_SERVER}/api/history/getMonthlyTotalDistance`,
       );
       const monthData = res2.data;
       const { monthDis, dayDis, doughnutChart } = chartInstances;

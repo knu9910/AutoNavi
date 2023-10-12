@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const login = () => {
-    Axios.post('http://localhost:8080/api/users/login', {
+    Axios.post(`${process.env.REACT_APP_API_SERVER}/api/users/login`, {
       userId: userId,
       password: password,
     })

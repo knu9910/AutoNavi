@@ -13,7 +13,7 @@ const CarList = () => {
   const handleCarsHistorys = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:8080/api/history/getAllHistory',
+        `${process.env.REACT_APP_API_SERVER}/api/history/getAllHistory`,
       );
       const historys = res.data;
       dispatch(getCarsHistorys({ historys }));
@@ -24,7 +24,9 @@ const CarList = () => {
   };
   const handleGetCars = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/cars');
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_SERVER}/api/cars`,
+      );
       const data = res.data;
       dispatch(getCarsInfo({ carsInfo: data }));
     } catch (err) {

@@ -63,7 +63,7 @@ const updateInteval = async (
 
     const car = await carModel.findCar(id);
     const { data } = await axios.get(
-      `http://localhost:8080/api/history/getHistoryByCar/${id}`,
+      `${process.env.SERVER_API}/api/history/getHistoryByCar/${id}`,
     );
     let { cum_distance, cum_battery } = data;
     let x = '';
@@ -91,7 +91,10 @@ const updateInteval = async (
       distance,
       msg,
     };
-    await axios.post('http://localhost:8080/api/history/addTripHistory', body);
+    await axios.post(
+      `${process.env.SERVER_API}/api/history/addTripHistory`,
+      body,
+    );
 
     for (const real of roads) {
       const { name, traffic_speed, traffic_state, vertexes } = real;
@@ -120,7 +123,7 @@ const updateInteval = async (
           if (battery <= 30) {
             let charge = await searchChargingStations(location_x, location_y);
             await axios.put(
-              `http://localhost:8080/api/history/updateHistory/${id}`,
+              `${process.env.SERVER_API}/api/history/updateHistory/${id}`,
               {
                 cum_battery: parseInt(cum_battery),
                 cum_distance: parseInt(cum_distance),
@@ -133,7 +136,7 @@ const updateInteval = async (
           }
         }
 
-        await axios.patch('http://localhost:8080/api/real/realcar', {
+        await axios.patch(`${process.env.SERVER_API}/api/real/realcar`, {
           location_x,
           location_y,
           battery,
@@ -153,13 +156,16 @@ const updateInteval = async (
         y = location_y;
       }
     }
-    await axios.put(`http://localhost:8080/api/history/updateHistory/${id}`, {
-      cum_battery: parseInt(cum_battery),
-      cum_distance: parseInt(cum_distance),
-    });
+    await axios.put(
+      `${process.env.SERVER_API}/api/history/updateHistory/${id}`,
+      {
+        cum_battery: parseInt(cum_battery),
+        cum_distance: parseInt(cum_distance),
+      },
+    );
 
     if (desCheck) {
-      await axios.patch('http://localhost:8080/api/real/realcar', {
+      await axios.patch(`${process.env.SERVER_API}/api/real/realcar`, {
         location_x: x,
         location_y: y,
         battery,
@@ -176,7 +182,10 @@ const updateInteval = async (
     }
 
     body.msg = '도착';
-    await axios.post('http://localhost:8080/api/history/addTripHistory', body);
+    await axios.post(
+      `${process.env.SERVER_API}/api/history/addTripHistory`,
+      body,
+    );
   } catch (err) {
     throw new Error(err.message);
   }

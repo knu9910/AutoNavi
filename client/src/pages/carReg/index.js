@@ -26,7 +26,7 @@ const CarReg = () => {
         mfg_date: carMfg,
       };
       const res = await axios.post(
-        'http://localhost:8080/api/cars/carReg',
+        `${process.env.REACT_APP_API_SERVER}/api/cars/carReg`,
         car,
       );
       const { id } = res.data;

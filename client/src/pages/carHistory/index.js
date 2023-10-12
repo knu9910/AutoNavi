@@ -14,7 +14,7 @@ const CarHistory = () => {
 
   const handleGetChargeHistory = async () => {
     const res = await axios.get(
-      'http://localhost:8080/api/history/getChargeHistoryAll',
+      `${process.env.REACT_APP_API_SERVER}/api/history/getChargeHistoryAll`,
     );
     const chargeHistorys = res.data;
     dispatch(getChargeHistoryAll({ chargeHistorys }));
@@ -22,7 +22,7 @@ const CarHistory = () => {
 
   const handleCarsTripHistorys = async () => {
     const res = await axios.get(
-      'http://localhost:8080/api/history/getAllTripHistory',
+      `${process.env.REACT_APP_API_SERVER}/api/history/getAllTripHistory`,
     );
     const allTripHistorys = res.data;
     dispatch(getCarsTripHistorys({ allTripHistorys }));

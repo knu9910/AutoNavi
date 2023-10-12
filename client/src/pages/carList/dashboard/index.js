@@ -23,7 +23,7 @@ const CarDashBoard = () => {
 
   const handleCarsTripHistorys = async () => {
     const res = await axios.get(
-      'http://localhost:8080/api/history/getAllTripHistory',
+      `${process.env.REACT_APP_API_SERVER}/api/history/getAllTripHistory`,
     );
     const allTripHistorys = res.data;
     dispatch(getCarsTripHistorys({ allTripHistorys }));
@@ -31,7 +31,7 @@ const CarDashBoard = () => {
 
   const handleTodayTotalDistance = async () => {
     const res = await axios.get(
-      'http://localhost:8080/api/history/getTodayTotalDistance',
+      `${process.env.REACT_APP_API_SERVER}/api/history/getTodayTotalDistance`,
     );
     const { totalDistance } = res.data;
     const distance = metersToKMAndM(Number(totalDistance));
@@ -40,7 +40,7 @@ const CarDashBoard = () => {
 
   const handleTodayChargePrice = async () => {
     const res = await axios.get(
-      'http://localhost:8080/api/history/getTodayChargeTotal',
+      `${process.env.REACT_APP_API_SERVER}/api/history/getTodayChargeTotal`,
     );
 
     const totalChargePrice = res.data.totalCharge;

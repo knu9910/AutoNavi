@@ -21,7 +21,9 @@ const Waiting = () => {
     try {
       const userConfirmed = window.confirm('정말로 차량을 삭제하시겠습니까?');
       if (userConfirmed) {
-        const res = await axios.delete(`http://localhost:8080/api/cars/${id}`);
+        const res = await axios.delete(
+          `${process.env.REACT_APP_API_SERVER}/api/cars/${id}`,
+        );
         console.log(res.data);
         dispatch(deleteCar({ id }));
         navigate('/car/carlist');
@@ -63,7 +65,7 @@ const Waiting = () => {
         if (userConfirmed) {
           window.location.replace(`/car/detail/${id}`);
           const response = await axios.post(
-            'http://localhost:8080/realTimeStart',
+            `${process.env.REACT_APP_API_SERVER}/realTimeStart`,
             {
               id: currentCar.car_id,
               destination: `${coordinates.current.x}, ${coordinates.current.y}`,
