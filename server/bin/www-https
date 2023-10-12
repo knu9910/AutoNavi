@@ -1,0 +1,10 @@
+var path = require('path');
+var app = require('../app');
+require('greenlock-express')
+  .init({
+    packageRoot: path.join(__dirname, '..'),
+    configDir: path.join(__dirname, '..', 'greenlock.d'),
+    maintainerEmail: 'knu9910@gmail.com',
+    cluster: false,
+  })
+  .serve(app); // Serves on 80 and 443

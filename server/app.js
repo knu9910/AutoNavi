@@ -21,6 +21,7 @@ const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
 const watchDatabaseChanges = require('./carHelperApis/watchDatabaseChanges');
 const realTimeStartApi = require('./realTimeStartApi');
+const path = require('path');
 
 app.use(
   cors({
@@ -32,6 +33,7 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 app.use('/api', indexRouter);
 
@@ -46,6 +48,10 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('사용자가 연결 해제되었습니다.');
   });
+});
+
+app.use('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
 server.listen(8080, () => {
