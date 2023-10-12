@@ -12,6 +12,9 @@ import NotFound from './pages/NotFound';
 import { AdminList, AdminReg, AdminEdit, Login } from './pages/auth';
 import PrivateRoute from './components/PrivateRoute';
 import ChargeHistoryList from './pages/chargeHistory/ChargeHistoryList';
+import Waiting from './pages/carDetail/Waiting';
+import Running from './pages/carDetail/Running';
+import Charging from './pages/carDetail/Charging';
 
 const App = () => {
   return (
@@ -29,6 +32,9 @@ const App = () => {
               <Route path="/car/carReg" element={<CarReg />} />
               <Route path="/car/carHistory" element={<CarHistory />} />
               <Route path="/car/detail/:id" element={<CarDetail />} />
+              <Route path="/car/detail/:id/waiting" element={<Waiting />} />
+              <Route path="/car/detail/:id/running" element={<Running />} />
+              <Route path="/car/detail/:id/charging" element={<Charging />} />
               <Route
                 path="/car/chargeHistory/"
                 element={<ChargeHistoryList />}

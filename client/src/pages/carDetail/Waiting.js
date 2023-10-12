@@ -63,7 +63,7 @@ const Waiting = () => {
         const userConfirmed = window.confirm('정말로 운행을 시작하시겠습니까?');
 
         if (userConfirmed) {
-          window.location.replace(`/car/detail/${id}`);
+          navigate(`/car/detail/${id}/running`);
           const response = await axios.post(
             `${process.env.REACT_APP_API_SERVER}/realTimeStart`,
             {
