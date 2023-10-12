@@ -2,8 +2,9 @@ const charging = require('../carHelperApis/charging');
 const goCharge = require('../carHelperApis/goCharge');
 const { updateInteval, wait } = require('../carHelperApis/realTimeUpdateApi');
 
-const realTimeStartApi = async (req, res, io) => {
+const realTimeStartApi = async (req, res) => {
   try {
+    const io = req.app.get('io');
     const { id, destination } = req.body;
     const origin = '127.0334257,37.5632355';
     if (!id || !destination) {
