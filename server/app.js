@@ -9,12 +9,10 @@ if (process.env.NODE_ENV) {
 }
 
 const express = require('express');
-const socketIo = require('socket.io');
-const http = require('http');
 
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+
+const io = app.get('io');
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -50,11 +48,11 @@ io.on('connection', (socket) => {
   });
 });
 
-app.use('/', (req, res, next) => {
+app.use('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
-server.listen(8080, () => {
+app.listen(8080, () => {
   console.log('listening on *:8080');
 });
 
