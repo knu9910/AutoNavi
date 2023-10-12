@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon ./bin/www-https",
+    "start": "cross-env NODE_ENV=production node ./bin/www-https",
     "dev": "cross-env NODE_ENV=development nodemon ./bin/www",
     "local": "cross-env NODE_ENV=local nodemon ./bin/www"
   },
